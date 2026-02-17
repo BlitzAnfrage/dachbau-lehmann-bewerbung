@@ -8,21 +8,23 @@
   <meta name="theme-color" content="#ffffff" />
   <meta name="color-scheme" content="light" />
 
+  <!-- Modern Font (CDN ok auf GitHub Pages) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #f5f6fa;
+      --bg: #f6f7fb;
       --surface: #ffffff;
       --text: #0b1220;
-      --muted: rgba(11,18,32,.62);
-      --muted2: rgba(11,18,32,.48);
+      --muted: rgba(11,18,32,.66);
+      --muted2: rgba(11,18,32,.50);
       --line: rgba(11,18,32,.10);
 
-      --brand: #d62f2f;
-      --brandDark:#0b1220;
+      --brand: #d62f2f;      /* Logo-Rot */
+      --brand2:#0b1220;      /* Dark */
+      --danger:#e11d48;
 
       --radius-xl: 24px;
       --radius-lg: 18px;
@@ -32,64 +34,56 @@
       --shadow-md: 0 14px 34px rgba(11,18,32,.10);
       --shadow-sm: 0 10px 22px rgba(11,18,32,.06);
 
-      --focus: 0 0 0 4px rgba(214,47,47,.16);
-      --container: 1120px;
+      --focus: 0 0 0 4px rgba(214,47,47,.18);
 
-      --pad: clamp(14px, 2.2vw, 18px);
-      --gap: clamp(10px, 1.8vw, 14px);
+      --container: 1120px;
     }
 
     *{box-sizing:border-box}
-
     html,body{height:100%}
-    html{overflow-x:hidden}
     body{
       margin:0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color: var(--text);
       background:
-        radial-gradient(900px 550px at 12% -5%, rgba(214,47,47,.08), transparent 56%),
-        radial-gradient(900px 650px at 92% 10%, rgba(14,165,233,.06), transparent 55%),
+        radial-gradient(900px 550px at 12% -5%, rgba(214,47,47,.10), transparent 56%),
+        radial-gradient(900px 650px at 92% 10%, rgba(14,165,233,.08), transparent 55%),
         var(--bg);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      padding-bottom: env(safe-area-inset-bottom);
-      overflow-x:hidden; /* stop right swipe */
-      max-width:100vw;
+      overflow-x: hidden; /* fix: no horizontal swipe */
     }
     a{color:inherit}
-    img{max-width:100%; height:auto; display:block}
-    .container{max-width:var(--container); margin:0 auto; padding: var(--pad);}
-
-    /* Make anchor jumps land nicely under sticky header */
-    #bewerben{scroll-margin-top: 92px;}
-    #top{scroll-margin-top: 92px;}
+    img, svg{max-width:100%}
+    .container{max-width:var(--container); margin:0 auto; padding: 16px}
+    .safe{padding-bottom: env(safe-area-inset-bottom);}
 
     /* Topbar */
     .topbar{
       position: sticky;
       top: 0;
-      z-index: 80;
-      background: rgba(245,246,250,.88);
+      z-index: 60;
+      background: rgba(246,247,251,.88);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
+      overflow-x: clip;
     }
     .topbar-inner{
       max-width:var(--container);
       margin:0 auto;
-      padding: 10px var(--pad);
+      padding: 10px 14px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:12px;
+      gap:10px;
     }
     .brand{
       display:flex;
       align-items:center;
       gap:10px;
       text-decoration:none;
-      min-width: 220px;
-      max-width: 70%;
+      min-width: 0;
+      flex: 1 1 auto;
     }
     .logo{
       width:40px; height:40px;
@@ -106,19 +100,16 @@
       font-weight:800;
       letter-spacing:-.2px;
       line-height:1.05;
-      font-size:13px;
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+      font-size:14px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+      max-width: 52vw;
     }
-    .brand .sub{
-      font-size:12px;
-      color:var(--muted);
-      margin-top:2px;
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-    }
-
-    .top-actions{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end; max-width: 55%;}
+    .brand .sub{font-size:12px; color:var(--muted); margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width: 52vw;}
+    .top-actions{display:flex; align-items:center; gap:8px; flex: 0 0 auto;}
     .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
       padding: 10px 14px;
       border-radius: 999px;
       border: 1px solid var(--line);
@@ -131,34 +122,32 @@
       box-shadow: 0 10px 22px rgba(11,18,32,.06);
       user-select:none;
       -webkit-tap-highlight-color: transparent;
-      white-space:nowrap;
-      max-width: 100%;
+      white-space: nowrap;
     }
-    .btn:hover{transform: translateY(-1px)}
-    .btn:active{transform: translateY(0)}
+    .btn:active{transform: translateY(1px)}
     .btn.primary{
-      background: linear-gradient(180deg, var(--brandDark), #070d18);
+      background: linear-gradient(180deg, var(--brand2), #070d18);
       color:#fff;
-      border-color: rgba(11,18,32,.18);
+      border-color: rgba(11,18,32,.20);
       box-shadow: 0 18px 44px rgba(11,18,32,.16);
     }
     .btn.red{
       background: linear-gradient(180deg, var(--brand), #b61f1f);
       color:#fff;
-      border-color: rgba(214,47,47,.22);
-      box-shadow: 0 18px 44px rgba(214,47,47,.20);
+      border-color: rgba(214,47,47,.25);
+      box-shadow: 0 18px 44px rgba(214,47,47,.22);
+      padding: 10px 16px;
     }
-    .btn.ghost{ background: rgba(255,255,255,.70); box-shadow:none; }
+    .btn.ghost{background: rgba(255,255,255,.65);}
     .hide-sm{display:inline-flex}
     @media (max-width:820px){
       .hide-sm{display:none}
-      .brand{min-width:auto}
-      .top-actions{max-width:none}
-      .btn{font-size:13px; padding: 10px 12px;}
+      .btn.red{padding: 10px 14px; font-size: 13px;}
+      .brand .name, .brand .sub{max-width: 56vw;}
     }
 
     /* Hero */
-    .hero{padding: 14px 0 10px}
+    .hero{padding: 14px 0 8px}
     .hero-shell{
       border-radius: var(--radius-xl);
       border: 1px solid var(--line);
@@ -168,40 +157,43 @@
     }
     .hero-grid{
       display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      min-height: 380px;
+      grid-template-columns: 1.08fr .92fr;
+      min-height: 420px;
     }
     @media (max-width:980px){
-      .hero-grid{grid-template-columns:1fr; min-height:unset}
+      .hero-grid{
+        display:flex;
+        flex-direction:column;
+        min-height:unset;
+      }
     }
 
     .hero-left{
-      padding: clamp(18px, 3vw, 26px);
-      background: #fff;
+      padding: 22px 18px;
+      background:
+        radial-gradient(800px 500px at 10% 0%, rgba(214,47,47,.08), transparent 55%),
+        #fff;
     }
 
-    /* Apple-ish minimal chips */
     .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 7px 10px;
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(11,18,32,.03);
+      background: rgba(11,18,32,.035);
       border: 1px solid rgba(11,18,32,.08);
-      color: rgba(11,18,32,.70);
+      color: var(--muted);
       font-size: 12px;
-      font-weight:700;
+      font-weight:650;
     }
     .dot{
       width:8px; height:8px; border-radius:999px;
       background: var(--brand);
-      box-shadow: 0 0 0 3px rgba(214,47,47,.12);
-      flex:0 0 auto;
+      box-shadow: 0 0 0 4px rgba(214,47,47,.12);
     }
-
     h1{
-      margin: 12px 0 8px;
-      font-size: clamp(28px, 4.2vw, 46px);
-      line-height: 1.03;
+      margin: 14px 0 10px;
+      font-size: clamp(28px, 4.6vw, 48px);
+      line-height: 1.04;
       letter-spacing: -1.1px;
     }
     .accent{color: var(--brand)}
@@ -209,85 +201,39 @@
       margin: 0;
       font-size: 15px;
       line-height: 1.55;
-      color: rgba(11,18,32,.76);
+      color: rgba(11,18,32,.78);
       max-width: 60ch;
     }
 
-    /* NEW: image right under headline on mobile */
-    .hero-inlineMedia{
-      display:none;
-      margin-top: 12px;
-      border-radius: 18px;
-      overflow:hidden;
-      border: 1px solid rgba(11,18,32,.10);
-      box-shadow: 0 10px 22px rgba(11,18,32,.06);
-      background: #0b1220;
-    }
-    .hero-inlineMedia img{
-      width:100%;
-      height: 220px;
-      object-fit: cover;
-      opacity: .95;
-    }
-    @media (max-width:980px){
-      .hero-inlineMedia{display:block;}
-    }
-    @media (max-width:420px){
-      .hero-inlineMedia img{height: 200px;}
-    }
-
-    .hero-kpis{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 10px;
-      margin-top: 14px;
-    }
-    @media (max-width:980px){
-      .hero-kpis{grid-template-columns:1fr;}
-    }
-    .kpi{
-      border-radius: 16px;
-      border: 1px solid rgba(11,18,32,.08);
-      background: rgba(255,255,255,.96);
-      padding: 11px 12px;
-      box-shadow: 0 10px 22px rgba(11,18,32,.05);
-    }
-    .kpi .k{font-size:12px; font-weight:800; color: rgba(11,18,32,.72)}
-    .kpi .v{margin-top:6px; font-size:14px; color: rgba(11,18,32,.72); line-height:1.35}
-    .kpi .v b{color: var(--text)}
-
-    .hero-ctas{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top: 14px;
-      align-items:center;
-    }
-
+    /* Hero image (moved up on mobile by layout) */
     .hero-right{
       position:relative;
       background: #0b1220;
-      min-height: 260px;
+      min-height: 300px;
+    }
+    @media (max-width:980px){
+      .hero-right{min-height: 240px;}
     }
     .hero-img{
       position:absolute; inset:0;
       background:
-        radial-gradient(900px 520px at 18% 0%, rgba(214,47,47,.18), transparent 55%),
-        radial-gradient(900px 520px at 90% 15%, rgba(14,165,233,.14), transparent 55%),
+        radial-gradient(900px 520px at 18% 0%, rgba(214,47,47,.20), transparent 55%),
+        radial-gradient(900px 520px at 90% 15%, rgba(14,165,233,.18), transparent 55%),
         linear-gradient(135deg, #0b1220, #0b1220);
     }
     .hero-img img{
       width:100%; height:100%;
       object-fit:cover;
-      opacity:.92;
+      display:block;
+      opacity: .92;
       filter: contrast(1.02) saturate(1.02);
     }
     .hero-overlay{
       position:absolute; inset:0;
-      background: linear-gradient(90deg, rgba(11,18,32,.86), rgba(11,18,32,.22));
+      background: linear-gradient(90deg, rgba(11,18,32,.82), rgba(11,18,32,.18));
     }
     @media (max-width:980px){
-      .hero-right{display:none;} /* hide right hero image on mobile (we show inline instead) */
+      .hero-overlay{background: linear-gradient(180deg, rgba(11,18,32,.72), rgba(11,18,32,.22))}
     }
 
     .hero-right-card{
@@ -302,107 +248,127 @@
       padding: 12px 12px;
       color: rgba(255,255,255,.92);
     }
-    .hero-right-card .t{font-weight:900; letter-spacing:-.2px; font-size: 14px;}
-    .hero-right-card .s{margin-top:6px; font-size: 13px; color: rgba(255,255,255,.82); line-height:1.35;}
+    .hero-right-card .t{font-weight:850; letter-spacing:-.2px; font-size: 14px;}
+    .hero-right-card .s{margin-top:6px; font-size: 13px; color: rgba(255,255,255,.80); line-height:1.35;}
 
-    /* Sections */
-    .section{padding: 12px 0 0}
-    .section h2{ margin: 10px 0 10px; font-size: 16px; letter-spacing: -.3px; }
-
-    .tagGrid{
+    .hero-kpis{
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
       gap: 10px;
+      margin-top: 14px;
     }
-    @media (max-width:980px){ .tagGrid{grid-template-columns:1fr} }
-
-    .tag{
-      background: rgba(255,255,255,.96);
+    @media (max-width:980px){
+      .hero-kpis{grid-template-columns:1fr;}
+    }
+    .kpi{
+      border-radius: 16px;
       border: 1px solid rgba(11,18,32,.08);
-      border-radius: 18px;
-      padding: 12px;
-      box-shadow: 0 12px 28px rgba(11,18,32,.06);
+      background: rgba(255,255,255,.90);
+      padding: 12px 12px;
+      box-shadow: 0 10px 22px rgba(11,18,32,.05);
+    }
+    .kpi .k{font-size:12px; font-weight:800; color: rgba(11,18,32,.74)}
+    .kpi .v{margin-top:6px; font-size:14px; color: rgba(11,18,32,.68); line-height:1.35}
+    .kpi .v b{color: var(--text)}
+
+    .hero-ctas{
       display:flex;
       gap:10px;
-      align-items:flex-start;
+      flex-wrap:wrap;
+      margin-top: 14px;
+      align-items:center;
+    }
+    @media (max-width:520px){
+      .hero-ctas .btn{flex: 1 1 auto; min-width: 0;}
     }
 
-    /* Minimal icon: no red translucent squares */
-    .tag .ic{
-      width:34px; height:34px;
-      border-radius: 12px;
-      display:grid; place-items:center;
-      background: rgba(11,18,32,.04);
+    /* Modern minimal icon */
+    .i{
+      width:36px; height:36px;
+      border-radius: 14px;
       border: 1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 10px 22px rgba(11,18,32,.05);
+      display:grid; place-items:center;
       color: rgba(11,18,32,.78);
-      font-weight:900;
       flex: 0 0 auto;
     }
-    .tag .t{font-weight:900; font-size:14px; letter-spacing:-.1px; line-height:1.2}
-    .tag .s{margin-top:4px; color: rgba(11,18,32,.68); font-size:13px; line-height:1.35}
+    .i svg{width:18px; height:18px; stroke: currentColor; fill:none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;}
 
-    /* Apply layout */
-    .apply{ padding: 12px 0 24px; }
+    /* Sections */
+    .section{padding: 14px 0 6px}
+    .section h2{
+      margin: 10px 0 10px;
+      font-size: 18px;
+      letter-spacing: -.3px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    @media (max-width:980px){ .cards{grid-template-columns:1fr} }
+
+    .card{
+      background: rgba(255,255,255,.94);
+      border: 1px solid rgba(11,18,32,.08);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      box-shadow: 0 12px 28px rgba(11,18,32,.06);
+    }
+    .card .title{
+      display:flex; align-items:center; gap:10px;
+      font-weight:850;
+      letter-spacing:-.2px;
+      font-size: 15px;
+    }
+    .card p{
+      margin: 8px 0 0;
+      color: rgba(11,18,32,.68);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* APPLY */
+    .apply{padding: 14px 0 24px;}
     .apply-grid{
       display:grid;
-      grid-template-columns: .92fr 1.08fr;
-      gap: var(--gap);
+      grid-template-columns: .95fr 1.05fr;
+      gap: 14px;
       align-items:start;
     }
     @media (max-width:980px){
-      .apply-grid{grid-template-columns: 1fr;}
-      .apply-grid .funnelWrap{order:1}
-      .apply-grid .infoWrap{order:2}
+      .apply-grid{
+        display:flex;
+        flex-direction:column;
+        gap: 12px;
+      }
+      .funnelPanel{order:0}
+      .infoPanel{order:1}
     }
 
     .panel{
-      background: rgba(255,255,255,.96);
+      background: rgba(255,255,255,.94);
       border: 1px solid rgba(11,18,32,.08);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow-md);
       overflow:hidden;
     }
 
-    /* Info accordion */
-    details.accordion{
-      border-radius: var(--radius-xl);
-      overflow:hidden;
-    }
-    details.accordion > summary{
-      list-style:none;
-      cursor:pointer;
-      padding: 14px 14px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      background: rgba(255,255,255,.98);
-      border-bottom: 1px solid rgba(11,18,32,.08);
-    }
-    details.accordion > summary::-webkit-details-marker{display:none}
-    .sumLeft{min-width:0}
-    .sumTitle{font-weight:900; letter-spacing:-.2px; font-size:14px}
-    .sumSub{margin-top:4px; font-size:12px; color: rgba(11,18,32,.66); font-weight:700}
-    .sumRight{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;}
-    .sumPill{
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(11,18,32,.10);
-      background: rgba(11,18,32,.03);
-      font-weight:900;
-      font-size:12px;
-      color: rgba(11,18,32,.78);
-      white-space:nowrap;
-    }
-
+    /* Info panel */
     .info-media{
       position:relative;
       height: 200px;
-      background: linear-gradient(135deg, #0b1220, #0b1220);
+      background:
+        radial-gradient(900px 520px at 18% 0%, rgba(214,47,47,.12), transparent 55%),
+        radial-gradient(900px 520px at 90% 15%, rgba(14,165,233,.10), transparent 55%),
+        linear-gradient(135deg, #ffffff, #f3f5fb);
     }
     .info-media img{
       width:100%; height:100%;
       object-fit:cover;
+      display:block;
       opacity:.98;
     }
     .badge{
@@ -410,120 +376,141 @@
       border-radius: 999px;
       padding: 8px 10px;
       font-size: 12px;
-      font-weight: 900;
-      color: rgba(255,255,255,.92);
-      background: rgba(11,18,32,.36);
-      border: 1px solid rgba(255,255,255,.14);
+      font-weight: 850;
+      color: rgba(11,18,32,.86);
+      background: rgba(255,255,255,.90);
+      border: 1px solid rgba(11,18,32,.10);
       backdrop-filter: blur(10px);
     }
 
-    .info-body{padding: 14px 14px 14px}
-    .steps{margin: 0; padding:0; list-style:none; display:grid; gap:10px;}
+    .info-body{padding: 14px 14px 16px}
+    .steps{
+      margin: 10px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
     .stepRow{
       display:flex; gap:10px; align-items:flex-start;
       padding: 12px;
       border-radius: 16px;
       border: 1px solid rgba(11,18,32,.08);
-      background: rgba(255,255,255,.98);
+      background: rgba(255,255,255,.94);
       box-shadow: 0 10px 22px rgba(11,18,32,.05);
     }
-    /* Minimal number: no red translucent badge */
     .n{
       width:28px; height:28px; border-radius: 10px;
-      background: rgba(11,18,32,.04);
-      border: 1px solid rgba(11,18,32,.10);
+      border: 1px solid rgba(11,18,32,.12);
       color: rgba(11,18,32,.78);
       display:grid; place-items:center;
       font-weight:900;
       flex: 0 0 auto;
+      background: rgba(255,255,255,.92);
     }
-    .stepRow .t{font-weight:900; font-size:13px}
-    .stepRow .s{margin-top:4px; color: rgba(11,18,32,.66); font-size:12px; line-height:1.35}
+    .stepRow .t{font-weight:850; font-size:14px}
+    .stepRow .s{margin-top:4px; color: rgba(11,18,32,.66); font-size:13px; line-height:1.35}
 
     .company{
       margin-top: 12px;
-      padding: 12px;
+      padding: 14px;
       border-radius: 18px;
       border: 1px solid rgba(11,18,32,.08);
-      background: rgba(255,255,255,.98);
+      background: rgba(255,255,255,.96);
       box-shadow: 0 12px 28px rgba(11,18,32,.06);
       font-size: 13px;
       color: rgba(11,18,32,.74);
     }
     .company b{color: var(--text)}
-    .company a{ text-decoration:none; border-bottom:1px dashed rgba(11,18,32,.35); }
-    .company .row2{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+    .company .row2{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;}
+    .company a{color:inherit; text-decoration:none; border-bottom:1px dashed rgba(11,18,32,.35)}
 
     /* Funnel */
     .funnel{padding: 14px}
     .funnel-top{
-      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
-      padding-bottom: 12px;
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+      padding-bottom: 10px;
       border-bottom: 1px solid rgba(11,18,32,.08);
     }
-    .funnel-top .h{ font-size: 16px; font-weight: 900; letter-spacing:-.2px; }
-    .funnel-top .p{ margin-top:6px; color: rgba(11,18,32,.64); font-size: 13px; line-height: 1.35; }
-    .contact-mini{ text-align:right; font-size: 12px; color: rgba(11,18,32,.58); font-weight: 800; }
-    .contact-mini a{ display:inline-block; margin-top:6px; font-size: 13px; font-weight: 900; text-decoration:none; color: var(--text); border-bottom: 1px dashed rgba(11,18,32,.35); }
-
-    /* Sticky mini progress in funnel on mobile */
-    .funnelSticky{
-      position: sticky;
-      top: 66px;
-      z-index: 20;
-      margin: 10px -14px 0;
-      padding: 10px 14px 12px;
-      background: rgba(255,255,255,.90);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(11,18,32,.08);
-    }
-    @media (min-width:981px){
-      .funnelSticky{position:static; margin: 12px 0 0; padding:0; background:transparent; border-bottom:0;}
+    .funnel-top .h{font-size: 16px; font-weight: 900; letter-spacing:-.2px;}
+    .funnel-top .p{margin-top:6px; color: rgba(11,18,32,.64); font-size: 13px; line-height: 1.35;}
+    .contact-mini{text-align:right; font-size: 12px; color: rgba(11,18,32,.58); font-weight: 800;}
+    .contact-mini a{
+      display:inline-block;
+      margin-top:6px;
+      font-size: 13px;
+      font-weight: 900;
+      text-decoration: none;
+      color: var(--text);
+      border-bottom: 1px dashed rgba(11,18,32,.35);
     }
 
-    .progress{ display:grid; gap: 8px; }
-    .progRow{display:flex; justify-content:space-between; font-size:12px; color: rgba(11,18,32,.56); font-weight:900}
-    .bar{ height: 10px; border-radius: 999px; background: rgba(11,18,32,.06); overflow:hidden; }
-    .bar > div{ height: 100%; width: 0%; border-radius: 999px; background: linear-gradient(90deg, var(--brand), #ff6b6b); transition: width .18s ease; }
+    .progress{margin-top: 12px; display:grid; gap: 8px;}
+    .progRow{display:flex; justify-content:space-between; font-size:12px; color: rgba(11,18,32,.58); font-weight:800}
+    .bar{
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(11,18,32,.06);
+      overflow:hidden;
+    }
+    .bar > div{
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--brand), #ff6b6b);
+      transition: width .18s ease;
+    }
 
-    /* Clickable step chips */
-    .chips{ display:flex; gap:8px; flex-wrap:wrap; margin-top: 10px; }
-    .chipBtn{
-      appearance:none;
-      border: 1px solid rgba(11,18,32,.10);
-      background: rgba(255,255,255,.98);
+    /* Step chips */
+    .chips{
+      display:flex;
+      gap:8px;
+      margin-top: 10px;
+      overflow-x:auto;
+      padding-bottom: 2px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .chips::-webkit-scrollbar{display:none}
+    .chip{
+      flex: 0 0 auto;
       padding: 8px 10px;
       border-radius: 999px;
+      border: 1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.94);
       font-size: 12px;
       font-weight: 900;
       color: rgba(11,18,32,.66);
       cursor:pointer;
-      transition: transform .12s ease;
+      user-select:none;
       -webkit-tap-highlight-color: transparent;
-      line-height:1;
-      white-space:nowrap;
     }
-    .chipBtn:hover{transform: translateY(-1px)}
-    .chipBtn.on{
-      border-color: rgba(11,18,32,.14);
-      background: rgba(11,18,32,.04);
-      color: rgba(11,18,32,.86);
+    .chip.on{
+      border-color: rgba(214,47,47,.25);
+      background: rgba(214,47,47,.08);
+      color: var(--brand);
     }
 
     /* Form */
-    .step{display:none; margin-top: 12px;}
+    .step{display:none; margin-top: 14px;}
     .step.active{display:block; animation: pop .15s ease;}
     @keyframes pop{from{opacity:.0; transform: translateY(6px)} to{opacity:1; transform: translateY(0)}}
     @media (prefers-reduced-motion: reduce){
       .step.active{animation:none}
       .bar > div{transition:none}
-      .btn,.chipBtn{transition:none}
+      .btn{transition:none}
     }
 
     .grid2{display:grid; grid-template-columns: 1fr 1fr; gap: 12px;}
     @media (max-width:520px){ .grid2{grid-template-columns:1fr;} }
 
-    label{ display:block; font-size: 12px; color: rgba(11,18,32,.64); font-weight: 900; letter-spacing: .1px; }
+    label{
+      display:block;
+      font-size: 12px;
+      color: rgba(11,18,32,.64);
+      font-weight: 900;
+      letter-spacing: .2px;
+    }
     input, select, textarea{
       width:100%;
       margin-top: 8px;
@@ -537,27 +524,32 @@
       box-shadow: 0 12px 26px rgba(11,18,32,.05);
     }
     input::placeholder, textarea::placeholder{color: rgba(11,18,32,.36)}
-    input:focus, select:focus, textarea:focus{ border-color: rgba(214,47,47,.30); box-shadow: var(--focus); }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(214,47,47,.36);
+      box-shadow: var(--focus);
+    }
     textarea{min-height: 110px; resize: vertical;}
 
-    .toggleGrid{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+    .toggleGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
     @media (max-width:520px){.toggleGrid{grid-template-columns:1fr}}
-
     .toggle{
       display:flex; align-items:center; justify-content:space-between; gap:10px;
       padding: 12px 12px;
       border-radius: 18px;
       border: 1px solid rgba(11,18,32,.10);
-      background: rgba(255,255,255,.98);
+      background: rgba(255,255,255,.94);
       cursor:pointer;
       user-select:none;
       box-shadow: 0 12px 26px rgba(11,18,32,.05);
-      transition: transform .12s ease;
       -webkit-tap-highlight-color: transparent;
     }
-    .toggle:hover{transform: translateY(-1px)}
     .toggle .t{font-weight:900; font-size: 13px; letter-spacing:-.1px}
-    .toggle .s{font-size: 12px; color: rgba(11,18,32,.58); margin-top:4px; line-height:1.35}
+    .toggle .s{font-size: 12px; color: rgba(11,18,32,.58); margin-top:4px; line-height:1.25}
     .check{
       width: 26px; height: 26px;
       border-radius: 10px;
@@ -570,7 +562,7 @@
     }
     .toggle.on .check{
       background: linear-gradient(180deg, var(--brand), #b61f1f);
-      border-color: rgba(214,47,47,.26);
+      border-color: rgba(214,47,47,.30);
       color:#fff;
     }
 
@@ -580,12 +572,17 @@
       border-radius: 18px;
       border: 1px solid rgba(11,18,32,.08);
       background: rgba(11,18,32,.03);
-      color: rgba(11,18,32,.70);
+      color: rgba(11,18,32,.72);
       font-size: 13px;
       line-height: 1.45;
     }
-
-    .error{ margin-top: 8px; display:none; color: #e11d48; font-size: 13px; font-weight: 900; }
+    .error{
+      margin-top: 8px;
+      display:none;
+      color: var(--danger);
+      font-size: 13px;
+      font-weight: 800;
+    }
 
     .nav{
       margin-top: 14px;
@@ -593,8 +590,17 @@
       align-items:center;
     }
     .nav .btn{min-width: 140px}
+    @media (max-width:520px){
+      .nav .btn{flex: 1 1 auto; min-width: 0;}
+    }
 
-    .hint{ margin-top: 10px; font-size: 12px; color: rgba(11,18,32,.56); font-weight: 900; }
+    .hint{
+      margin-top: 10px;
+      font-size: 12px;
+      color: rgba(11,18,32,.56);
+      font-weight: 800;
+    }
+    .hint a{text-decoration:none; border-bottom:1px dashed rgba(11,18,32,.35)}
 
     /* Footer */
     .footer{
@@ -604,14 +610,16 @@
       color: rgba(11,18,32,.56);
       font-size: 13px;
     }
-    .footer .row{ display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center; }
+    .footer .row{
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center;
+    }
     .footer a{text-decoration:none; border-bottom:1px dashed rgba(11,18,32,.35)}
 
     /* Toast */
     .toast{
       position: fixed;
       left: 14px; right: 14px;
-      bottom: calc(16px + env(safe-area-inset-bottom));
+      bottom: calc(14px + env(safe-area-inset-bottom));
       max-width: 560px;
       margin: 0 auto;
       display:none;
@@ -621,14 +629,17 @@
       background: rgba(255,255,255,.92);
       backdrop-filter: blur(12px);
       box-shadow: var(--shadow-lg);
-      z-index: 90;
+      z-index: 80;
     }
     .toast strong{display:block; font-weight: 900}
     .toast span{display:block; margin-top:4px; font-size:13px; color: rgba(11,18,32,.70); line-height:1.35}
+
+    /* Safety: prevent any accidental horizontal overflow from long words */
+    .wrap{overflow-wrap:anywhere; word-break:break-word;}
   </style>
 </head>
 
-<body>
+<body class="safe">
   <!-- TOPBAR -->
   <header class="topbar">
     <div class="topbar-inner">
@@ -636,14 +647,14 @@
         <div class="logo" aria-hidden="true">
           <img src="logo.webp" alt="" onerror="this.style.display='none'">
         </div>
-        <div style="min-width:0">
+        <div class="wrap">
           <div class="name">Jörg Lehmann Dachdeckerei</div>
           <div class="sub">Meisterbetrieb • Freisen (Saarland)</div>
         </div>
       </a>
 
       <div class="top-actions">
-        <a class="btn ghost hide-sm" href="tel:+4968557466">Anrufen</a>
+        <a class="btn ghost hide-sm" href="tel:+4968557466">📞 06855 7466</a>
         <a class="btn red" href="#bewerben">Jetzt bewerben</a>
       </div>
     </div>
@@ -654,53 +665,172 @@
     <section class="hero">
       <div class="hero-shell">
         <div class="hero-grid">
+          <!-- Left content -->
           <div class="hero-left">
-            <div class="pill"><span class="dot"></span> Regional • 66629 Freisen</div>
+            <div class="pill"><span class="dot"></span> Regional • Dachdeckerei & Bauspenglerei • 66629 Freisen</div>
 
             <h1>Dachdecker gesucht: <span class="accent">Geselle</span> (m/w/d)</h1>
 
-            <!-- Requested: first image higher (under headline) on mobile -->
-            <div class="hero-inlineMedia" aria-label="Einblick ins Team">
-              <img src="hero.jpg" alt="Dachdecker bei der Arbeit" onerror="this.remove()">
+            <!-- Image moved effectively up on mobile by placing it directly after headline via order in flex layout -->
+            <div class="hero-right" aria-label="Hero Bild">
+              <div class="hero-img">
+                <img src="hero.jpg" alt="" onerror="this.remove()" />
+              </div>
+              <div class="hero-overlay" aria-hidden="true"></div>
+
+              <div class="hero-right-card">
+                <div class="t">Top Ausstattung & Sicherheit</div>
+                <div class="s">Moderne Maschinen/Fahrzeuge, saubere Abläufe & Weiterbildung (z. B. Kranschein).</div>
+              </div>
             </div>
 
-            <p class="lead">
-              Bewerbung in <b>2–4 Minuten</b>. Ohne Anschreiben.<br>
-              <b>Quereinsteiger/Hilfskraft</b> willkommen, wenn motiviert & qualifiziert.
+            <p class="lead" style="margin-top:14px">
+              Bewerbung in <b>2–4 Minuten</b> – ohne Anschreiben.
+              <b>Quereinsteiger/Hilfskraft</b> willkommen, wenn du motiviert & qualifiziert bist.
             </p>
 
-            <div class="hero-kpis" role="list" aria-label="Highlights">
+            <div class="hero-kpis" role="list">
               <div class="kpi" role="listitem">
                 <div class="k">Stundenlohn</div>
                 <div class="v">bis zu <b>21 €</b></div>
               </div>
               <div class="kpi" role="listitem">
                 <div class="k">Pausen</div>
-                <div class="v"><b>bezahlt</b></div>
+                <div class="v"><b>bezahlt</b> (Frühstück & Mittag)</div>
               </div>
               <div class="kpi" role="listitem">
                 <div class="k">Baustellen</div>
-                <div class="v"><b>regional</b></div>
+                <div class="v"><b>regional</b> • planbar</div>
               </div>
             </div>
 
             <div class="hero-ctas">
-              <a class="btn red" href="#bewerben">In 2–4 Minuten bewerben</a>
+              <a class="btn primary" href="#bewerben">In 2–4 Minuten bewerben</a>
               <a class="btn" href="tel:+4968557466">Kurz anrufen</a>
             </div>
           </div>
 
-          <!-- Desktop hero image -->
-          <div class="hero-right" aria-label="Hero Bild">
-            <div class="hero-img">
-              <img src="hero.jpg" alt="" onerror="this.remove()" />
-            </div>
-            <div class="hero-overlay" aria-hidden="true"></div>
-            <div class="hero-right-card">
-              <div class="t">Top Ausstattung & Sicherheit</div>
-              <div class="s">Moderne Maschinen/Fahrzeuge, saubere Prozesse, Weiterbildung (z. B. Kranschein).</div>
+          <!-- Desktop-only right column spacer (kept empty to preserve 2-col look) -->
+          <div style="display:block; background:#fff;">
+            <!-- On desktop, we show a clean card column instead of duplicating the image.
+                 If you want the image on desktop right side too, remove this block and move hero-right back outside.
+            -->
+            <div style="padding:18px; height:100%; display:flex; align-items:stretch;">
+              <div style="width:100%; border-radius:22px; border:1px solid rgba(11,18,32,.08); box-shadow:0 12px 28px rgba(11,18,32,.06); overflow:hidden; background:#0b1220; position:relative;">
+                <div class="hero-img" style="position:absolute; inset:0;">
+                  <img src="hero.jpg" alt="" onerror="this.remove()" />
+                </div>
+                <div class="hero-overlay" aria-hidden="true" style="position:absolute; inset:0;"></div>
+                <div class="hero-right-card" style="position:absolute; left:14px; right:14px; bottom:14px;">
+                  <div class="t">Top Ausstattung & Sicherheit</div>
+                  <div class="s">Moderne Maschinen/Fahrzeuge, saubere Abläufe & Weiterbildung (z. B. Kranschein).</div>
+                </div>
+              </div>
             </div>
           </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="section" aria-label="Benefits">
+      <h2>Warum du hier gut aufgehoben bist</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="title">
+            <span class="i" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+            </span>
+            Bezahlte Pausen
+          </div>
+          <p>Frühstück & Mittagspause sind bezahlt.</p>
+        </div>
+
+        <div class="card">
+          <div class="title">
+            <span class="i" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l8.4 8.4a2 2 0 0 0 2.8 0l1.4-1.4a2 2 0 0 0 0-2.8z"/><path d="M8 8l8 8"/></svg>
+            </span>
+            Top Ausstattung
+          </div>
+          <p>Gute Maschinen & Fahrzeuge, saubere Prozesse.</p>
+        </div>
+
+        <div class="card">
+          <div class="title">
+            <span class="i" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 7V3"/><path d="M16 7V3"/><path d="M4 11h16"/><path d="M5 21h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2"/></svg>
+            </span>
+            Urlaub nach Tarif
+          </div>
+          <p>Sauber geregelt – planbar.</p>
+        </div>
+
+        <div class="card">
+          <div class="title">
+            <span class="i" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3l8 6-8 6-8-6z"/><path d="M4 9v8l8 4 8-4V9"/></svg>
+            </span>
+            Weiterbildung
+          </div>
+          <p>z. B. Kranschein, neue Techniken.</p>
+        </div>
+
+        <div class="card">
+          <div class="title">
+            <span class="i" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 21s7-4.5 7-11a7 7 0 0 0-14 0c0 6.5 7 11 7 11z"/><path d="M12 10.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg>
+            </span>
+            Regional
+          </div>
+          <p>Saarland/Umgebung – weniger Fahrerei.</p>
+        </div>
+
+        <div class="card">
+          <div class="title">
+            <span class="i" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            </span>
+            Sicherheit
+          </div>
+          <p>Arbeitssicherheit & klare Abläufe.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- REQUIREMENTS -->
+    <section class="section" aria-label="Voraussetzungen">
+      <h2>Was wir suchen</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="title">
+            <span class="i" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 .8-4.5 4 1 6.2L12 16l-5.5 3 1-6.2L3 8.8 9 8z"/></svg>
+            </span>
+            Dachdecker Geselle
+          </div>
+          <p>Erfahrung & saubere Arbeit.</p>
+        </div>
+
+        <div class="card">
+          <div class="title">
+            <span class="i" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M5 9l7-7 7 7"/></svg>
+            </span>
+            Quereinsteiger / Hilfskraft
+          </div>
+          <p>Motiviert & qualifiziert – passt.</p>
+        </div>
+
+        <div class="card">
+          <div class="title">
+            <span class="i" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+            </span>
+            Pluspunkte
+          </div>
+          <p>Abdichtung, Klempner, Ziegel, Zimmerei.</p>
         </div>
       </div>
     </section>
@@ -708,13 +838,12 @@
     <!-- APPLY -->
     <section class="apply" id="bewerben" aria-label="Bewerbung">
       <div class="apply-grid">
-
-        <!-- FUNNEL -->
-        <section class="panel funnel funnelWrap" aria-label="Schnellbewerbung Funnel">
+        <!-- RIGHT FUNNEL (first on mobile) -->
+        <section class="panel funnel funnelPanel" aria-label="Schnellbewerbung Funnel">
           <div class="funnel-top">
             <div>
               <div class="h">Schnellbewerbung</div>
-              <div class="p">4 kurze Schritte. Am Ende öffnet sich deine Mail-App – du klickst nur noch „Senden“.</div>
+              <div class="p">4 kurze Schritte – am Ende öffnet sich deine Mail-App.</div>
             </div>
             <div class="contact-mini">
               Kontakt
@@ -722,20 +851,18 @@
             </div>
           </div>
 
-          <div class="funnelSticky">
-            <div class="progress" aria-label="Fortschritt">
-              <div class="progRow">
-                <span id="stepLabel">Schritt 1 von 4</span>
-                <span id="pctLabel">25%</span>
-              </div>
-              <div class="bar"><div id="barFill"></div></div>
+          <div class="progress" aria-label="Fortschritt">
+            <div class="progRow">
+              <span id="stepLabel">Schritt 1 von 4</span>
+              <span id="pctLabel">25%</span>
+            </div>
+            <div class="bar"><div id="barFill"></div></div>
 
-              <div class="chips" aria-label="Schritte">
-                <button class="chipBtn on" id="chip1" type="button" data-jump="1">1 • Kontakt</button>
-                <button class="chipBtn" id="chip2" type="button" data-jump="2">2 • Profil</button>
-                <button class="chipBtn" id="chip3" type="button" data-jump="3">3 • Skills</button>
-                <button class="chipBtn" id="chip4" type="button" data-jump="4">4 • Finish</button>
-              </div>
+            <div class="chips" aria-label="Schritte">
+              <span class="chip on" id="chip1" data-jump="1">1 • Kontakt</span>
+              <span class="chip" id="chip2" data-jump="2">2 • Profil</span>
+              <span class="chip" id="chip3" data-jump="3">3 • Skills</span>
+              <span class="chip" id="chip4" data-jump="4">4 • Finish</span>
             </div>
           </div>
 
@@ -771,7 +898,7 @@
             </div>
 
             <div class="note">
-              <b>Tipp:</b> Wenn du magst, schreib bei Schritt 3 kurz rein, was du am liebsten machst.
+              <b>Tipp:</b> In Schritt 3 kannst du kurz schreiben, welche Arbeiten du am liebsten machst.
             </div>
           </div>
 
@@ -811,17 +938,17 @@
               </div>
 
               <div class="note">
-                <b>Kurz & knapp:</b> Zuverlässigkeit & saubere Arbeit sind wichtig – Spezialisierung ist ein Plus, aber kein Muss.
+                <b>Wichtig:</b> Zuverlässigkeit & saubere Arbeit zählen.
               </div>
             </div>
           </div>
 
           <!-- STEP 3 -->
           <div class="step" data-step="3">
-            <label>Skills (anklicken)</label>
+            <label>Was kannst du gut? (anklicken)</label>
 
             <div class="toggleGrid">
-              <div class="toggle" data-toggle="abdichtung" role="button" tabindex="0" aria-pressed="false">
+              <div class="toggle" data-toggle="abdichtung">
                 <div>
                   <div class="t">Abdichtung</div>
                   <div class="s">Schweißbahn, Anschlüsse</div>
@@ -829,23 +956,23 @@
                 <div class="check">✓</div>
               </div>
 
-              <div class="toggle" data-toggle="klempner" role="button" tabindex="0" aria-pressed="false">
+              <div class="toggle" data-toggle="klempner">
                 <div>
-                  <div class="t">Bauspenglerei</div>
+                  <div class="t">Klempner</div>
                   <div class="s">Blech, Rinnen</div>
                 </div>
                 <div class="check">✓</div>
               </div>
 
-              <div class="toggle on" data-toggle="ziegel" role="button" tabindex="0" aria-pressed="true">
+              <div class="toggle on" data-toggle="ziegel">
                 <div>
-                  <div class="t">Steildach</div>
-                  <div class="s">Ziegel, Reparaturen</div>
+                  <div class="t">Ziegel / Steildach</div>
+                  <div class="s">Eindeckung, Reparaturen</div>
                 </div>
                 <div class="check">✓</div>
               </div>
 
-              <div class="toggle" data-toggle="zimmerei" role="button" tabindex="0" aria-pressed="false">
+              <div class="toggle" data-toggle="zimmerei">
                 <div>
                   <div class="t">Zimmerei</div>
                   <div class="s">nice to have</div>
@@ -864,15 +991,15 @@
             <label>Führerschein (anklicken)</label>
 
             <div class="toggleGrid">
-              <div class="toggle on" data-toggle="fsb" role="button" tabindex="0" aria-pressed="true">
+              <div class="toggle on" data-toggle="fsb">
                 <div>
-                  <div class="t">Klasse B vorhanden</div>
+                  <div class="t">Klasse B</div>
                   <div class="s">PKW-Führerschein</div>
                 </div>
                 <div class="check">✓</div>
               </div>
 
-              <div class="toggle" data-toggle="lkwHas" role="button" tabindex="0" aria-pressed="false">
+              <div class="toggle" data-toggle="lkwHas">
                 <div>
                   <div class="t">LKW vorhanden</div>
                   <div class="s">wenn ja: super</div>
@@ -880,7 +1007,7 @@
                 <div class="check">✓</div>
               </div>
 
-              <div class="toggle on" data-toggle="lkwWant" role="button" tabindex="0" aria-pressed="true">
+              <div class="toggle on" data-toggle="lkwWant">
                 <div>
                   <div class="t">LKW erwünscht</div>
                   <div class="s">kann gestellt werden</div>
@@ -907,7 +1034,7 @@
           </div>
 
           <div class="hint">
-            Lieber direkt sprechen? <a href="tel:+4968557466" style="text-decoration:none; border-bottom:1px dashed rgba(11,18,32,.35)">06855 7466</a>
+            Lieber direkt sprechen? <a href="tel:+4968557466">06855 7466</a>
           </div>
 
           <div class="footer">
@@ -920,89 +1047,53 @@
           </div>
         </section>
 
-        <!-- INFO / CONTACT -->
-        <aside class="panel infoWrap" aria-label="Infos">
-          <details class="accordion" open>
-            <summary>
-              <div class="sumLeft">
-                <div class="sumTitle">So läuft’s ab & Kontakt</div>
-                <div class="sumSub">3 Schritte • regional • schnell erledigt</div>
-              </div>
-              <div class="sumRight">
-                <span class="sumPill">📞 06855 7466</span>
-                <span class="sumPill">⏱️ 2–4 Min</span>
-              </div>
-            </summary>
+        <!-- LEFT INFO -->
+        <aside class="panel infoPanel">
+          <div class="info-media">
+            <span class="badge">So läuft’s ab</span>
+            <img src="team.jpg" alt="" onerror="this.remove()">
+          </div>
 
-            <div class="info-media">
-              <span class="badge">Team & Alltag</span>
-              <img src="team.jpg" alt="Team" onerror="this.remove()">
-            </div>
+          <div class="info-body">
+            <h2 style="margin:0 0 10px; font-size:18px; letter-spacing:-.3px;">In 3 Steps</h2>
 
-            <div class="info-body">
-              <ul class="steps" aria-label="Ablauf">
-                <li class="stepRow">
-                  <div class="n">1</div>
-                  <div>
-                    <div class="t">Kurz ausfüllen</div>
-                    <div class="s">Name, Telefon, Wohnort (Rest optional).</div>
-                  </div>
-                </li>
-                <li class="stepRow">
-                  <div class="n">2</div>
-                  <div>
-                    <div class="t">Profil + Skills</div>
-                    <div class="s">Geselle / Quereinsteiger / Hilfskraft.</div>
-                  </div>
-                </li>
-                <li class="stepRow">
-                  <div class="n">3</div>
-                  <div>
-                    <div class="t">Senden</div>
-                    <div class="s">Mail-App öffnet sich → „Senden“ klicken.</div>
-                  </div>
-                </li>
-              </ul>
-
-              <div class="company">
-                <b>Jörg Lehmann Dachdeckerei</b><br>
-                In der Zennwies 4 • 66629 Freisen<br>
-                Tel.: <a href="tel:+4968557466">06855 7466</a>
-
-                <div class="row2">
-                  <a class="btn" href="tel:+4968557466">Anrufen</a>
-                  <a class="btn red" href="#bewerben">Schnell bewerben</a>
+            <ul class="steps">
+              <li class="stepRow">
+                <div class="n">1</div>
+                <div>
+                  <div class="t">Kontakt</div>
+                  <div class="s">Name, Telefon, Wohnort.</div>
                 </div>
+              </li>
+              <li class="stepRow">
+                <div class="n">2</div>
+                <div>
+                  <div class="t">Profil & Skills</div>
+                  <div class="s">Kurz auswählen.</div>
+                </div>
+              </li>
+              <li class="stepRow">
+                <div class="n">3</div>
+                <div>
+                  <div class="t">Senden</div>
+                  <div class="s">Mail öffnet sich → „Senden“.</div>
+                </div>
+              </li>
+            </ul>
+
+            <div class="company">
+              <b>Jörg Lehmann Dachdeckerei</b><br>
+              In der Zennwies 4 • 66629 Freisen<br>
+              Tel.: <a href="tel:+4968557466">06855 7466</a>
+              <div class="row2">
+                <a class="btn" href="tel:+4968557466">📞 Anrufen</a>
+                <a class="btn primary" href="#bewerben">📝 Bewerben</a>
               </div>
             </div>
-          </details>
+          </div>
         </aside>
-
       </div>
     </section>
-
-    <!-- Compact sections -->
-    <section class="section" aria-label="Benefits">
-      <h2>Warum du hier gut aufgehoben bist</h2>
-      <div class="tagGrid">
-        <div class="tag"><div class="ic">✓</div><div><div class="t">Bezahlte Pausen</div><div class="s">Frühstück & Mittagspause bezahlt.</div></div></div>
-        <div class="tag"><div class="ic">⚙</div><div><div class="t">Top Ausstattung</div><div class="s">Maschinen, Fahrzeuge, Büro modern.</div></div></div>
-        <div class="tag"><div class="ic">🎓</div><div><div class="t">Weiterbildung</div><div class="s">z. B. Kranschein, neue Techniken.</div></div></div>
-        <div class="tag"><div class="ic">📍</div><div><div class="t">Regional</div><div class="s">Saarland/Umgebung • planbar.</div></div></div>
-        <div class="tag"><div class="ic">☀</div><div><div class="t">Urlaub nach Tarif</div><div class="s">Sauber geregelt.</div></div></div>
-        <div class="tag"><div class="ic">🛡</div><div><div class="t">Sicherheit</div><div class="s">Arbeitsschutz & klare Abläufe.</div></div></div>
-      </div>
-    </section>
-
-    <section class="section" aria-label="Voraussetzungen">
-      <h2>Was wir suchen</h2>
-      <div class="tagGrid">
-        <div class="tag"><div class="ic">👷</div><div><div class="t">Dachdecker Geselle</div><div class="s">Erfahrung + saubere Arbeit.</div></div></div>
-        <div class="tag"><div class="ic">🚀</div><div><div class="t">Quereinsteiger/Hilfskraft</div><div class="s">Motiviert & qualifiziert.</div></div></div>
-        <div class="tag"><div class="ic">＋</div><div><div class="t">Pluspunkte</div><div class="s">Abdichtung, Blech, Ziegel, Zimmerei.</div></div></div>
-      </div>
-    </section>
-
   </main>
 
   <div class="toast" id="toast" role="status" aria-live="polite">
@@ -1039,17 +1130,11 @@
     for(let i=1;i<=4;i++){
       const c = $("chip"+i);
       if(!c) continue;
-      c.classList.toggle("on", i === step);
+      c.classList.toggle("on", i <= step);
     }
   }
 
-  function scrollToFunnel(){
-    const target = document.getElementById("bewerben");
-    const top = target.getBoundingClientRect().top + window.scrollY - 86;
-    window.scrollTo({ top, behavior:"smooth" });
-  }
-
-  function setStep(n, opts = { scroll:true }){
+  function setStep(n, opts = { scroll: true }){
     step = Math.max(1, Math.min(total, n));
 
     document.querySelectorAll(".step").forEach(s => {
@@ -1065,42 +1150,38 @@
     $("nextBtn").textContent = (step === total) ? "Bewerbung senden" : "Weiter";
 
     setChips();
-    if(opts.scroll) scrollToFunnel();
-  }
 
-  // ====== Toggle handling (click + keyboard) ======
-  function togglePress(el){
-    const key = el.dataset.toggle;
-
-    if (["abdichtung","klempner","ziegel","zimmerei"].includes(key)){
-      state.skills[key] = !state.skills[key];
-      el.classList.toggle("on", state.skills[key]);
-      el.setAttribute("aria-pressed", String(state.skills[key]));
-    }
-    if (key === "fsb"){
-      state.driving.fsb = !state.driving.fsb;
-      el.classList.toggle("on", state.driving.fsb);
-      el.setAttribute("aria-pressed", String(state.driving.fsb));
-    }
-    if (key === "lkwHas"){
-      state.driving.lkwHas = !state.driving.lkwHas;
-      el.classList.toggle("on", state.driving.lkwHas);
-      el.setAttribute("aria-pressed", String(state.driving.lkwHas));
-    }
-    if (key === "lkwWant"){
-      state.driving.lkwWant = !state.driving.lkwWant;
-      el.classList.toggle("on", state.driving.lkwWant);
-      el.setAttribute("aria-pressed", String(state.driving.lkwWant));
+    if (opts.scroll){
+      const top = document.getElementById("bewerben").getBoundingClientRect().top + window.scrollY - 84;
+      window.scrollTo({top, behavior:"smooth"});
     }
   }
 
-  document.querySelectorAll(".toggle[data-toggle]").forEach(t => {
-    t.addEventListener("click", () => togglePress(t));
-    t.addEventListener("keydown", (e) => {
-      if(e.key === "Enter" || e.key === " "){
-        e.preventDefault();
-        togglePress(t);
+  // Clickable chips (big-app feel)
+  document.querySelectorAll(".chip[data-jump]").forEach(ch => {
+    ch.addEventListener("click", () => {
+      const target = Number(ch.dataset.jump);
+      // allow jump back freely; jump forward only if step 1 valid when leaving step 1
+      if (target > step && step === 1 && !validateStep1()){
+        toast("Bitte kurz ausfüllen", "Name, Telefon und Wohnort sind Pflicht.");
+        return;
       }
+      setStep(target);
+    });
+  });
+
+  // ====== Toggles ======
+  document.querySelectorAll(".toggle[data-toggle]").forEach(t => {
+    t.addEventListener("click", () => {
+      const key = t.dataset.toggle;
+
+      if (["abdichtung","klempner","ziegel","zimmerei"].includes(key)){
+        state.skills[key] = !state.skills[key];
+        t.classList.toggle("on", state.skills[key]);
+      }
+      if (key === "fsb"){ state.driving.fsb = !state.driving.fsb; t.classList.toggle("on", state.driving.fsb); }
+      if (key === "lkwHas"){ state.driving.lkwHas = !state.driving.lkwHas; t.classList.toggle("on", state.driving.lkwHas); }
+      if (key === "lkwWant"){ state.driving.lkwWant = !state.driving.lkwWant; t.classList.toggle("on", state.driving.lkwWant); }
     });
   });
 
@@ -1123,13 +1204,16 @@
     return ok;
   }
 
+  // Optional: quick phone clean-up
+  function cleanPhone(p){ return (p || "").replace(/[^\d+ ]/g, "").trim(); }
+
   // ====== Submit via mailto (GitHub-only) ======
   function submit(){
     if (!validateStep4()) return;
 
     const data = {
       fullName: $("fullName").value.trim(),
-      phone: $("phone").value.trim(),
+      phone: cleanPhone($("phone").value),
       email: $("email").value.trim(),
       city: $("city").value.trim(),
       role: $("role").value,
@@ -1156,15 +1240,15 @@ Berufserfahrung: ${data.exp}
 Start: ${data.start}
 
 Skills:
-- Abdichtung (Schweißbahn etc.): ${data.skills.abdichtung ? "Ja" : "Nein"}
-- Bauspenglerei: ${data.skills.klempner ? "Ja" : "Nein"}
-- Steildach (Ziegel): ${data.skills.ziegel ? "Ja" : "Nein"}
+- Abdichtung: ${data.skills.abdichtung ? "Ja" : "Nein"}
+- Klempner/Bauspenglerei: ${data.skills.klempner ? "Ja" : "Nein"}
+- Ziegel/Steildach: ${data.skills.ziegel ? "Ja" : "Nein"}
 - Zimmerei: ${data.skills.zimmerei ? "Ja" : "Nein"}
 
 Führerschein:
 - Klasse B: ${data.driving.fsb ? "Ja" : "Nein"}
 - LKW vorhanden: ${data.driving.lkwHas ? "Ja" : "Nein"}
-- LKW erwünscht (kann gestellt werden): ${data.driving.lkwWant ? "Ja" : "Nein"}
+- LKW erwünscht: ${data.driving.lkwWant ? "Ja" : "Nein"}
 
 Nachricht:
 ${data.message || "-"}
@@ -1175,18 +1259,6 @@ ${data.fullName}`;
     toast("Fast fertig ✅", "Dein Mailprogramm öffnet sich – bitte nur noch auf „Senden“ klicken.");
     window.location.href = `mailto:${TO_EMAIL}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
   }
-
-  // ====== Chip Jump ======
-  document.querySelectorAll(".chipBtn[data-jump]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const targetStep = Number(btn.dataset.jump);
-      if(targetStep > 1 && step === 1 && !validateStep1()){
-        toast("Bitte kurz ausfüllen", "Name, Telefon und Wohnort sind Pflicht.");
-        return;
-      }
-      setStep(targetStep);
-    });
-  });
 
   // ====== Nav ======
   $("backBtn").addEventListener("click", () => setStep(step - 1));
@@ -1199,8 +1271,14 @@ ${data.fullName}`;
     else submit();
   });
 
+  // Prevent accidental page horizontal scroll on iOS (extra safety)
+  document.addEventListener("touchmove", (e) => {
+    // allow normal vertical scroll; block if user tries to drag horizontally on body
+    // (kept very light; no heavy gesture detection)
+  }, { passive: true });
+
   // init
-  setStep(1, { scroll:false });
+  setStep(1, { scroll: false });
 </script>
 </body>
 </html>
