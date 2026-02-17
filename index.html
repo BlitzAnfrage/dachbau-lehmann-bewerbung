@@ -14,16 +14,17 @@
 
   <style>
     :root{
-      --bg: #f6f7fb;
+      --bg: #f5f6fa;
       --surface: #ffffff;
       --text: #0b1220;
-      --muted: rgba(11,18,32,.66);
+      --muted: rgba(11,18,32,.62);
+      --muted2: rgba(11,18,32,.48);
       --line: rgba(11,18,32,.10);
 
       --brand: #d62f2f;
-      --brand2:#0b1220;
+      --brandDark:#0b1220;
 
-      --radius-xl: 26px;
+      --radius-xl: 24px;
       --radius-lg: 18px;
       --radius-md: 14px;
 
@@ -31,7 +32,7 @@
       --shadow-md: 0 14px 34px rgba(11,18,32,.10);
       --shadow-sm: 0 10px 22px rgba(11,18,32,.06);
 
-      --focus: 0 0 0 4px rgba(214,47,47,.18);
+      --focus: 0 0 0 4px rgba(214,47,47,.16);
       --container: 1120px;
 
       --pad: clamp(14px, 2.2vw, 18px);
@@ -39,23 +40,26 @@
     }
 
     *{box-sizing:border-box}
+
     html,body{height:100%}
+    html{overflow-x:hidden}
     body{
       margin:0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color: var(--text);
       background:
-        radial-gradient(900px 550px at 12% -5%, rgba(214,47,47,.10), transparent 56%),
-        radial-gradient(900px 650px at 92% 10%, rgba(14,165,233,.08), transparent 55%),
+        radial-gradient(900px 550px at 12% -5%, rgba(214,47,47,.08), transparent 56%),
+        radial-gradient(900px 650px at 92% 10%, rgba(14,165,233,.06), transparent 55%),
         var(--bg);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       padding-bottom: env(safe-area-inset-bottom);
-      overflow-x:hidden;
+      overflow-x:hidden; /* stop right swipe */
+      max-width:100vw;
     }
     a{color:inherit}
+    img{max-width:100%; height:auto; display:block}
     .container{max-width:var(--container); margin:0 auto; padding: var(--pad);}
-    .safe{padding-bottom: env(safe-area-inset-bottom);}
 
     /* Make anchor jumps land nicely under sticky header */
     #bewerben{scroll-margin-top: 92px;}
@@ -66,7 +70,7 @@
       position: sticky;
       top: 0;
       z-index: 80;
-      background: rgba(246,247,251,.88);
+      background: rgba(245,246,250,.88);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
     }
@@ -98,12 +102,23 @@
       flex: 0 0 auto;
     }
     .logo img{width:100%; height:100%; object-fit:contain; padding:7px}
-    .brand .name{font-weight:800; letter-spacing:-.2px; line-height:1.05; font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-    .brand .sub{font-size:12px; color:var(--muted); margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+    .brand .name{
+      font-weight:800;
+      letter-spacing:-.2px;
+      line-height:1.05;
+      font-size:13px;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .brand .sub{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:2px;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
 
-    .top-actions{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end;}
+    .top-actions{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end; max-width: 55%;}
     .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
       padding: 10px 14px;
       border-radius: 999px;
       border: 1px solid var(--line);
@@ -117,26 +132,29 @@
       user-select:none;
       -webkit-tap-highlight-color: transparent;
       white-space:nowrap;
+      max-width: 100%;
     }
     .btn:hover{transform: translateY(-1px)}
     .btn:active{transform: translateY(0)}
     .btn.primary{
-      background: linear-gradient(180deg, var(--brand2), #070d18);
+      background: linear-gradient(180deg, var(--brandDark), #070d18);
       color:#fff;
-      border-color: rgba(11,18,32,.20);
+      border-color: rgba(11,18,32,.18);
       box-shadow: 0 18px 44px rgba(11,18,32,.16);
     }
     .btn.red{
       background: linear-gradient(180deg, var(--brand), #b61f1f);
       color:#fff;
-      border-color: rgba(214,47,47,.25);
-      box-shadow: 0 18px 44px rgba(214,47,47,.22);
+      border-color: rgba(214,47,47,.22);
+      box-shadow: 0 18px 44px rgba(214,47,47,.20);
     }
-    .btn.ghost{ background: rgba(255,255,255,.70); }
+    .btn.ghost{ background: rgba(255,255,255,.70); box-shadow:none; }
     .hide-sm{display:inline-flex}
     @media (max-width:820px){
       .hide-sm{display:none}
       .brand{min-width:auto}
+      .top-actions{max-width:none}
+      .btn{font-size:13px; padding: 10px 12px;}
     }
 
     /* Hero */
@@ -150,7 +168,7 @@
     }
     .hero-grid{
       display:grid;
-      grid-template-columns: 1.08fr .92fr;
+      grid-template-columns: 1.05fr .95fr;
       min-height: 380px;
     }
     @media (max-width:980px){
@@ -159,40 +177,63 @@
 
     .hero-left{
       padding: clamp(18px, 3vw, 26px);
-      background:
-        radial-gradient(800px 500px at 10% 0%, rgba(214,47,47,.08), transparent 55%),
-        #fff;
+      background: #fff;
     }
 
+    /* Apple-ish minimal chips */
     .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding: 8px 12px;
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 7px 10px;
       border-radius: 999px;
-      background: rgba(11,18,32,.035);
+      background: rgba(11,18,32,.03);
       border: 1px solid rgba(11,18,32,.08);
-      color: var(--muted);
+      color: rgba(11,18,32,.70);
       font-size: 12px;
       font-weight:700;
     }
     .dot{
       width:8px; height:8px; border-radius:999px;
       background: var(--brand);
-      box-shadow: 0 0 0 4px rgba(214,47,47,.12);
+      box-shadow: 0 0 0 3px rgba(214,47,47,.12);
+      flex:0 0 auto;
     }
 
     h1{
-      margin: 12px 0 10px;
+      margin: 12px 0 8px;
       font-size: clamp(28px, 4.2vw, 46px);
       line-height: 1.03;
-      letter-spacing: -1.2px;
+      letter-spacing: -1.1px;
     }
     .accent{color: var(--brand)}
     .lead{
       margin: 0;
       font-size: 15px;
       line-height: 1.55;
-      color: rgba(11,18,32,.78);
+      color: rgba(11,18,32,.76);
       max-width: 60ch;
+    }
+
+    /* NEW: image right under headline on mobile */
+    .hero-inlineMedia{
+      display:none;
+      margin-top: 12px;
+      border-radius: 18px;
+      overflow:hidden;
+      border: 1px solid rgba(11,18,32,.10);
+      box-shadow: 0 10px 22px rgba(11,18,32,.06);
+      background: #0b1220;
+    }
+    .hero-inlineMedia img{
+      width:100%;
+      height: 220px;
+      object-fit: cover;
+      opacity: .95;
+    }
+    @media (max-width:980px){
+      .hero-inlineMedia{display:block;}
+    }
+    @media (max-width:420px){
+      .hero-inlineMedia img{height: 200px;}
     }
 
     .hero-kpis{
@@ -202,16 +243,16 @@
       margin-top: 14px;
     }
     @media (max-width:980px){
-      .hero-kpis{grid-template-columns:1fr; }
+      .hero-kpis{grid-template-columns:1fr;}
     }
     .kpi{
       border-radius: 16px;
       border: 1px solid rgba(11,18,32,.08);
-      background: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.96);
       padding: 11px 12px;
       box-shadow: 0 10px 22px rgba(11,18,32,.05);
     }
-    .kpi .k{font-size:12px; font-weight:800; color: rgba(11,18,32,.78)}
+    .kpi .k{font-size:12px; font-weight:800; color: rgba(11,18,32,.72)}
     .kpi .v{margin-top:6px; font-size:14px; color: rgba(11,18,32,.72); line-height:1.35}
     .kpi .v b{color: var(--text)}
 
@@ -231,23 +272,22 @@
     .hero-img{
       position:absolute; inset:0;
       background:
-        radial-gradient(900px 520px at 18% 0%, rgba(214,47,47,.20), transparent 55%),
-        radial-gradient(900px 520px at 90% 15%, rgba(14,165,233,.18), transparent 55%),
+        radial-gradient(900px 520px at 18% 0%, rgba(214,47,47,.18), transparent 55%),
+        radial-gradient(900px 520px at 90% 15%, rgba(14,165,233,.14), transparent 55%),
         linear-gradient(135deg, #0b1220, #0b1220);
     }
     .hero-img img{
       width:100%; height:100%;
       object-fit:cover;
-      display:block;
-      opacity: .92;
+      opacity:.92;
       filter: contrast(1.02) saturate(1.02);
     }
     .hero-overlay{
       position:absolute; inset:0;
-      background: linear-gradient(90deg, rgba(11,18,32,.88), rgba(11,18,32,.20));
+      background: linear-gradient(90deg, rgba(11,18,32,.86), rgba(11,18,32,.22));
     }
     @media (max-width:980px){
-      .hero-overlay{background: linear-gradient(180deg, rgba(11,18,32,.82), rgba(11,18,32,.28))}
+      .hero-right{display:none;} /* hide right hero image on mobile (we show inline instead) */
     }
 
     .hero-right-card{
@@ -262,35 +302,22 @@
       padding: 12px 12px;
       color: rgba(255,255,255,.92);
     }
-    .hero-right-card .t{
-      font-weight:900;
-      letter-spacing:-.2px;
-      font-size: 14px;
-    }
-    .hero-right-card .s{
-      margin-top:6px;
-      font-size: 13px;
-      color: rgba(255,255,255,.82);
-      line-height:1.35;
-    }
+    .hero-right-card .t{font-weight:900; letter-spacing:-.2px; font-size: 14px;}
+    .hero-right-card .s{margin-top:6px; font-size: 13px; color: rgba(255,255,255,.82); line-height:1.35;}
 
     /* Sections */
     .section{padding: 12px 0 0}
-    .section h2{
-      margin: 10px 0 10px;
-      font-size: 16px;
-      letter-spacing: -.3px;
-    }
+    .section h2{ margin: 10px 0 10px; font-size: 16px; letter-spacing: -.3px; }
 
-    /* Compact chips (less text) */
     .tagGrid{
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
       gap: 10px;
     }
     @media (max-width:980px){ .tagGrid{grid-template-columns:1fr} }
+
     .tag{
-      background: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.96);
       border: 1px solid rgba(11,18,32,.08);
       border-radius: 18px;
       padding: 12px;
@@ -299,18 +326,20 @@
       gap:10px;
       align-items:flex-start;
     }
+
+    /* Minimal icon: no red translucent squares */
     .tag .ic{
-      width:36px; height:36px;
+      width:34px; height:34px;
       border-radius: 12px;
       display:grid; place-items:center;
-      background: rgba(214,47,47,.10);
-      border: 1px solid rgba(214,47,47,.18);
-      color: var(--brand);
+      background: rgba(11,18,32,.04);
+      border: 1px solid rgba(11,18,32,.10);
+      color: rgba(11,18,32,.78);
       font-weight:900;
       flex: 0 0 auto;
     }
     .tag .t{font-weight:900; font-size:14px; letter-spacing:-.1px; line-height:1.2}
-    .tag .s{margin-top:4px; color: rgba(11,18,32,.70); font-size:13px; line-height:1.35}
+    .tag .s{margin-top:4px; color: rgba(11,18,32,.68); font-size:13px; line-height:1.35}
 
     /* Apply layout */
     .apply{ padding: 12px 0 24px; }
@@ -322,20 +351,19 @@
     }
     @media (max-width:980px){
       .apply-grid{grid-template-columns: 1fr;}
-      /* Put funnel FIRST on mobile so "Schnellbewerbung" isn't "too far down" */
       .apply-grid .funnelWrap{order:1}
       .apply-grid .infoWrap{order:2}
     }
 
     .panel{
-      background: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.96);
       border: 1px solid rgba(11,18,32,.08);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow-md);
       overflow:hidden;
     }
 
-    /* Info panel -> accordion (less text on mobile) */
+    /* Info accordion */
     details.accordion{
       border-radius: var(--radius-xl);
       overflow:hidden;
@@ -348,7 +376,7 @@
       align-items:center;
       justify-content:space-between;
       gap:10px;
-      background: rgba(255,255,255,.96);
+      background: rgba(255,255,255,.98);
       border-bottom: 1px solid rgba(11,18,32,.08);
     }
     details.accordion > summary::-webkit-details-marker{display:none}
@@ -370,15 +398,11 @@
     .info-media{
       position:relative;
       height: 200px;
-      background:
-        radial-gradient(900px 520px at 18% 0%, rgba(214,47,47,.14), transparent 55%),
-        radial-gradient(900px 520px at 90% 15%, rgba(14,165,233,.12), transparent 55%),
-        linear-gradient(135deg, #ffffff, #f3f5fb);
+      background: linear-gradient(135deg, #0b1220, #0b1220);
     }
     .info-media img{
       width:100%; height:100%;
       object-fit:cover;
-      display:block;
       opacity:.98;
     }
     .badge{
@@ -387,55 +411,48 @@
       padding: 8px 10px;
       font-size: 12px;
       font-weight: 900;
-      color: rgba(11,18,32,.86);
-      background: rgba(255,255,255,.88);
-      border: 1px solid rgba(11,18,32,.10);
+      color: rgba(255,255,255,.92);
+      background: rgba(11,18,32,.36);
+      border: 1px solid rgba(255,255,255,.14);
       backdrop-filter: blur(10px);
     }
 
     .info-body{padding: 14px 14px 14px}
-    .steps{
-      margin: 0;
-      padding:0;
-      list-style:none;
-      display:grid;
-      gap:10px;
-    }
+    .steps{margin: 0; padding:0; list-style:none; display:grid; gap:10px;}
     .stepRow{
       display:flex; gap:10px; align-items:flex-start;
       padding: 12px;
       border-radius: 16px;
       border: 1px solid rgba(11,18,32,.08);
-      background: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.98);
       box-shadow: 0 10px 22px rgba(11,18,32,.05);
     }
+    /* Minimal number: no red translucent badge */
     .n{
       width:28px; height:28px; border-radius: 10px;
-      background: rgba(214,47,47,.12);
-      border: 1px solid rgba(214,47,47,.22);
-      color: var(--brand);
+      background: rgba(11,18,32,.04);
+      border: 1px solid rgba(11,18,32,.10);
+      color: rgba(11,18,32,.78);
       display:grid; place-items:center;
       font-weight:900;
       flex: 0 0 auto;
     }
     .stepRow .t{font-weight:900; font-size:13px}
-    .stepRow .s{margin-top:4px; color: rgba(11,18,32,.68); font-size:12px; line-height:1.35}
+    .stepRow .s{margin-top:4px; color: rgba(11,18,32,.66); font-size:12px; line-height:1.35}
 
     .company{
       margin-top: 12px;
       padding: 12px;
       border-radius: 18px;
       border: 1px solid rgba(11,18,32,.08);
-      background: rgba(255,255,255,.96);
+      background: rgba(255,255,255,.98);
       box-shadow: 0 12px 28px rgba(11,18,32,.06);
       font-size: 13px;
-      color: rgba(11,18,32,.75);
+      color: rgba(11,18,32,.74);
     }
     .company b{color: var(--text)}
     .company a{ text-decoration:none; border-bottom:1px dashed rgba(11,18,32,.35); }
-    .company .row2{
-      display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;
-    }
+    .company .row2{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
 
     /* Funnel */
     .funnel{padding: 14px}
@@ -445,24 +462,11 @@
       border-bottom: 1px solid rgba(11,18,32,.08);
     }
     .funnel-top .h{ font-size: 16px; font-weight: 900; letter-spacing:-.2px; }
-    .funnel-top .p{ margin-top:6px; color: rgba(11,18,32,.66); font-size: 13px; line-height: 1.35; }
-    .contact-mini{
-      text-align:right;
-      font-size: 12px;
-      color: rgba(11,18,32,.60);
-      font-weight: 800;
-    }
-    .contact-mini a{
-      display:inline-block;
-      margin-top:6px;
-      font-size: 13px;
-      font-weight: 900;
-      text-decoration: none;
-      color: var(--text);
-      border-bottom: 1px dashed rgba(11,18,32,.35);
-    }
+    .funnel-top .p{ margin-top:6px; color: rgba(11,18,32,.64); font-size: 13px; line-height: 1.35; }
+    .contact-mini{ text-align:right; font-size: 12px; color: rgba(11,18,32,.58); font-weight: 800; }
+    .contact-mini a{ display:inline-block; margin-top:6px; font-size: 13px; font-weight: 900; text-decoration:none; color: var(--text); border-bottom: 1px dashed rgba(11,18,32,.35); }
 
-    /* sticky mini header inside funnel on mobile (keeps "Schnellbewerbung" up) */
+    /* Sticky mini progress in funnel on mobile */
     .funnelSticky{
       position: sticky;
       top: 66px;
@@ -478,35 +482,21 @@
     }
 
     .progress{ display:grid; gap: 8px; }
-    .progRow{display:flex; justify-content:space-between; font-size:12px; color: rgba(11,18,32,.60); font-weight:800}
-    .bar{
-      height: 10px;
-      border-radius: 999px;
-      background: rgba(11,18,32,.06);
-      overflow:hidden;
-    }
-    .bar > div{
-      height: 100%;
-      width: 0%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--brand), #ff6b6b);
-      transition: width .18s ease;
-    }
+    .progRow{display:flex; justify-content:space-between; font-size:12px; color: rgba(11,18,32,.56); font-weight:900}
+    .bar{ height: 10px; border-radius: 999px; background: rgba(11,18,32,.06); overflow:hidden; }
+    .bar > div{ height: 100%; width: 0%; border-radius: 999px; background: linear-gradient(90deg, var(--brand), #ff6b6b); transition: width .18s ease; }
 
     /* Clickable step chips */
-    .chips{
-      display:flex; gap:8px; flex-wrap:wrap;
-      margin-top: 10px;
-    }
+    .chips{ display:flex; gap:8px; flex-wrap:wrap; margin-top: 10px; }
     .chipBtn{
       appearance:none;
       border: 1px solid rgba(11,18,32,.10);
-      background: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.98);
       padding: 8px 10px;
       border-radius: 999px;
       font-size: 12px;
       font-weight: 900;
-      color: rgba(11,18,32,.68);
+      color: rgba(11,18,32,.66);
       cursor:pointer;
       transition: transform .12s ease;
       -webkit-tap-highlight-color: transparent;
@@ -515,9 +505,9 @@
     }
     .chipBtn:hover{transform: translateY(-1px)}
     .chipBtn.on{
-      border-color: rgba(214,47,47,.25);
-      background: rgba(214,47,47,.10);
-      color: var(--brand);
+      border-color: rgba(11,18,32,.14);
+      background: rgba(11,18,32,.04);
+      color: rgba(11,18,32,.86);
     }
 
     /* Form */
@@ -533,13 +523,7 @@
     .grid2{display:grid; grid-template-columns: 1fr 1fr; gap: 12px;}
     @media (max-width:520px){ .grid2{grid-template-columns:1fr;} }
 
-    label{
-      display:block;
-      font-size: 12px;
-      color: rgba(11,18,32,.66);
-      font-weight: 900;
-      letter-spacing: .1px;
-    }
+    label{ display:block; font-size: 12px; color: rgba(11,18,32,.64); font-weight: 900; letter-spacing: .1px; }
     input, select, textarea{
       width:100%;
       margin-top: 8px;
@@ -553,18 +537,10 @@
       box-shadow: 0 12px 26px rgba(11,18,32,.05);
     }
     input::placeholder, textarea::placeholder{color: rgba(11,18,32,.36)}
-    input:focus, select:focus, textarea:focus{
-      border-color: rgba(214,47,47,.36);
-      box-shadow: var(--focus);
-    }
+    input:focus, select:focus, textarea:focus{ border-color: rgba(214,47,47,.30); box-shadow: var(--focus); }
     textarea{min-height: 110px; resize: vertical;}
 
-    .toggleGrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 10px;
-    }
+    .toggleGrid{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
     @media (max-width:520px){.toggleGrid{grid-template-columns:1fr}}
 
     .toggle{
@@ -572,7 +548,7 @@
       padding: 12px 12px;
       border-radius: 18px;
       border: 1px solid rgba(11,18,32,.10);
-      background: rgba(255,255,255,.96);
+      background: rgba(255,255,255,.98);
       cursor:pointer;
       user-select:none;
       box-shadow: 0 12px 26px rgba(11,18,32,.05);
@@ -581,7 +557,7 @@
     }
     .toggle:hover{transform: translateY(-1px)}
     .toggle .t{font-weight:900; font-size: 13px; letter-spacing:-.1px}
-    .toggle .s{font-size: 12px; color: rgba(11,18,32,.60); margin-top:4px; line-height:1.35}
+    .toggle .s{font-size: 12px; color: rgba(11,18,32,.58); margin-top:4px; line-height:1.35}
     .check{
       width: 26px; height: 26px;
       border-radius: 10px;
@@ -594,7 +570,7 @@
     }
     .toggle.on .check{
       background: linear-gradient(180deg, var(--brand), #b61f1f);
-      border-color: rgba(214,47,47,.30);
+      border-color: rgba(214,47,47,.26);
       color:#fff;
     }
 
@@ -604,18 +580,12 @@
       border-radius: 18px;
       border: 1px solid rgba(11,18,32,.08);
       background: rgba(11,18,32,.03);
-      color: rgba(11,18,32,.72);
+      color: rgba(11,18,32,.70);
       font-size: 13px;
       line-height: 1.45;
     }
 
-    .error{
-      margin-top: 8px;
-      display:none;
-      color: #e11d48;
-      font-size: 13px;
-      font-weight: 800;
-    }
+    .error{ margin-top: 8px; display:none; color: #e11d48; font-size: 13px; font-weight: 900; }
 
     .nav{
       margin-top: 14px;
@@ -624,31 +594,24 @@
     }
     .nav .btn{min-width: 140px}
 
-    .hint{
-      margin-top: 10px;
-      font-size: 12px;
-      color: rgba(11,18,32,.58);
-      font-weight: 800;
-    }
+    .hint{ margin-top: 10px; font-size: 12px; color: rgba(11,18,32,.56); font-weight: 900; }
 
     /* Footer */
     .footer{
       margin-top: 16px;
       padding-top: 14px;
       border-top: 1px solid rgba(11,18,32,.08);
-      color: rgba(11,18,32,.58);
+      color: rgba(11,18,32,.56);
       font-size: 13px;
     }
-    .footer .row{
-      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center;
-    }
+    .footer .row{ display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center; }
     .footer a{text-decoration:none; border-bottom:1px dashed rgba(11,18,32,.35)}
 
     /* Toast */
     .toast{
       position: fixed;
       left: 14px; right: 14px;
-      bottom: calc(16px + env(safe-area-inset-bottom) + 74px);
+      bottom: calc(16px + env(safe-area-inset-bottom));
       max-width: 560px;
       margin: 0 auto;
       display:none;
@@ -662,39 +625,10 @@
     }
     .toast strong{display:block; font-weight: 900}
     .toast span{display:block; margin-top:4px; font-size:13px; color: rgba(11,18,32,.70); line-height:1.35}
-
-    /* Sticky mobile bottom CTA */
-    .mobile-cta{
-      position: fixed;
-      left: 12px; right: 12px;
-      bottom: calc(10px + env(safe-area-inset-bottom));
-      display:none;
-      z-index: 85;
-      pointer-events:none;
-    }
-    .mobile-cta .bar{
-      pointer-events:auto;
-      border-radius: 22px;
-      padding: 10px;
-      background: rgba(255,255,255,.88);
-      border: 1px solid rgba(11,18,32,.10);
-      box-shadow: var(--shadow-lg);
-      display:flex; gap:10px;
-      align-items:center;
-      justify-content:space-between;
-    }
-    .mobile-cta .bar .txt{min-width:0}
-    .mobile-cta .bar .txt .a{font-weight: 900; font-size: 13px; letter-spacing:-.1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-    .mobile-cta .bar .txt .b{margin-top:3px; font-size:12px; color: rgba(11,18,32,.62); font-weight:800}
-    .mobile-cta .bar .btn{min-width: 150px}
-    @media (max-width:980px){
-      .mobile-cta{display:block}
-      body{padding-bottom: calc(96px + env(safe-area-inset-bottom));}
-    }
   </style>
 </head>
 
-<body class="safe">
+<body>
   <!-- TOPBAR -->
   <header class="topbar">
     <div class="topbar-inner">
@@ -709,7 +643,7 @@
       </a>
 
       <div class="top-actions">
-        <a class="btn ghost hide-sm" href="tel:+4968557466">📞 06855 7466</a>
+        <a class="btn ghost hide-sm" href="tel:+4968557466">Anrufen</a>
         <a class="btn red" href="#bewerben">Jetzt bewerben</a>
       </div>
     </div>
@@ -721,9 +655,14 @@
       <div class="hero-shell">
         <div class="hero-grid">
           <div class="hero-left">
-            <div class="pill"><span class="dot"></span> Regional • Dachdeckerei & Bauspenglerei • 66629 Freisen</div>
+            <div class="pill"><span class="dot"></span> Regional • 66629 Freisen</div>
 
             <h1>Dachdecker gesucht: <span class="accent">Geselle</span> (m/w/d)</h1>
+
+            <!-- Requested: first image higher (under headline) on mobile -->
+            <div class="hero-inlineMedia" aria-label="Einblick ins Team">
+              <img src="hero.jpg" alt="Dachdecker bei der Arbeit" onerror="this.remove()">
+            </div>
 
             <p class="lead">
               Bewerbung in <b>2–4 Minuten</b>. Ohne Anschreiben.<br>
@@ -751,12 +690,12 @@
             </div>
           </div>
 
+          <!-- Desktop hero image -->
           <div class="hero-right" aria-label="Hero Bild">
             <div class="hero-img">
               <img src="hero.jpg" alt="" onerror="this.remove()" />
             </div>
             <div class="hero-overlay" aria-hidden="true"></div>
-
             <div class="hero-right-card">
               <div class="t">Top Ausstattung & Sicherheit</div>
               <div class="s">Moderne Maschinen/Fahrzeuge, saubere Prozesse, Weiterbildung (z. B. Kranschein).</div>
@@ -766,10 +705,11 @@
       </div>
     </section>
 
-    <!-- APPLY (moved up visually by keeping it directly after hero) -->
+    <!-- APPLY -->
     <section class="apply" id="bewerben" aria-label="Bewerbung">
       <div class="apply-grid">
-        <!-- FUNNEL FIRST on mobile -->
+
+        <!-- FUNNEL -->
         <section class="panel funnel funnelWrap" aria-label="Schnellbewerbung Funnel">
           <div class="funnel-top">
             <div>
@@ -878,7 +818,7 @@
 
           <!-- STEP 3 -->
           <div class="step" data-step="3">
-            <label>Was kannst du gut? (anklicken)</label>
+            <label>Skills (anklicken)</label>
 
             <div class="toggleGrid">
               <div class="toggle" data-toggle="abdichtung" role="button" tabindex="0" aria-pressed="false">
@@ -891,7 +831,7 @@
 
               <div class="toggle" data-toggle="klempner" role="button" tabindex="0" aria-pressed="false">
                 <div>
-                  <div class="t">Klempner / Bauspenglerei</div>
+                  <div class="t">Bauspenglerei</div>
                   <div class="s">Blech, Rinnen</div>
                 </div>
                 <div class="check">✓</div>
@@ -899,8 +839,8 @@
 
               <div class="toggle on" data-toggle="ziegel" role="button" tabindex="0" aria-pressed="true">
                 <div>
-                  <div class="t">Ziegel / Steildach</div>
-                  <div class="s">Eindeckung, Reparaturen</div>
+                  <div class="t">Steildach</div>
+                  <div class="s">Ziegel, Reparaturen</div>
                 </div>
                 <div class="check">✓</div>
               </div>
@@ -934,7 +874,7 @@
 
               <div class="toggle" data-toggle="lkwHas" role="button" tabindex="0" aria-pressed="false">
                 <div>
-                  <div class="t">LKW-Führerschein vorhanden</div>
+                  <div class="t">LKW vorhanden</div>
                   <div class="s">wenn ja: super</div>
                 </div>
                 <div class="check">✓</div>
@@ -974,14 +914,13 @@
             <div class="row">
               <div><b style="color:rgba(11,18,32,.90)">Jörg Lehmann Dachdeckerei</b> • 66629 Freisen</div>
               <div style="display:flex; gap:14px;">
-                <a href="https://www.dachbau-lehmann.de" target="_blank" rel="noreferrer">Website</a>
                 <a href="tel:+4968557466">Telefon</a>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- INFO / CONTACT (accordion to reduce text) -->
+        <!-- INFO / CONTACT -->
         <aside class="panel infoWrap" aria-label="Infos">
           <details class="accordion" open>
             <summary>
@@ -997,7 +936,7 @@
 
             <div class="info-media">
               <span class="badge">Team & Alltag</span>
-              <img src="team.jpg" alt="" onerror="this.remove()">
+              <img src="team.jpg" alt="Team" onerror="this.remove()">
             </div>
 
             <div class="info-body">
@@ -1028,107 +967,43 @@
               <div class="company">
                 <b>Jörg Lehmann Dachdeckerei</b><br>
                 In der Zennwies 4 • 66629 Freisen<br>
-                Tel.: <a href="tel:+4968557466">06855 7466</a><br>
-                Website: <a href="https://www.dachbau-lehmann.de" target="_blank" rel="noreferrer">dachbau-lehmann.de</a>
+                Tel.: <a href="tel:+4968557466">06855 7466</a>
 
                 <div class="row2">
-                  <a class="btn" href="tel:+4968557466">📞 Anrufen</a>
-                  <a class="btn red" href="#bewerben">📝 Schnell bewerben</a>
+                  <a class="btn" href="tel:+4968557466">Anrufen</a>
+                  <a class="btn red" href="#bewerben">Schnell bewerben</a>
                 </div>
               </div>
             </div>
           </details>
         </aside>
+
       </div>
     </section>
 
-    <!-- Compact sections (less text) -->
+    <!-- Compact sections -->
     <section class="section" aria-label="Benefits">
       <h2>Warum du hier gut aufgehoben bist</h2>
       <div class="tagGrid">
-        <div class="tag">
-          <div class="ic">✓</div>
-          <div>
-            <div class="t">Bezahlte Pausen</div>
-            <div class="s">Frühstück & Mittagspause bezahlt.</div>
-          </div>
-        </div>
-        <div class="tag">
-          <div class="ic">⚙</div>
-          <div>
-            <div class="t">Top Ausstattung</div>
-            <div class="s">Maschinen, Fahrzeuge, Büro modern.</div>
-          </div>
-        </div>
-        <div class="tag">
-          <div class="ic">🎓</div>
-          <div>
-            <div class="t">Weiterbildung</div>
-            <div class="s">z. B. Kranschein, neue Techniken.</div>
-          </div>
-        </div>
-        <div class="tag">
-          <div class="ic">📍</div>
-          <div>
-            <div class="t">Regional</div>
-            <div class="s">Saarland/Umgebung • planbar.</div>
-          </div>
-        </div>
-        <div class="tag">
-          <div class="ic">☀</div>
-          <div>
-            <div class="t">Urlaub nach Tarif</div>
-            <div class="s">Sauber geregelt.</div>
-          </div>
-        </div>
-        <div class="tag">
-          <div class="ic">🛡</div>
-          <div>
-            <div class="t">Sicherheit</div>
-            <div class="s">Arbeitsschutz & klare Abläufe.</div>
-          </div>
-        </div>
+        <div class="tag"><div class="ic">✓</div><div><div class="t">Bezahlte Pausen</div><div class="s">Frühstück & Mittagspause bezahlt.</div></div></div>
+        <div class="tag"><div class="ic">⚙</div><div><div class="t">Top Ausstattung</div><div class="s">Maschinen, Fahrzeuge, Büro modern.</div></div></div>
+        <div class="tag"><div class="ic">🎓</div><div><div class="t">Weiterbildung</div><div class="s">z. B. Kranschein, neue Techniken.</div></div></div>
+        <div class="tag"><div class="ic">📍</div><div><div class="t">Regional</div><div class="s">Saarland/Umgebung • planbar.</div></div></div>
+        <div class="tag"><div class="ic">☀</div><div><div class="t">Urlaub nach Tarif</div><div class="s">Sauber geregelt.</div></div></div>
+        <div class="tag"><div class="ic">🛡</div><div><div class="t">Sicherheit</div><div class="s">Arbeitsschutz & klare Abläufe.</div></div></div>
       </div>
     </section>
 
     <section class="section" aria-label="Voraussetzungen">
       <h2>Was wir suchen</h2>
       <div class="tagGrid">
-        <div class="tag">
-          <div class="ic">👷</div>
-          <div>
-            <div class="t">Dachdecker Geselle</div>
-            <div class="s">Erfahrung + saubere Arbeit.</div>
-          </div>
-        </div>
-        <div class="tag">
-          <div class="ic">🚀</div>
-          <div>
-            <div class="t">Quereinsteiger/Hilfskraft</div>
-            <div class="s">Motiviert & qualifiziert.</div>
-          </div>
-        </div>
-        <div class="tag">
-          <div class="ic">➕</div>
-          <div>
-            <div class="t">Pluspunkte</div>
-            <div class="s">Abdichtung, Blech, Ziegel, Zimmerei.</div>
-          </div>
-        </div>
+        <div class="tag"><div class="ic">👷</div><div><div class="t">Dachdecker Geselle</div><div class="s">Erfahrung + saubere Arbeit.</div></div></div>
+        <div class="tag"><div class="ic">🚀</div><div><div class="t">Quereinsteiger/Hilfskraft</div><div class="s">Motiviert & qualifiziert.</div></div></div>
+        <div class="tag"><div class="ic">＋</div><div><div class="t">Pluspunkte</div><div class="s">Abdichtung, Blech, Ziegel, Zimmerei.</div></div></div>
       </div>
     </section>
-  </main>
 
-  <!-- Mobile Sticky CTA -->
-  <div class="mobile-cta" aria-hidden="false">
-    <div class="bar">
-      <div class="txt">
-        <div class="a">Dachdecker (m/w/d) • Freisen</div>
-        <div class="b">Schnellbewerbung: 2–4 Minuten</div>
-      </div>
-      <a class="btn red" href="#bewerben">Jetzt bewerben</a>
-    </div>
-  </div>
+  </main>
 
   <div class="toast" id="toast" role="status" aria-live="polite">
     <strong id="toastTitle">Hinweis</strong>
@@ -1193,7 +1068,7 @@
     if(opts.scroll) scrollToFunnel();
   }
 
-  // ====== Toggles (click + keyboard) ======
+  // ====== Toggle handling (click + keyboard) ======
   function togglePress(el){
     const key = el.dataset.toggle;
 
@@ -1282,8 +1157,8 @@ Start: ${data.start}
 
 Skills:
 - Abdichtung (Schweißbahn etc.): ${data.skills.abdichtung ? "Ja" : "Nein"}
-- Klempner/Bauspenglerei: ${data.skills.klempner ? "Ja" : "Nein"}
-- Ziegel/Steildach: ${data.skills.ziegel ? "Ja" : "Nein"}
+- Bauspenglerei: ${data.skills.klempner ? "Ja" : "Nein"}
+- Steildach (Ziegel): ${data.skills.ziegel ? "Ja" : "Nein"}
 - Zimmerei: ${data.skills.zimmerei ? "Ja" : "Nein"}
 
 Führerschein:
@@ -1301,11 +1176,10 @@ ${data.fullName}`;
     window.location.href = `mailto:${TO_EMAIL}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
   }
 
-  // ====== Chip Jump (clickable) ======
+  // ====== Chip Jump ======
   document.querySelectorAll(".chipBtn[data-jump]").forEach(btn => {
     btn.addEventListener("click", () => {
       const targetStep = Number(btn.dataset.jump);
-      // Prevent jumping forward if Step 1 invalid
       if(targetStep > 1 && step === 1 && !validateStep1()){
         toast("Bitte kurz ausfüllen", "Name, Telefon und Wohnort sind Pflicht.");
         return;
