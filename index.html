@@ -2,370 +2,676 @@
 <html lang="de">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1, viewport-fit=cover" />
   <title>Bewerbung | Jörg Lehmann Dachdeckerei (Freisen)</title>
-  <meta name="description" content="Dachdecker gesucht (m/w/d) – bis 21 €/h, bezahlte Pausen, regionale Baustellen, top Ausstattung. Bewerbung in 2–4 Minuten." />
+  <meta name="description" content="Dachdecker Geselle (m/w/d) – bis 21 €/h, bezahlte Pausen, regionale Baustellen, top Ausstattung. Bewerbung in 2–4 Minuten." />
   <meta name="theme-color" content="#ffffff" />
+  <meta name="color-scheme" content="light" />
+
+  <!-- Modern Font (CDN ok auf GitHub Pages) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#f6f7f9;
-      --card:#ffffff;
-      --text:#111827;
-      --muted:#6b7280;
-      --line:#e5e7eb;
-      --shadow: 0 16px 45px rgba(17,24,39,.08);
-      --shadow2: 0 10px 28px rgba(17,24,39,.06);
-      --radius:18px;
+      --bg: #f6f7fb;
+      --surface: #ffffff;
+      --text: #0b1220;
+      --muted: rgba(11,18,32,.66);
+      --muted2: rgba(11,18,32,.50);
+      --line: rgba(11,18,32,.10);
 
-      --brand:#e53935; /* rot wie Logo */
-      --brand2:#111827;
-      --accent:#0ea5e9;
-      --ok:#16a34a;
+      --brand: #d62f2f;      /* Logo-Rot */
+      --brand2:#0b1220;      /* Dark */
+      --ok: #16a34a;
+      --warn:#f59e0b;
       --danger:#e11d48;
 
-      --btn:#111827;
-      --btnText:#ffffff;
+      --radius-xl: 26px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
 
-      --focus: 0 0 0 4px rgba(229,57,53,.12);
+      --shadow-lg: 0 22px 70px rgba(11,18,32,.10);
+      --shadow-md: 0 14px 34px rgba(11,18,32,.10);
+      --shadow-sm: 0 10px 22px rgba(11,18,32,.06);
+
+      --focus: 0 0 0 4px rgba(214,47,47,.18);
+
+      --container: 1120px;
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color: var(--text);
       background:
-        radial-gradient(1200px 700px at 10% 0%, rgba(229,57,53,.10), transparent 55%),
-        radial-gradient(900px 650px at 90% 10%, rgba(14,165,233,.09), transparent 55%),
+        radial-gradient(900px 550px at 12% -5%, rgba(214,47,47,.10), transparent 56%),
+        radial-gradient(900px 650px at 92% 10%, rgba(14,165,233,.08), transparent 55%),
         var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     a{color:inherit}
-    .container{max-width:1120px; margin:0 auto; padding:18px}
+    .container{max-width:var(--container); margin:0 auto; padding: 18px}
+    .safe{padding-bottom: env(safe-area-inset-bottom);}
 
     /* Topbar */
     .topbar{
-      position:sticky; top:0; z-index:30;
-      background: rgba(246,247,249,.80);
-      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: rgba(246,247,251,.85);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
     }
     .topbar-inner{
-      max-width:1120px; margin:0 auto;
-      padding:12px 18px;
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      max-width:var(--container);
+      margin:0 auto;
+      padding: 12px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
     }
     .brand{
-      display:flex; align-items:center; gap:12px;
+      display:flex;
+      align-items:center;
+      gap:12px;
       text-decoration:none;
-      min-width: 240px;
+      min-width: 220px;
     }
-    .brand img{
-      width:44px; height:44px; object-fit:contain;
-      border-radius: 12px;
+    .logo{
+      width:42px; height:42px;
+      border-radius: 14px;
       background:#fff;
-      border:1px solid var(--line);
-      box-shadow: var(--shadow2);
-      padding:6px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+      display:grid; place-items:center;
+      overflow:hidden;
     }
-    .brand .t1{font-weight:800; letter-spacing:-.2px; line-height:1.1}
-    .brand .t2{font-size:12px; color:var(--muted); margin-top:2px}
+    .logo img{width:100%; height:100%; object-fit:contain; padding:7px}
+    .brand .name{font-weight:800; letter-spacing:-.2px; line-height:1.05; font-size:14px}
+    .brand .sub{font-size:12px; color:var(--muted); margin-top:2px}
 
-    .actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end;}
+    .top-actions{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end;}
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:10px 14px;
-      border-radius: 14px;
-      border:1px solid var(--line);
-      background:#fff;
-      cursor:pointer;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
       text-decoration:none;
       font-weight:700;
-      transition:.15s ease;
-      box-shadow: 0 6px 18px rgba(17,24,39,.04);
+      font-size:14px;
+      cursor:pointer;
+      transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+      box-shadow: 0 10px 22px rgba(11,18,32,.06);
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
     }
     .btn:hover{transform: translateY(-1px)}
+    .btn:active{transform: translateY(0)}
     .btn.primary{
-      background: linear-gradient(180deg, var(--btn), #0b1220);
-      color: var(--btnText);
-      border-color: rgba(17,24,39,.18);
-      box-shadow: 0 14px 35px rgba(17,24,39,.16);
-    }
-    .btn.primary:hover{filter:brightness(1.02)}
-    .btn.red{
-      background: linear-gradient(180deg, var(--brand), #c62828);
+      background: linear-gradient(180deg, var(--brand2), #070d18);
       color:#fff;
-      border-color: rgba(229,57,53,.25);
-      box-shadow: 0 14px 35px rgba(229,57,53,.20);
+      border-color: rgba(11,18,32,.20);
+      box-shadow: 0 18px 44px rgba(11,18,32,.16);
     }
-    .btn.red:hover{filter:brightness(1.02)}
+    .btn.red{
+      background: linear-gradient(180deg, var(--brand), #b61f1f);
+      color:#fff;
+      border-color: rgba(214,47,47,.25);
+      box-shadow: 0 18px 44px rgba(214,47,47,.22);
+    }
+    .btn.ghost{
+      background: rgba(255,255,255,.65);
+    }
     .hide-sm{display:inline-flex}
-    @media (max-width:760px){
+    @media (max-width:820px){
       .hide-sm{display:none}
       .brand{min-width:auto}
     }
 
     /* Hero */
-    .hero{padding:22px 0 14px}
-    .hero-grid{
-      display:grid; gap:16px;
-      grid-template-columns: 1.15fr .85fr;
-      align-items:stretch;
-    }
-    @media (max-width:960px){.hero-grid{grid-template-columns:1fr}}
-
-    .panel{
-      background: var(--card);
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+    .hero{padding: 18px 0 8px}
+    .hero-shell{
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-lg);
       overflow:hidden;
+      background: #fff;
     }
-    .hero-left{padding:22px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.08fr .92fr;
+      min-height: 420px;
+    }
+    @media (max-width:980px){
+      .hero-grid{grid-template-columns:1fr; min-height:unset}
+    }
+
+    .hero-left{
+      padding: 26px 24px;
+      background:
+        radial-gradient(800px 500px at 10% 0%, rgba(214,47,47,.08), transparent 55%),
+        #fff;
+    }
+
     .pill{
       display:inline-flex; align-items:center; gap:10px;
-      border:1px solid var(--line);
-      background: #fff;
-      padding:6px 10px;
+      padding: 8px 12px;
       border-radius: 999px;
-      font-size:12px;
+      background: rgba(11,18,32,.035);
+      border: 1px solid rgba(11,18,32,.08);
       color: var(--muted);
+      font-size: 12px;
+      font-weight:600;
     }
     .dot{
       width:8px; height:8px; border-radius:999px;
       background: var(--brand);
-      box-shadow: 0 0 0 4px rgba(229,57,53,.10);
+      box-shadow: 0 0 0 4px rgba(214,47,47,.12);
     }
+
     h1{
-      margin:12px 0 8px;
-      font-size: 40px;
-      line-height:1.05;
-      letter-spacing:-1px;
+      margin: 14px 0 10px;
+      font-size: clamp(30px, 4.2vw, 48px);
+      line-height: 1.03;
+      letter-spacing: -1.2px;
     }
-    @media (max-width:520px){h1{font-size:32px}}
     .accent{color: var(--brand)}
     .lead{
-      margin:0;
-      color: rgba(17,24,39,.78);
-      font-size:16px;
-      line-height:1.55;
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.6;
+      color: rgba(11,18,32,.78);
+      max-width: 58ch;
     }
-    .kpis{
-      display:flex; flex-wrap:wrap; gap:10px;
-      margin-top:14px;
+
+    .hero-kpis{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+    @media (max-width:980px){
+      .hero-kpis{grid-template-columns:1fr; }
     }
     .kpi{
-      flex: 1 1 auto;
-      min-width: 210px;
-      border:1px solid var(--line);
       border-radius: 16px;
-      padding:12px;
-      background: #fff;
+      border: 1px solid rgba(11,18,32,.08);
+      background: rgba(255,255,255,.88);
+      padding: 12px 12px;
+      box-shadow: 0 10px 22px rgba(11,18,32,.05);
     }
-    .kpi strong{display:block; font-size:13px; margin-bottom:6px}
-    .kpi span{display:block; color: rgba(17,24,39,.70); font-size:13px; line-height:1.45}
+    .kpi .k{font-size:12px; font-weight:700; color: rgba(11,18,32,.78)}
+    .kpi .v{margin-top:6px; font-size:14px; color: rgba(11,18,32,.70); line-height:1.45}
+    .kpi .v b{color: var(--text)}
+
+    .hero-ctas{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 16px;
+      align-items:center;
+    }
 
     .hero-right{
-      min-height: 340px;
       position:relative;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.45), rgba(255,255,255,.95)),
-        url("hero.jpg");
-      background-size: cover;
-      background-position:center;
+      background: #0b1220;
+      min-height: 320px;
     }
-    .hero-right::after{
-      content:"Bildplatzhalter: hero.jpg (optional hochladen)";
-      position:absolute; left:14px; bottom:14px;
-      font-size:12px;
-      color: rgba(17,24,39,.68);
-      background: rgba(255,255,255,.92);
-      border:1px solid var(--line);
-      padding:8px 10px;
-      border-radius: 14px;
+    .hero-img{
+      position:absolute; inset:0;
+      background:
+        radial-gradient(900px 520px at 18% 0%, rgba(214,47,47,.20), transparent 55%),
+        radial-gradient(900px 520px at 90% 15%, rgba(14,165,233,.18), transparent 55%),
+        linear-gradient(135deg, #0b1220, #0b1220);
+    }
+    .hero-img img{
+      width:100%; height:100%;
+      object-fit:cover;
+      display:block;
+      opacity: .92;
+      filter: contrast(1.02) saturate(1.02);
+    }
+    .hero-overlay{
+      position:absolute; inset:0;
+      background: linear-gradient(90deg, rgba(11,18,32,.88), rgba(11,18,32,.22));
+    }
+    @media (max-width:980px){
+      .hero-overlay{background: linear-gradient(180deg, rgba(11,18,32,.82), rgba(11,18,32,.30))}
+    }
+
+    .hero-right-card{
+      position:absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      padding: 14px;
+      color: rgba(255,255,255,.90);
+    }
+    .hero-right-card .t{
+      font-weight:800;
+      letter-spacing:-.3px;
+      font-size: 14px;
+    }
+    .hero-right-card .s{
+      margin-top:6px;
+      font-size: 13px;
+      color: rgba(255,255,255,.80);
+      line-height:1.45;
     }
 
     /* Sections */
-    .section{padding:12px 0 16px}
-    h2{margin:10px 0 10px; font-size:20px; letter-spacing:-.3px}
-    .grid3{
-      display:grid; gap:12px;
-      grid-template-columns: repeat(3, 1fr);
+    .section{padding: 16px 0 6px}
+    .section h2{
+      margin: 10px 0 10px;
+      font-size: 18px;
+      letter-spacing: -.3px;
     }
-    @media (max-width:960px){.grid3{grid-template-columns:1fr}}
-    .card{
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius: 18px;
-      padding:16px;
-      box-shadow: 0 8px 22px rgba(17,24,39,.05);
-    }
-    .card strong{display:block; margin-bottom:6px}
-    .card p{margin:0; color: rgba(17,24,39,.72); font-size:14px; line-height:1.5}
 
-    /* Apply */
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    @media (max-width:980px){ .cards{grid-template-columns:1fr} }
+
+    .card{
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(11,18,32,.08);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      box-shadow: 0 12px 28px rgba(11,18,32,.06);
+    }
+    .card .title{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800;
+      letter-spacing:-.2px;
+      font-size: 15px;
+    }
+    .icon{
+      width:36px; height:36px; border-radius: 12px;
+      display:grid; place-items:center;
+      background: rgba(214,47,47,.10);
+      border: 1px solid rgba(214,47,47,.18);
+      color: var(--brand);
+      font-weight:900;
+      flex: 0 0 auto;
+    }
+    .card p{
+      margin: 8px 0 0;
+      color: rgba(11,18,32,.70);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    /* Apply layout */
+    .apply{
+      padding: 18px 0 28px;
+    }
     .apply-grid{
-      display:grid; gap:16px;
+      display:grid;
       grid-template-columns: .95fr 1.05fr;
+      gap: 14px;
       align-items:start;
     }
-    @media (max-width:960px){.apply-grid{grid-template-columns:1fr}}
-    .info-img{
-      height: 190px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.95)),
-        url("team.jpg");
-      background-size:cover;
-      background-position:center;
-      position:relative;
+    @media (max-width:980px){
+      .apply-grid{grid-template-columns: 1fr;}
     }
-    .info-img::after{
-      content:"Bildplatzhalter: team.jpg (optional hochladen)";
-      position:absolute; left:14px; bottom:14px;
-      font-size:12px;
-      color: rgba(17,24,39,.68);
+
+    .panel{
       background: rgba(255,255,255,.92);
-      border:1px solid var(--line);
-      padding:8px 10px;
-      border-radius: 14px;
+      border: 1px solid rgba(11,18,32,.08);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+      overflow:hidden;
     }
-    .info-body{padding:16px}
-    .info-body ol{margin:10px 0 0 18px; color: rgba(17,24,39,.72); font-size:14px; line-height:1.55}
-    .company{
-      margin-top:14px;
-      border:1px solid var(--line);
+
+    /* Info panel */
+    .info-media{
+      position:relative;
+      height: 220px;
+      background:
+        radial-gradient(900px 520px at 18% 0%, rgba(214,47,47,.14), transparent 55%),
+        radial-gradient(900px 520px at 90% 15%, rgba(14,165,233,.12), transparent 55%),
+        linear-gradient(135deg, #ffffff, #f3f5fb);
+    }
+    .info-media img{
+      width:100%; height:100%;
+      object-fit:cover;
+      display:block;
+      opacity:.98;
+    }
+    .badge{
+      position:absolute; left:14px; top:14px;
+      border-radius: 999px;
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 800;
+      color: rgba(11,18,32,.86);
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(11,18,32,.10);
+      backdrop-filter: blur(10px);
+    }
+
+    .info-body{padding: 16px 16px 18px}
+    .steps{
+      margin: 10px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .stepRow{
+      display:flex; gap:10px; align-items:flex-start;
+      padding: 12px;
       border-radius: 16px;
-      padding:12px;
-      background: #fff;
-      box-shadow: 0 8px 22px rgba(17,24,39,.05);
-      font-size: 13px;
-      color: rgba(17,24,39,.75);
+      border: 1px solid rgba(11,18,32,.08);
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 10px 22px rgba(11,18,32,.05);
     }
-    .company strong{color: var(--text)}
+    .n{
+      width:28px; height:28px; border-radius: 10px;
+      background: rgba(214,47,47,.12);
+      border: 1px solid rgba(214,47,47,.22);
+      color: var(--brand);
+      display:grid; place-items:center;
+      font-weight:900;
+      flex: 0 0 auto;
+    }
+    .stepRow .t{font-weight:800; font-size:14px}
+    .stepRow .s{margin-top:4px; color: rgba(11,18,32,.68); font-size:13px; line-height:1.45}
 
-    .funnel{padding:16px}
-    .fhead{display:flex; align-items:flex-start; justify-content:space-between; gap:12px}
-    .fhead h3{margin:0; font-size:18px; letter-spacing:-.2px}
-    .fhead p{margin:6px 0 0; color: rgba(17,24,39,.70); font-size:13px; line-height:1.45}
+    .company{
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(11,18,32,.08);
+      background: rgba(255,255,255,.95);
+      box-shadow: 0 12px 28px rgba(11,18,32,.06);
+      font-size: 13px;
+      color: rgba(11,18,32,.75);
+    }
+    .company b{color: var(--text)}
+    .company .row2{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;
+    }
 
-    /* Progress */
-    .progress{margin-top:12px}
-    .progress-top{display:flex; justify-content:space-between; font-size:12px; color: var(--muted)}
-    .bar{height:10px; border-radius:999px; background: #eef0f3; overflow:hidden; margin-top:8px}
-    .bar > div{height:100%; width:0%; background: linear-gradient(90deg, var(--brand), #ff6b6b); transition: width .2s ease}
+    /* Funnel */
+    .funnel{padding: 16px}
+    .funnel-top{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(11,18,32,.08);
+    }
+    .funnel-top .h{
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing:-.2px;
+    }
+    .funnel-top .p{
+      margin-top:6px;
+      color: rgba(11,18,32,.66);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .contact-mini{
+      text-align:right;
+      font-size: 12px;
+      color: rgba(11,18,32,.60);
+      font-weight: 700;
+    }
+    .contact-mini a{
+      display:inline-block;
+      margin-top:6px;
+      font-size: 13px;
+      font-weight: 900;
+      text-decoration: none;
+      color: var(--text);
+      border-bottom: 1px dashed rgba(11,18,32,.35);
+    }
 
-    /* Steps */
-    .step{margin-top:14px; display:none}
-    .step.active{display:block; animation: pop .18s ease}
-    @keyframes pop{from{opacity:0; transform: translateY(8px)} to{opacity:1; transform: translateY(0)}}
+    .progress{
+      margin-top: 12px;
+      display:grid;
+      gap: 8px;
+    }
+    .progRow{display:flex; justify-content:space-between; font-size:12px; color: rgba(11,18,32,.60); font-weight:700}
+    .bar{
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(11,18,32,.06);
+      overflow:hidden;
+    }
+    .bar > div{
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--brand), #ff6b6b);
+      transition: width .18s ease;
+    }
 
-    .row{display:grid; gap:12px; grid-template-columns:1fr 1fr}
-    @media (max-width:520px){.row{grid-template-columns:1fr}}
+    /* Step chips (big-app feel) */
+    .chips{
+      display:flex; gap:8px; flex-wrap:wrap;
+      margin-top: 12px;
+    }
+    .chip{
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.90);
+      font-size: 12px;
+      font-weight: 800;
+      color: rgba(11,18,32,.68);
+    }
+    .chip.on{
+      border-color: rgba(214,47,47,.25);
+      background: rgba(214,47,47,.10);
+      color: var(--brand);
+    }
 
-    label{display:block; font-size:13px; color: rgba(17,24,39,.76); font-weight:650}
+    /* Form */
+    .step{display:none; margin-top: 14px;}
+    .step.active{display:block; animation: pop .15s ease;}
+    @keyframes pop{from{opacity:.0; transform: translateY(6px)} to{opacity:1; transform: translateY(0)}}
+    @media (prefers-reduced-motion: reduce){
+      .step.active{animation:none}
+      .bar > div{transition:none}
+      .btn{transition:none}
+    }
+
+    .grid2{display:grid; grid-template-columns: 1fr 1fr; gap: 12px;}
+    @media (max-width:520px){ .grid2{grid-template-columns:1fr;} }
+
+    label{
+      display:block;
+      font-size: 12px;
+      color: rgba(11,18,32,.66);
+      font-weight: 800;
+      letter-spacing: .2px;
+      text-transform: none;
+    }
     input, select, textarea{
       width:100%;
-      margin-top:8px;
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background:#fff;
+      margin-top: 8px;
+      padding: 13px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(11,18,32,.12);
+      background: rgba(255,255,255,.96);
       color: var(--text);
       outline:none;
-      box-shadow: 0 6px 18px rgba(17,24,39,.03);
+      font-size: 15px;
+      box-shadow: 0 12px 26px rgba(11,18,32,.05);
     }
-    textarea{min-height:120px; resize:vertical}
+    input::placeholder, textarea::placeholder{color: rgba(11,18,32,.36)}
     input:focus, select:focus, textarea:focus{
-      border-color: rgba(229,57,53,.35);
+      border-color: rgba(214,47,47,.36);
       box-shadow: var(--focus);
     }
-    .error{margin-top:8px; color: var(--danger); font-size:13px; display:none}
+    textarea{min-height: 120px; resize: vertical;}
 
-    /* Chips */
-    .chips{display:grid; gap:10px; grid-template-columns:1fr 1fr; margin-top:10px}
-    @media (max-width:520px){.chips{grid-template-columns:1fr}}
-    .chip{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:10px;
-      border:1px solid var(--line);
-      background:#fff;
-      padding:12px 12px;
-      border-radius: 14px;
+    .toggleGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    @media (max-width:520px){.toggleGrid{grid-template-columns:1fr}}
+    .toggle{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      padding: 12px 12px;
+      border-radius: 18px;
+      border: 1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.92);
       cursor:pointer;
       user-select:none;
-      transition:.15s ease;
-      box-shadow: 0 6px 18px rgba(17,24,39,.03);
+      box-shadow: 0 12px 26px rgba(11,18,32,.05);
+      transition: transform .12s ease;
+      -webkit-tap-highlight-color: transparent;
     }
-    .chip:hover{transform: translateY(-1px)}
-    .tick{
-      width:22px; height:22px;
-      border-radius:8px;
-      border:1px solid rgba(17,24,39,.14);
+    .toggle:hover{transform: translateY(-1px)}
+    .toggle .t{font-weight:900; font-size: 13px; letter-spacing:-.1px}
+    .toggle .s{font-size: 12px; color: rgba(11,18,32,.60); margin-top:4px; line-height:1.35}
+    .check{
+      width: 26px; height: 26px;
+      border-radius: 10px;
+      border: 1px solid rgba(11,18,32,.16);
       display:grid; place-items:center;
+      font-weight: 900;
       color: transparent;
       background: transparent;
-      font-weight:900;
+      flex: 0 0 auto;
     }
-    .chip.on .tick{
-      background: linear-gradient(180deg, rgba(229,57,53,.95), rgba(198,40,40,.95));
-      border-color: rgba(229,57,53,.35);
+    .toggle.on .check{
+      background: linear-gradient(180deg, var(--brand), #b61f1f);
+      border-color: rgba(214,47,47,.30);
       color:#fff;
     }
 
-    /* Nav */
+    .note{
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 18px;
+      border: 1px solid rgba(11,18,32,.08);
+      background: rgba(11,18,32,.03);
+      color: rgba(11,18,32,.72);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .error{
+      margin-top: 8px;
+      display:none;
+      color: var(--danger);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
     .nav{
-      margin-top:14px;
-      display:flex; gap:10px;
-      flex-wrap:wrap;
-      justify-content:space-between;
+      margin-top: 14px;
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
       align-items:center;
     }
-    .nav .btn{min-width:140px}
-    .hint{margin-top:10px; font-size:12px; color: var(--muted)}
+    .nav .btn{min-width: 140px}
+    .hint{
+      margin-top: 10px;
+      font-size: 12px;
+      color: rgba(11,18,32,.58);
+      font-weight: 700;
+    }
 
     /* Footer */
     .footer{
-      margin-top:18px;
-      border-top:1px solid var(--line);
-      padding:16px 0 22px;
-      color: var(--muted);
-      font-size:13px;
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(11,18,32,.08);
+      color: rgba(11,18,32,.58);
+      font-size: 13px;
     }
-    .footer a{color: rgba(17,24,39,.86)}
+    .footer .row{
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center;
+    }
+    .footer a{text-decoration:none; border-bottom:1px dashed rgba(11,18,32,.35)}
 
     /* Toast */
     .toast{
-      position:fixed; left:16px; right:16px; bottom:16px;
-      max-width:560px; margin:0 auto;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(10px);
-      border-radius: 18px;
-      padding:12px 14px;
-      box-shadow: var(--shadow);
+      position: fixed;
+      left: 16px; right: 16px;
+      bottom: calc(16px + env(safe-area-inset-bottom));
+      max-width: 560px;
+      margin: 0 auto;
       display:none;
+      padding: 12px 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-lg);
+      z-index: 80;
     }
-    .toast strong{display:block}
-    .toast span{display:block; margin-top:4px; color: rgba(17,24,39,.72); font-size:13px; line-height:1.4}
+    .toast strong{display:block; font-weight: 900}
+    .toast span{display:block; margin-top:4px; font-size:13px; color: rgba(11,18,32,.70); line-height:1.35}
+
+    /* Sticky mobile bottom CTA */
+    .mobile-cta{
+      position: fixed;
+      left: 12px; right: 12px;
+      bottom: calc(10px + env(safe-area-inset-bottom));
+      display:none;
+      z-index: 70;
+      pointer-events:none;
+    }
+    .mobile-cta .bar{
+      pointer-events:auto;
+      border-radius: 22px;
+      padding: 10px;
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(11,18,32,.10);
+      box-shadow: var(--shadow-lg);
+      display:flex; gap:10px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .mobile-cta .bar .txt{
+      min-width: 0;
+    }
+    .mobile-cta .bar .txt .a{font-weight: 900; font-size: 13px; letter-spacing:-.1px}
+    .mobile-cta .bar .txt .b{margin-top:3px; font-size:12px; color: rgba(11,18,32,.62); font-weight:700}
+    .mobile-cta .bar .btn{min-width: 150px}
+    @media (max-width:980px){
+      .mobile-cta{display:block}
+      body{padding-bottom: 90px}
+    }
   </style>
 </head>
 
-<body>
+<body class="safe">
+  <!-- TOPBAR -->
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="#top" aria-label="Start">
-        <!-- Logo: lade ins Repo eine Datei 'logo.webp' (oder ändere hier den Namen) -->
-        <img src="logo.webp" alt="Jörg Lehmann Dachdeckerei Logo" onerror="this.style.display='none'">
+        <div class="logo" aria-hidden="true">
+          <img src="logo.webp" alt="" onerror="this.style.display='none'">
+        </div>
         <div>
-          <div class="t1">Jörg Lehmann Dachdeckerei</div>
-          <div class="t2">Meisterbetrieb • Freisen (Saarland)</div>
+          <div class="name">Jörg Lehmann Dachdeckerei</div>
+          <div class="sub">Meisterbetrieb • Freisen (Saarland)</div>
         </div>
       </a>
 
-      <div class="actions">
-        <a class="btn hide-sm" href="tel:+4968557466">Anrufen: 06855 7466</a>
+      <div class="top-actions">
+        <a class="btn ghost hide-sm" href="tel:+4968557466">📞 06855 7466</a>
         <a class="btn red" href="#bewerben">Jetzt bewerben</a>
       </div>
     </div>
@@ -374,139 +680,221 @@
   <main id="top" class="container">
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-grid">
-        <div class="panel hero-left">
-          <div class="pill"><span class="dot"></span> Regional • Dachdeckerei & Bauspenglerei • 66629 Freisen</div>
-          <h1>Dachdecker gesucht: <span class="accent">Geselle</span> (m/w/d)</h1>
-          <p class="lead">
-            Bewerbung in <strong>2–4 Minuten</strong> – ohne Anschreiben. Quereinsteiger/Hilfskraft mit guter Qualifikation & Motivation sind ebenfalls willkommen.
-          </p>
+      <div class="hero-shell">
+        <div class="hero-grid">
+          <div class="hero-left">
+            <div class="pill"><span class="dot"></span> Regional • Dachdeckerei & Bauspenglerei • 66629 Freisen</div>
 
-          <div class="kpis">
-            <div class="kpi">
-              <strong>Stundenlohn</strong>
-              <span>bis zu <b>21 €</b> (fair & transparent)</span>
+            <h1>Dachdecker gesucht: <span class="accent">Geselle</span> (m/w/d)</h1>
+
+            <p class="lead">
+              Bewerbung in <b>2–4 Minuten</b> – ohne Anschreiben. Auch <b>Quereinsteiger/Hilfskraft</b> willkommen, wenn du motiviert & qualifiziert bist.
+            </p>
+
+            <div class="hero-kpis" role="list">
+              <div class="kpi" role="listitem">
+                <div class="k">Stundenlohn</div>
+                <div class="v">bis zu <b>21 €</b> (fair & transparent)</div>
+              </div>
+              <div class="kpi" role="listitem">
+                <div class="k">Bezahlte Pausen</div>
+                <div class="v">Frühstück & Mittagspause <b>bezahlt</b></div>
+              </div>
+              <div class="kpi" role="listitem">
+                <div class="k">Regionale Baustellen</div>
+                <div class="v"><b>planbar</b> • keine Fernmontage</div>
+              </div>
             </div>
-            <div class="kpi">
-              <strong>Pausen</strong>
-              <span>Frühstück & Mittagspause <b>bezahlt</b></span>
-            </div>
-            <div class="kpi">
-              <strong>Baustellen</strong>
-              <span><b>regional</b> – planbar, keine Fernmontage</span>
+
+            <div class="hero-ctas">
+              <a class="btn primary" href="#bewerben">In 2–4 Minuten bewerben</a>
+              <a class="btn" href="tel:+4968557466">Fragen? Kurz anrufen</a>
             </div>
           </div>
 
-          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn primary" href="#bewerben">In 2–4 Minuten bewerben</a>
-            <a class="btn" href="tel:+4968557466">Fragen? Direkt anrufen</a>
+          <div class="hero-right" aria-label="Hero Bild">
+            <div class="hero-img">
+              <img src="hero.jpg" alt="" onerror="this.remove()" />
+            </div>
+            <div class="hero-overlay" aria-hidden="true"></div>
+
+            <div class="hero-right-card">
+              <div class="t">Top Ausstattung & Arbeitssicherheit</div>
+              <div class="s">Moderne Maschinen/Fahrzeuge, saubere Prozesse & Weiterbildung (z. B. Kranschein).</div>
+            </div>
           </div>
         </div>
-
-        <div class="panel hero-right" aria-label="Hero Bild Platzhalter"></div>
       </div>
     </section>
 
     <!-- BENEFITS -->
-    <section class="section">
+    <section class="section" aria-label="Benefits">
       <h2>Warum du hier gut aufgehoben bist</h2>
-      <div class="grid3">
-        <div class="card"><strong>Bezahlte Pausen</strong><p>Frühstück & Mittagspause sind bezahlt – entspannt & fair.</p></div>
-        <div class="card"><strong>Top Ausstattung</strong><p>Sehr gute Maschinen, Fahrzeuge und moderne Büroausstattung.</p></div>
-        <div class="card"><strong>Tarifliche Urlaubstage</strong><p>Sauber geregelt – Urlaub nach Tarif.</p></div>
-        <div class="card"><strong>Weiterbildung</strong><p>z. B. Kranschein, Spezialisierungen, neue Techniken.</p></div>
-        <div class="card"><strong>Regionale Baustellen</strong><p>Saarland/Umgebung – weniger Fahrerei, mehr Planbarkeit.</p></div>
-        <div class="card"><strong>Arbeitssicherheit</strong><p>Saubere Prozesse, moderne Ausstattung, Fokus auf Sicherheit.</p></div>
+      <div class="cards">
+        <div class="card">
+          <div class="title"><span class="icon">✓</span> Bezahlte Pausen</div>
+          <p>Frühstück & Mittagspause sind bezahlt – entspannt & fair.</p>
+        </div>
+        <div class="card">
+          <div class="title"><span class="icon">⚙</span> Top Ausstattung</div>
+          <p>Sehr gute Maschinen, Fahrzeuge und moderne Büroausstattung.</p>
+        </div>
+        <div class="card">
+          <div class="title"><span class="icon">☀</span> Tarifliche Urlaubstage</div>
+          <p>Sauber geregelt – Urlaub nach Tarif.</p>
+        </div>
+        <div class="card">
+          <div class="title"><span class="icon">🎓</span> Weiterbildung</div>
+          <p>z. B. Kranschein, Spezialisierungen, neue Techniken.</p>
+        </div>
+        <div class="card">
+          <div class="title"><span class="icon">📍</span> Regional</div>
+          <p>Saarland/Umgebung – weniger Fahrerei, mehr Planbarkeit.</p>
+        </div>
+        <div class="card">
+          <div class="title"><span class="icon">🛡</span> Sicherheit</div>
+          <p>Arbeitssicherheit & saubere Abläufe stehen im Fokus.</p>
+        </div>
       </div>
     </section>
 
     <!-- REQUIREMENTS -->
-    <section class="section">
+    <section class="section" aria-label="Voraussetzungen">
       <h2>Was wir suchen</h2>
-      <div class="grid3">
-        <div class="card"><strong>Dachdecker Geselle</strong><p>Sehr gern – solide Erfahrung und saubere Arbeit.</p></div>
-        <div class="card"><strong>Quereinsteiger / Hilfskraft</strong><p>Wenn du motiviert, jung & qualifiziert bist, passt das auch.</p></div>
-        <div class="card"><strong>Pluspunkte</strong><p>Abdichtung (Schweißbahn), Klempner, Ziegelkenntnisse, Zimmerei.</p></div>
+      <div class="cards">
+        <div class="card">
+          <div class="title"><span class="icon">👷</span> Dachdecker Geselle</div>
+          <p>Sehr gern – solide Erfahrung und saubere Arbeit.</p>
+        </div>
+        <div class="card">
+          <div class="title"><span class="icon">🚀</span> Quereinsteiger / Hilfskraft</div>
+          <p>Wenn du motiviert, jung & qualifiziert bist, passt das auch.</p>
+        </div>
+        <div class="card">
+          <div class="title"><span class="icon">➕</span> Pluspunkte</div>
+          <p>Abdichtung (Schweißbahn), Klempner, Ziegelkenntnisse, Zimmerei.</p>
+        </div>
       </div>
     </section>
 
     <!-- APPLY -->
-    <section class="section" id="bewerben">
+    <section class="apply" id="bewerben" aria-label="Bewerbung">
       <div class="apply-grid">
+        <!-- LEFT INFO -->
         <aside class="panel">
-          <div class="info-img"></div>
+          <div class="info-media">
+            <span class="badge">Team & Alltag</span>
+            <img src="team.jpg" alt="" onerror="this.remove()">
+          </div>
+
           <div class="info-body">
-            <h2 style="margin-top:0">So läuft’s ab</h2>
-            <ol>
-              <li>Kurzformular ausfüllen (ohne Anschreiben)</li>
-              <li>Du klickst auf „Bewerbung senden“</li>
-              <li>Dein Mailprogramm öffnet sich → nur noch senden</li>
-            </ol>
+            <h2 style="margin:0 0 10px; font-size:18px; letter-spacing:-.3px;">So läuft’s ab</h2>
+
+            <ul class="steps">
+              <li class="stepRow">
+                <div class="n">1</div>
+                <div>
+                  <div class="t">Kurz ausfüllen</div>
+                  <div class="s">Name, Telefon, Wohnort – der Rest optional.</div>
+                </div>
+              </li>
+              <li class="stepRow">
+                <div class="n">2</div>
+                <div>
+                  <div class="t">Profil anklicken</div>
+                  <div class="s">Geselle / Quereinsteiger / Hilfskraft + Skills.</div>
+                </div>
+              </li>
+              <li class="stepRow">
+                <div class="n">3</div>
+                <div>
+                  <div class="t">Senden</div>
+                  <div class="s">Mail-App öffnet sich → du klickst nur noch „Senden“.</div>
+                </div>
+              </li>
+            </ul>
 
             <div class="company">
-              <strong>Jörg Lehmann Dachdeckerei</strong><br/>
-              In der Zennwies 4, 66629 Freisen<br/>
-              Tel.: <a href="tel:+4968557466">06855 7466</a><br/>
-              Website: <a href="https://www.dachbau-lehmann.de" target="_blank" rel="noreferrer">www.dachbau-lehmann.de</a>
+              <b>Jörg Lehmann Dachdeckerei</b><br>
+              In der Zennwies 4 • 66629 Freisen<br>
+              Tel.: <a href="tel:+4968557466">06855 7466</a><br>
+              Website: <a href="https://www.dachbau-lehmann.de" target="_blank" rel="noreferrer">dachbau-lehmann.de</a>
+
+              <div class="row2">
+                <a class="btn" href="tel:+4968557466">📞 Anrufen</a>
+                <a class="btn primary" href="#bewerben">📝 Schnell bewerben</a>
+              </div>
             </div>
           </div>
         </aside>
 
-        <section class="panel funnel" aria-label="Bewerbungsfunnel">
-          <div class="fhead">
+        <!-- RIGHT FUNNEL -->
+        <section class="panel funnel" aria-label="Schnellbewerbung Funnel">
+          <div class="funnel-top">
             <div>
-              <h3>Schnellbewerbung</h3>
-              <p>Ohne Anschreiben. Modern. In wenigen Minuten erledigt.</p>
+              <div class="h">Schnellbewerbung</div>
+              <div class="p">Ohne Anschreiben. Modern. In wenigen Minuten erledigt.</div>
             </div>
-            <div style="text-align:right; font-size:12px; color:var(--muted)">
-              <div>Kontakt</div>
-              <a href="tel:+4968557466" style="text-decoration:underline">06855 7466</a>
+            <div class="contact-mini">
+              Kontakt
+              <a href="tel:+4968557466">06855 7466</a>
             </div>
           </div>
 
-          <div class="progress">
-            <div class="progress-top">
+          <div class="progress" aria-label="Fortschritt">
+            <div class="progRow">
               <span id="stepLabel">Schritt 1 von 4</span>
               <span id="pctLabel">25%</span>
             </div>
             <div class="bar"><div id="barFill"></div></div>
+
+            <div class="chips" aria-label="Schritte">
+              <span class="chip on" id="chip1">1 • Kontakt</span>
+              <span class="chip" id="chip2">2 • Profil</span>
+              <span class="chip" id="chip3">3 • Skills</span>
+              <span class="chip" id="chip4">4 • Finish</span>
+            </div>
           </div>
 
           <!-- STEP 1 -->
           <div class="step active" data-step="1">
-            <div class="row">
+            <div class="grid2">
               <div>
                 <label>Vor- & Nachname
-                  <input id="fullName" placeholder="z. B. Max Mustermann" autocomplete="name" />
+                  <input id="fullName" placeholder="z. B. Max Mustermann" autocomplete="name" inputmode="text">
                 </label>
-                <div class="error" id="errFullName">Bitte Namen eintragen.</div>
+                <div class="error" id="errFullName">Bitte deinen Namen eintragen.</div>
               </div>
 
               <div>
                 <label>Telefon
-                  <input id="phone" placeholder="z. B. 0176 123456" autocomplete="tel" />
+                  <input id="phone" placeholder="z. B. 0176 123456" autocomplete="tel" inputmode="tel">
                 </label>
-                <div class="error" id="errPhone">Bitte Telefonnummer eintragen.</div>
+                <div class="error" id="errPhone">Bitte eine Telefonnummer eintragen.</div>
               </div>
 
               <div>
                 <label>E-Mail (optional)
-                  <input id="email" placeholder="z. B. max@mail.de" autocomplete="email" />
+                  <input id="email" placeholder="z. B. max@mail.de" autocomplete="email" inputmode="email">
                 </label>
               </div>
 
               <div>
                 <label>Wohnort
-                  <input id="city" placeholder="z. B. Freisen" autocomplete="address-level2" />
+                  <input id="city" placeholder="z. B. Freisen" autocomplete="address-level2" inputmode="text">
                 </label>
-                <div class="error" id="errCity">Bitte Ort eintragen.</div>
+                <div class="error" id="errCity">Bitte deinen Wohnort eintragen.</div>
               </div>
+            </div>
+
+            <div class="note">
+              <b>Tipp:</b> Wenn du magst, schreib bei Schritt 3 kurz rein, welche Arbeiten du am liebsten machst.
             </div>
           </div>
 
           <!-- STEP 2 -->
           <div class="step" data-step="2">
-            <div class="row">
+            <div class="grid2">
               <div>
                 <label>Du bist…
                   <select id="role">
@@ -539,53 +927,93 @@
                 </label>
               </div>
 
-              <div class="card" style="border-radius:16px; padding:14px;">
-                <strong>Kurzer Hinweis</strong>
-                <p>Wenn du zuverlässig bist und sauber arbeitest, passt du sehr gut rein. Spezialisierung ist ein Plus, aber kein Muss.</p>
+              <div class="note">
+                <b>Wichtig:</b> Zuverlässigkeit & saubere Arbeit sind entscheidend. Spezialisierung ist ein Plus, aber kein Muss.
               </div>
             </div>
           </div>
 
           <!-- STEP 3 -->
           <div class="step" data-step="3">
-            <label style="margin-top:6px; display:block;">
-              Was kannst du gut? (anklicken)
-            </label>
+            <label>Was kannst du gut? (anklicken)</label>
 
-            <div class="chips">
-              <div class="chip" data-toggle="abdichtung"><span>Abdichtung (Schweißbahn etc.)</span><span class="tick">✓</span></div>
-              <div class="chip" data-toggle="klempner"><span>Klempner / Bauspenglerei</span><span class="tick">✓</span></div>
-              <div class="chip on" data-toggle="ziegel"><span>Ziegel / Steildach</span><span class="tick">✓</span></div>
-              <div class="chip" data-toggle="zimmerei"><span>Zimmerei (nice to have)</span><span class="tick">✓</span></div>
+            <div class="toggleGrid">
+              <div class="toggle" data-toggle="abdichtung">
+                <div>
+                  <div class="t">Abdichtung</div>
+                  <div class="s">Schweißbahn, Anschlüsse, Details</div>
+                </div>
+                <div class="check">✓</div>
+              </div>
+
+              <div class="toggle" data-toggle="klempner">
+                <div>
+                  <div class="t">Klempner / Bauspenglerei</div>
+                  <div class="s">Blech, Rinnen, Verkleidungen</div>
+                </div>
+                <div class="check">✓</div>
+              </div>
+
+              <div class="toggle on" data-toggle="ziegel">
+                <div>
+                  <div class="t">Ziegel / Steildach</div>
+                  <div class="s">Eindeckung, Details, Reparaturen</div>
+                </div>
+                <div class="check">✓</div>
+              </div>
+
+              <div class="toggle" data-toggle="zimmerei">
+                <div>
+                  <div class="t">Zimmerei</div>
+                  <div class="s">nice to have</div>
+                </div>
+                <div class="check">✓</div>
+              </div>
             </div>
 
             <label style="margin-top:12px;">Kurze Nachricht (optional)
-              <textarea id="message" placeholder="z. B. welche Arbeiten machst du am liebsten?"></textarea>
+              <textarea id="message" placeholder="z. B. Steildach, Abdichtung oder Blech – was machst du am liebsten?"></textarea>
             </label>
           </div>
 
           <!-- STEP 4 -->
           <div class="step" data-step="4">
-            <label style="margin-top:6px; display:block;">
-              Führerschein (anklicken)
-            </label>
+            <label>Führerschein (anklicken)</label>
 
-            <div class="chips">
-              <div class="chip on" data-toggle="fsb"><span>Klasse B vorhanden</span><span class="tick">✓</span></div>
-              <div class="chip" data-toggle="lkwHas"><span>LKW-Führerschein vorhanden</span><span class="tick">✓</span></div>
-              <div class="chip on" data-toggle="lkwWant"><span>LKW erwünscht (kann gestellt werden)</span><span class="tick">✓</span></div>
+            <div class="toggleGrid">
+              <div class="toggle on" data-toggle="fsb">
+                <div>
+                  <div class="t">Klasse B vorhanden</div>
+                  <div class="s">PKW-Führerschein</div>
+                </div>
+                <div class="check">✓</div>
+              </div>
+
+              <div class="toggle" data-toggle="lkwHas">
+                <div>
+                  <div class="t">LKW-Führerschein vorhanden</div>
+                  <div class="s">wenn ja: super</div>
+                </div>
+                <div class="check">✓</div>
+              </div>
+
+              <div class="toggle on" data-toggle="lkwWant">
+                <div>
+                  <div class="t">LKW erwünscht</div>
+                  <div class="s">kann gestellt werden</div>
+                </div>
+                <div class="check">✓</div>
+              </div>
             </div>
 
-            <div class="card" style="margin-top:12px; border-radius:16px;">
-              <strong>Datenschutz</strong>
-              <p>Mit „Bewerbung senden“ öffnet sich dein Mailprogramm mit fertig ausgefülltem Text. Bitte dann nur noch auf <b>Senden</b> klicken.</p>
-
-              <label style="margin-top:10px; display:flex; gap:10px; align-items:flex-start; font-weight:650;">
-                <input id="consent" type="checkbox" checked style="width:auto; margin-top:4px"/>
-                <span style="font-size:13px; color:rgba(17,24,39,.74)">
+            <div class="note">
+              <b>Datenschutz:</b> Mit „Bewerbung senden“ öffnet sich dein Mailprogramm mit fertigem Text. Bitte dann nur noch auf <b>Senden</b> klicken.
+              <div style="margin-top:10px; display:flex; gap:10px; align-items:flex-start;">
+                <input id="consent" type="checkbox" checked style="width:auto; margin-top:3px;">
+                <div style="font-size:13px; color: rgba(11,18,32,.70); font-weight:700;">
                   Ich bin einverstanden, dass meine Angaben zur Kontaktaufnahme verarbeitet werden.
-                </span>
-              </label>
+                </div>
+              </div>
               <div class="error" id="errConsent">Bitte Zustimmung aktivieren.</div>
             </div>
           </div>
@@ -596,34 +1024,42 @@
           </div>
 
           <div class="hint">
-            Tipp: Lieber direkt sprechen? <a href="tel:+4968557466" style="text-decoration:underline">06855 7466</a>
+            Lieber direkt sprechen? <a href="tel:+4968557466" style="text-decoration:none; border-bottom:1px dashed rgba(11,18,32,.35)">06855 7466</a>
+          </div>
+
+          <div class="footer">
+            <div class="row">
+              <div><b style="color:rgba(11,18,32,.90)">Jörg Lehmann Dachdeckerei</b> • 66629 Freisen</div>
+              <div style="display:flex; gap:14px;">
+                <a href="https://www.dachbau-lehmann.de" target="_blank" rel="noreferrer">Website</a>
+                <a href="tel:+4968557466">Telefon</a>
+              </div>
+            </div>
           </div>
         </section>
       </div>
-
-      <footer class="footer">
-        <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between; align-items:center;">
-          <div>
-            <strong style="color:rgba(17,24,39,.90)">Jörg Lehmann Dachdeckerei</strong><br/>
-            In der Zennwies 4 • 66629 Freisen
-          </div>
-          <div style="display:flex; gap:14px;">
-            <a href="https://www.dachbau-lehmann.de" target="_blank" rel="noreferrer">Website</a>
-            <a href="tel:+4968557466">Telefon</a>
-          </div>
-        </div>
-      </footer>
     </section>
   </main>
 
-  <div class="toast" id="toast">
+  <!-- Mobile Sticky CTA -->
+  <div class="mobile-cta" aria-hidden="false">
+    <div class="bar">
+      <div class="txt">
+        <div class="a">Dachdecker Geselle (m/w/d)</div>
+        <div class="b">Bewerbung in 2–4 Minuten</div>
+      </div>
+      <a class="btn red" href="#bewerben">Jetzt bewerben</a>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
     <strong id="toastTitle">Hinweis</strong>
     <span id="toastDesc"></span>
   </div>
 
 <script>
   // ====== KONFIG: ZIEL-E-MAIL ======
-  const TO_EMAIL = "bewerbung@dachbau-lehmann.de"; // <- HIER ggf. ändern
+  const TO_EMAIL = "bewerbung@dachbau-lehmann.de"; // <- HIER ändern, falls nötig
 
   // ====== Funnel State ======
   let step = 1;
@@ -638,8 +1074,25 @@
   const $ = (id) => document.getElementById(id);
   const show = (el, on) => el.style.display = on ? "block" : "none";
 
+  function toast(title, desc){
+    $("toastTitle").textContent = title;
+    $("toastDesc").textContent = desc || "";
+    $("toast").style.display = "block";
+    clearTimeout(window.__toastT);
+    window.__toastT = setTimeout(() => $("toast").style.display = "none", 3200);
+  }
+
+  function setChips(){
+    for(let i=1;i<=4;i++){
+      const c = $("chip"+i);
+      if(!c) continue;
+      c.classList.toggle("on", i <= step);
+    }
+  }
+
   function setStep(n){
     step = Math.max(1, Math.min(total, n));
+
     document.querySelectorAll(".step").forEach(s => {
       s.classList.toggle("active", Number(s.dataset.step) === step);
     });
@@ -651,30 +1104,23 @@
 
     $("backBtn").disabled = (step === 1);
     $("nextBtn").textContent = (step === total) ? "Bewerbung senden" : "Weiter";
+
+    setChips();
+    window.scrollTo({top: document.getElementById("bewerben").getBoundingClientRect().top + window.scrollY - 90, behavior:"smooth"});
   }
 
-  function toast(title, desc){
-    $("toastTitle").textContent = title;
-    $("toastDesc").textContent = desc || "";
-    $("toast").style.display = "block";
-    setTimeout(() => $("toast").style.display = "none", 3200);
-  }
+  // ====== Toggles ======
+  document.querySelectorAll(".toggle[data-toggle]").forEach(t => {
+    t.addEventListener("click", () => {
+      const key = t.dataset.toggle;
 
-  // ====== Chip toggles ======
-  document.querySelectorAll(".chip[data-toggle]").forEach(chip => {
-    chip.addEventListener("click", () => {
-      const key = chip.dataset.toggle;
-
-      // Skills keys
       if (["abdichtung","klempner","ziegel","zimmerei"].includes(key)){
         state.skills[key] = !state.skills[key];
-        chip.classList.toggle("on", state.skills[key]);
+        t.classList.toggle("on", state.skills[key]);
       }
-
-      // Driving keys
-      if (key === "fsb"){ state.driving.fsb = !state.driving.fsb; chip.classList.toggle("on", state.driving.fsb); }
-      if (key === "lkwHas"){ state.driving.lkwHas = !state.driving.lkwHas; chip.classList.toggle("on", state.driving.lkwHas); }
-      if (key === "lkwWant"){ state.driving.lkwWant = !state.driving.lkwWant; chip.classList.toggle("on", state.driving.lkwWant); }
+      if (key === "fsb"){ state.driving.fsb = !state.driving.fsb; t.classList.toggle("on", state.driving.fsb); }
+      if (key === "lkwHas"){ state.driving.lkwHas = !state.driving.lkwHas; t.classList.toggle("on", state.driving.lkwHas); }
+      if (key === "lkwWant"){ state.driving.lkwWant = !state.driving.lkwWant; t.classList.toggle("on", state.driving.lkwWant); }
     });
   });
 
@@ -715,7 +1161,6 @@
     };
 
     const subject = encodeURIComponent(`Bewerbung: ${data.fullName} (${data.role})`);
-
     const bodyText =
 `Hallo Jörg Lehmann Dachdeckerei,
 
@@ -747,17 +1192,15 @@ ${data.message || "-"}
 Viele Grüße
 ${data.fullName}`;
 
-    const body = encodeURIComponent(bodyText);
-
     toast("Fast fertig ✅", "Dein Mailprogramm öffnet sich – bitte nur noch auf Senden klicken.");
-    window.location.href = `mailto:${TO_EMAIL}?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${TO_EMAIL}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
   }
 
-  // ====== Nav buttons ======
+  // ====== Nav ======
   $("backBtn").addEventListener("click", () => setStep(step - 1));
   $("nextBtn").addEventListener("click", () => {
     if (step === 1 && !validateStep1()) {
-      toast("Bitte kurz ausfüllen", "Name, Telefon und Ort sind Pflicht.");
+      toast("Bitte kurz ausfüllen", "Name, Telefon und Wohnort sind Pflicht.");
       return;
     }
     if (step < total) setStep(step + 1);
