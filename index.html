@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bewerbung – Jörg Lehmann Dachdeckerei (Freisen)</title>
+  <meta name="description" content="Schnellbewerbung als Dachdecker (m/w/d) – bis 21 €/h, bezahlte Pausen, regionale Baustellen, top Ausstattung." />
+  <style>
+    :root{
+      --bg:#070708; --card:#0f1012; --muted:#a8adb7; --text:#f4f6fb;
+      --line:rgba(255,255,255,.10); --glow:rgba(110,231,183,.25);
+      --brand:#6ee7b7; --brand2:#34d399; --danger:#fb7185;
+      --shadow: 0 18px 55px rgba(0,0,0,.45);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 20% 0%, rgba(110,231,183,.12), transparent 55%),
+                  radial-gradient(900px 700px at 90% 10%, rgba(56,189,248,.10), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit}
+    .wrap{max-width:1100px; margin:0 auto; padding:18px}
+    .topbar{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(10px);
+      background: rgba(7,7,8,.65);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 18px; max-width:1100px; margin:0 auto;}
+    .brand{
+      display:flex; align-items:center; gap:12px; text-decoration:none;
+    }
+    .logo{
+      width:38px; height:38px; border-radius:14px;
+      background: rgba(110,231,183,.12);
+      border: 1px solid rgba(110,231,183,.25);
+      display:grid; place-items:center;
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+      font-weight:800; color: var(--brand);
+      letter-spacing:.5px;
+    }
+    .btitle{line-height:1.1}
+    .btitle strong{display:block; font-size:14px}
+    .btitle span{display:block; font-size:12px; color:var(--muted)}
+    .btn{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      padding:10px 14px;
+      border-radius: 14px;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      transition: .18s ease;
+      font-weight:650;
+      user-select:none;
+    }
+    .btn:hover{background: rgba(255,255,255,.10)}
+    .btn.primary{
+      border-color: rgba(110,231,183,.35);
+      background: linear-gradient(180deg, rgba(110,231,183,.92), rgba(52,211,153,.92));
+      color:#07110d;
+      box-shadow: 0 16px 40px var(--glow);
+    }
+    .btn.primary:hover{filter:brightness(1.02)}
+    .hero{
+      padding: 26px 0 18px;
+    }
+    .hero-grid{
+      display:grid; gap:16px;
+      grid-template-columns: 1.3fr .7fr;
+      align-items:stretch;
+    }
+    @media (max-width: 920px){
+      .hero-grid{grid-template-columns:1fr}
+      .hide-sm{display:none}
+    }
+    .panel{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-left{padding:22px}
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      padding:6px 10px; border-radius: 999px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    h1{
+      margin:12px 0 10px;
+      font-size: 40px;
+      letter-spacing:-.8px;
+      line-height:1.06;
+    }
+    @media (max-width:520px){h1{font-size:32px}}
+    .accent{color: var(--brand)}
+    .lead{color: rgba(244,246,251,.86); font-size:16px; line-height:1.55; margin:0 0 14px}
+    .cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .mini-cards{
+      display:grid; gap:10px;
+      grid-template-columns: 1fr 1fr;
+      margin-top:14px;
+    }
+    @media (max-width:520px){.mini-cards{grid-template-columns:1fr}}
+    .mini{
+      border:1px solid var(--line);
+      background: rgba(7,7,8,.35);
+      border-radius: 16px;
+      padding:12px;
+      color: rgba(244,246,251,.86);
+    }
+    .mini strong{display:block; margin-bottom:6px; color: var(--text)}
+    .hero-right{
+      position:relative;
+      min-height: 320px;
+      background:
+        linear-gradient(180deg, rgba(7,7,8,.10), rgba(7,7,8,.85)),
+        url("hero.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+    .hero-right::after{
+      content:"Bildplatzhalter: hero.jpg";
+      position:absolute; left:16px; bottom:16px;
+      font-size:12px; color: rgba(244,246,251,.70);
+      background: rgba(7,7,8,.55);
+      border:1px solid var(--line);
+      padding:8px 10px;
+      border-radius: 14px;
+    }
+    .section{padding: 10px 0 18px}
+    h2{margin: 10px 0 10px; font-size: 20px; letter-spacing:-.2px}
+    .grid3{
+      display:grid; gap:12px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width:920px){.grid3{grid-template-columns:1fr}}
+    .card{
+      padding:16px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      border-radius: 18px;
+    }
+    .card strong{display:block; margin-bottom:6px}
+    .card p{margin:0; color: rgba(244,246,251,.80); line-height:1.5; font-size:14px}
+
+    .apply-wrap{
+      display:grid; gap:16px;
+      grid-template-columns: .95fr 1.05fr;
+      align-items:start;
+    }
+    @media (max-width:920px){.apply-wrap{grid-template-columns:1fr}}
+    .info{
+      overflow:hidden;
+    }
+    .info-img{
+      height: 190px;
+      background:
+        linear-gradient(180deg, rgba(7,7,8,.15), rgba(7,7,8,.85)),
+        url("team.jpg");
+      background-size:cover;
+      background-position:center;
+      position:relative;
+    }
+    .info-img::after{
+      content:"Bildplatzhalter: team.jpg";
+      position:absolute; left:14px; bottom:14px;
+      font-size:12px; color: rgba(244,246,251,.70);
+      background: rgba(7,7,8,.55);
+      border:1px solid var(--line);
+      padding:8px 10px;
+      border-radius: 14px;
+    }
+    .info-body{padding:16px}
+    ol{margin:10px 0 0 18px; color: rgba(244,246,251,.80); font-size:14px; line-height:1.5}
+    .company{
+      margin-top:14px;
+      border:1px solid var(--line);
+      background: rgba(7,7,8,.55);
+      border-radius: 16px;
+      padding:12px;
+      font-size: 13px;
+      color: rgba(244,246,251,.82);
+    }
+
+    .funnel{padding:16px}
+    .fhead{display:flex; align-items:flex-start; justify-content:space-between; gap:12px}
+    .fhead h3{margin:0; font-size:18px}
+    .fhead p{margin:6px 0 0; color: rgba(244,246,251,.78); font-size:13px; line-height:1.45}
+    .progress{margin-top:12px}
+    .progress-top{display:flex; justify-content:space-between; font-size:12px; color: var(--muted)}
+    .bar{height:10px; border-radius:999px; background: rgba(255,255,255,.10); overflow:hidden; margin-top:8px}
+    .bar > div{height:100%; width:0%; background: linear-gradient(90deg, var(--brand), var(--brand2)); transition: width .2s ease}
+
+    .step{margin-top:14px; display:none}
+    .step.active{display:block; animation: pop .18s ease}
+    @keyframes pop{from{opacity:0; transform: translateY(8px)} to{opacity:1; transform: translateY(0)}}
+    .row{display:grid; gap:12px; grid-template-columns:1fr 1fr}
+    @media (max-width:520px){.row{grid-template-columns:1fr}}
+    label{display:block; font-size:13px; color: rgba(244,246,251,.82)}
+    input, select, textarea{
+      width:100%;
+      margin-top:8px;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(7,7,8,.55);
+      color: var(--text);
+      outline:none;
+    }
+    textarea{min-height:120px; resize:vertical}
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(110,231,183,.35);
+      box-shadow: 0 0 0 4px rgba(110,231,183,.10);
+    }
+    .error{margin-top:8px; color: var(--danger); font-size:13px; display:none}
+    .chips{display:grid; gap:10px; grid-template-columns:1fr 1fr; margin-top:10px}
+    @media (max-width:520px){.chips{grid-template-columns:1fr}}
+    .chip{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      padding:12px 12px;
+      border-radius: 14px;
+      cursor:pointer;
+      user-select:none;
+      transition:.18s ease;
+    }
+    .chip:hover{background: rgba(255,255,255,.08)}
+    .tick{
+      width:22px; height:22px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,.18);
+      display:grid; place-items:center;
+      color: transparent;
+      background: transparent;
+      font-weight:900;
+    }
+    .chip.on .tick{
+      background: linear-gradient(180deg, rgba(110,231,183,.95), rgba(52,211,153,.95));
+      border-color: rgba(110,231,183,.35);
+      color:#07110d;
+    }
+    .nav{
+      margin-top:14px;
+      display:flex; gap:10px;
+      flex-wrap:wrap;
+      justify-content:space-between;
+    }
+    .hint{
+      margin-top:10px;
+      font-size:12px;
+      color: var(--muted);
+    }
+    .footer{
+      margin-top:22px;
+      border-top:1px solid var(--line);
+      padding:16px 0 24px;
+      color: var(--muted);
+      font-size:13px;
+    }
+    .footer a{color: rgba(244,246,251,.88)}
+    .toast{
+      position:fixed; left:16px; right:16px; bottom:16px;
+      max-width:520px; margin:0 auto;
+      border:1px solid var(--line);
+      background: rgba(7,7,8,.85);
+      backdrop-filter: blur(10px);
+      border-radius: 18px;
+      padding:12px 14px;
+      box-shadow: var(--shadow);
+      display:none;
+    }
+    .toast strong{display:block}
+    .toast span{display:block; margin-top:4px; color: rgba(244,246,251,.80); font-size:13px; line-height:1.4}
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#">
+        <div class="logo">JL</div>
+        <div class="btitle">
+          <strong>Jörg Lehmann Dachdeckerei</strong>
+          <span>Bewerbung • Freisen (Saarland)</span>
+        </div>
+      </a>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <a class="btn hide-sm" href="tel:+4968557466">Anrufen: 06855 7466</a>
+        <a class="btn primary" href="#bewerben">Jetzt bewerben</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="panel hero-left">
+          <div class="pill">Dachdeckerei & Bauspenglerei • 66629 Freisen</div>
+          <h1>Dachdecker gesucht: <span class="accent">Geselle</span> (m/w/d)</h1>
+          <p class="lead">
+            Bewirb dich in wenigen Minuten – ohne Anschreiben. Quereinsteiger/Hilfskraft (qualifiziert & motiviert) sind willkommen.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn primary" href="#bewerben">In 2–4 Minuten bewerben</a>
+            <a class="btn" href="tel:+4968557466">Direkt anrufen</a>
+          </div>
+
+          <div class="mini-cards">
+            <div class="mini">
+              <strong>Schwerpunkte (Plus)</strong>
+              Abdichtung (Schweißbahn), Klempner, Ziegel, Zimmerei
+            </div>
+            <div class="mini">
+              <strong>Führerschein</strong>
+              LKW erwünscht – kann gestellt werden
+            </div>
+          </div>
+        </div>
+
+        <div class="panel hero-right" aria-label="Hero Bild Platzhalter"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Deine Benefits</h2>
+      <div class="grid3">
+        <div class="card"><strong>Stundenlohn bis zu 21 €</strong><p>Fair & transparent – Leistung wird gesehen.</p></div>
+        <div class="card"><strong>Frühstück & Mittagspause bezahlt</strong><p>Pausen sind Pausen. Punkt.</p></div>
+        <div class="card"><strong>Regionale Baustellen</strong><p>Planbar, bodenständig, keine ewigen Fahrten.</p></div>
+        <div class="card"><strong>Tarifliche Urlaubstage</strong><p>Ordentlich geregelt – sauber nach Tarif.</p></div>
+        <div class="card"><strong>Weiterbildungen</strong><p>z. B. Kranschein, Spezialisierungen, neue Technik.</p></div>
+        <div class="card"><strong>Top Ausstattung</strong><p>Sehr gute Maschinen, Fahrzeuge & moderne Büroausstattung.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="bewerben">
+      <div class="apply-wrap">
+        <div class="panel info">
+          <div class="info-img"></div>
+          <div class="info-body">
+            <h2 style="margin-top:0">So läuft’s ab</h2>
+            <ol>
+              <li>Kurzformular ausfüllen (ohne Anschreiben)</li>
+              <li>Wir melden uns zeitnah telefonisch</li>
+              <li>Kennenlernen + Probearbeit möglich</li>
+            </ol>
+
+            <div class="company">
+              <strong style="color:var(--text)">Kontakt</strong><br/>
+              Jörg Lehmann Dachdeckerei<br/>
+              In der Zennwies 4, 66629 Freisen<br/>
+              Tel.: <a href="tel:+4968557466">06855 7466</a> • www.dachbau-lehmann.de
+            </div>
+          </div>
+        </div>
+
+        <div class="panel funnel">
+          <div class="fhead">
+            <div>
+              <h3>Schnellbewerbung</h3>
+              <p>Ohne Anschreiben. Modern. In 2–4 Minuten erledigt.</p>
+            </div>
+            <div style="text-align:right; font-size:12px; color:var(--muted)">
+              <div>Fragen?</div>
+              <a href="tel:+4968557466" style="text-decoration:underline">06855 7466</a>
+            </div>
+          </div>
+
+          <div class="progress">
+            <div class="progress-top">
+              <span id="stepLabel">Schritt 1 von 4</span>
+              <span id="pctLabel">25%</span>
+            </div>
+            <div class="bar"><div id="barFill"></div></div>
+          </div>
+
+          <!-- STEP 1 -->
+          <div class="step active" data-step="1">
+            <div class="row">
+              <div>
+                <label>Vor- & Nachname
+                  <input id="fullName" placeholder="z. B. Max Mustermann" />
+                </label>
+                <div class="error" id="errFullName">Bitte Namen eintragen.</div>
+              </div>
+              <div>
+                <label>Telefon
+                  <input id="phone" placeholder="z. B. 0176 123456" />
+                </label>
+                <div class="error" id="errPhone">Bitte Telefonnummer eintragen.</div>
+              </div>
+              <div>
+                <label>E-Mail (optional)
+                  <input id="email" placeholder="z. B. max@mail.de" />
+                </label>
+              </div>
+              <div>
+                <label>Wohnort
+                  <input id="city" placeholder="z. B. Freisen" />
+                </label>
+                <div class="error" id="errCity">Bitte Ort eintragen.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="step" data-step="2">
+            <div class="row">
+              <div>
+                <label>Du bist…
+                  <select id="role">
+                    <option value="Dachdecker Geselle">Dachdecker Geselle</option>
+                    <option value="Quereinsteiger (qualifiziert)">Quereinsteiger (qualifiziert)</option>
+                    <option value="Hilfskraft (jung & motiviert)">Hilfskraft (jung & motiviert)</option>
+                  </select>
+                </label>
+              </div>
+              <div>
+                <label>Berufserfahrung
+                  <select id="exp">
+                    <option>0–1 Jahre</option>
+                    <option selected>2–4 Jahre</option>
+                    <option>5–9 Jahre</option>
+                    <option>10+ Jahre</option>
+                  </select>
+                </label>
+              </div>
+              <div>
+                <label>Start möglich
+                  <select id="start">
+                    <option selected>Sofort</option>
+                    <option>In 2 Wochen</option>
+                    <option>In 1 Monat</option>
+                    <option>Später</option>
+                  </select>
+                </label>
+              </div>
+              <div class="card" style="border-radius:16px; padding:14px">
+                <strong>Kurz & ehrlich</strong>
+                <p>Wir suchen jemanden, der Bock hat – und sauber arbeitet. Spezialisierung ist ein Plus, aber kein Muss.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="step" data-step="3">
+            <label style="margin-top:6px; display:block; color:rgba(244,246,251,.85); font-weight:650;">
+              Was kannst du gut? (anklicken)
+            </label>
+
+            <div class="chips">
+              <div class="chip" data-toggle="abdichtung"><span>Abdichtung (Schweißbahn etc.)</span><span class="tick">✓</span></div>
+              <div class="chip" data-toggle="klempner"><span>Klempner / Bauspenglerei</span><span class="tick">✓</span></div>
+              <div class="chip on" data-toggle="ziegel"><span>Ziegel / Steildach</span><span class="tick">✓</span></div>
+              <div class="chip" data-toggle="zimmerei"><span>Zimmerei (nice to have)</span><span class="tick">✓</span></div>
+            </div>
+
+            <label style="margin-top:12px;">Kurze Nachricht (optional)
+              <textarea id="message" placeholder="z. B. welche Arbeiten machst du am liebsten?"></textarea>
+            </label>
+          </div>
+
+          <!-- STEP 4 -->
+          <div class="step" data-step="4">
+            <label style="margin-top:6px; display:block; color:rgba(244,246,251,.85); font-weight:650;">
+              Führerschein (anklicken)
+            </label>
+
+            <div class="chips">
+              <div class="chip on" data-toggle="fsb"><span>Klasse B vorhanden</span><span class="tick">✓</span></div>
+              <div class="chip" data-toggle="lkwHas"><span>LKW-Führerschein vorhanden</span><span class="tick">✓</span></div>
+              <div class="chip on" data-toggle="lkwWant"><span>LKW erwünscht (kann gestellt werden)</span><span class="tick">✓</span></div>
+            </div>
+
+            <div class="card" style="margin-top:12px; border-radius:16px;">
+              <strong>Datenschutz</strong>
+              <p>Mit „Bewerbung senden“ öffnet sich dein Mailprogramm mit fertig ausgefülltem Text. Bitte dann nur noch auf Senden klicken.</p>
+              <label style="margin-top:10px; display:flex; gap:10px; align-items:flex-start;">
+                <input id="consent" type="checkbox" checked style="width:auto; margin-top:4px"/>
+                <span style="font-size:13px; color:rgba(244,246,251,.85)">
+                  Ich bin einverstanden, dass meine Angaben zur Kontaktaufnahme verarbeitet werden.
+                </span>
+              </label>
+              <div class="error" id="errConsent">Bitte Zustimmung aktivieren.</div>
+            </div>
+          </div>
+
+          <div class="nav">
+            <button class="btn" id="backBtn" type="button">Zurück</button>
+            <button class="btn primary" id="nextBtn" type="button">Weiter</button>
+          </div>
+
+          <div class="hint">
+            Tipp: Lieber direkt sprechen? <a href="tel:+4968557466" style="text-decoration:underline">06855 7466</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="wrap" style="padding:0">
+          <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between; align-items:center;">
+            <div>
+              <strong style="color:rgba(244,246,251,.92)">Jörg Lehmann Dachdeckerei</strong><br/>
+              In der Zennwies 4 • 66629 Freisen
+            </div>
+            <div style="display:flex; gap:14px;">
+              <a href="https://www.dachbau-lehmann.de" target="_blank" rel="noreferrer">Website</a>
+              <a href="tel:+4968557466">Telefon</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast">
+    <strong id="toastTitle">Hinweis</strong>
+    <span id="toastDesc"></span>
+  </div>
+
+<script>
+  // ====== KONFIG: ZIEL-E-MAIL ======
+  const TO_EMAIL = "bewerbung@dachbau-lehmann.de"; // <- hier ggf. ändern
+
+  // ====== Funnel State ======
+  let step = 1;
+  const total = 4;
+
+  const state = {
+    skills: { abdichtung:false, klempner:false, ziegel:true, zimmerei:false },
+    driving: { fsb:true, lkwHas:false, lkwWant:true }
+  };
+
+  // ====== Helpers ======
+  const $ = (id) => document.getElementById(id);
+  const show = (el, on) => el.style.display = on ? "block" : "none";
+
+  function setStep(n){
+    step = Math.max(1, Math.min(total, n));
+    document.querySelectorAll(".step").forEach(s => {
+      s.classList.toggle("active", Number(s.dataset.step) === step);
+    });
+
+    const pct = Math.round((step/total)*100);
+    $("stepLabel").textContent = `Schritt ${step} von ${total}`;
+    $("pctLabel").textContent = `${pct}%`;
+    $("barFill").style.width = pct + "%";
+
+    $("backBtn").disabled = (step === 1);
+    $("nextBtn").textContent = (step === total) ? "Bewerbung senden" : "Weiter";
+  }
+
+  function toast(title, desc){
+    $("toastTitle").textContent = title;
+    $("toastDesc").textContent = desc || "";
+    $("toast").style.display = "block";
+    setTimeout(() => $("toast").style.display = "none", 3200);
+  }
+
+  // ====== Chip toggles ======
+  document.querySelectorAll(".chip[data-toggle]").forEach(chip => {
+    chip.addEventListener("click", () => {
+      const key = chip.dataset.toggle;
+
+      // Skills keys
+      if (["abdichtung","klempner","ziegel","zimmerei"].includes(key)){
+        state.skills[key] = !state.skills[key];
+        chip.classList.toggle("on", state.skills[key]);
+      }
+
+      // Driving keys
+      if (key === "fsb"){ state.driving.fsb = !state.driving.fsb; chip.classList.toggle("on", state.driving.fsb); }
+      if (key === "lkwHas"){ state.driving.lkwHas = !state.driving.lkwHas; chip.classList.toggle("on", state.driving.lkwHas); }
+      if (key === "lkwWant"){ state.driving.lkwWant = !state.driving.lkwWant; chip.classList.toggle("on", state.driving.lkwWant); }
+    });
+  });
+
+  // ====== Validation ======
+  function validateStep1(){
+    const name = $("fullName").value.trim();
+    const phone = $("phone").value.trim();
+    const city = $("city").value.trim();
+
+    show($("errFullName"), name.length < 2);
+    show($("errPhone"), phone.length < 6);
+    show($("errCity"), city.length < 2);
+
+    return !(name.length < 2 || phone.length < 6 || city.length < 2);
+  }
+
+  function validateStep4(){
+    const ok = $("consent").checked;
+    show($("errConsent"), !ok);
+    return ok;
+  }
+
+  // ====== Submit via mailto (GitHub-only) ======
+  function submit(){
+    if (!validateStep4()) return;
+
+    const data = {
+      fullName: $("fullName").value.trim(),
+      phone: $("phone").value.trim(),
+      email: $("email").value.trim(),
+      city: $("city").value.trim(),
+      role: $("role").value,
+      exp: $("exp").value,
+      start: $("start").value,
+      message: $("message").value.trim(),
+      skills: state.skills,
+      driving: state.driving
+    };
+
+    const subject = encodeURIComponent(`Bewerbung: ${data.fullName} (${data.role})`);
+
+    const bodyText =
+`Hallo Jörg Lehmann Dachdeckerei,
+
+ich möchte mich bewerben.
+
+Name: ${data.fullName}
+Telefon: ${data.phone}
+E-Mail: ${data.email || "-"}
+Ort: ${data.city}
+
+Profil: ${data.role}
+Berufserfahrung: ${data.exp}
+Start: ${data.start}
+
+Skills:
+- Abdichtung (Schweißbahn etc.): ${data.skills.abdichtung ? "Ja" : "Nein"}
+- Klempner/Bauspenglerei: ${data.skills.klempner ? "Ja" : "Nein"}
+- Ziegel/Steildach: ${data.skills.ziegel ? "Ja" : "Nein"}
+- Zimmerei: ${data.skills.zimmerei ? "Ja" : "Nein"}
+
+Führerschein:
+- Klasse B: ${data.driving.fsb ? "Ja" : "Nein"}
+- LKW vorhanden: ${data.driving.lkwHas ? "Ja" : "Nein"}
+- LKW erwünscht (kann gestellt werden): ${data.driving.lkwWant ? "Ja" : "Nein"}
+
+Nachricht:
+${data.message || "-"}
+
+Viele Grüße
+${data.fullName}`;
+
+    const body = encodeURIComponent(bodyText);
+
+    toast("Fast fertig ✅", "Dein Mailprogramm öffnet sich – bitte nur noch auf Senden klicken.");
+    window.location.href = `mailto:${TO_EMAIL}?subject=${subject}&body=${body}`;
+  }
+
+  // ====== Nav buttons ======
+  $("backBtn").addEventListener("click", () => setStep(step - 1));
+  $("nextBtn").addEventListener("click", () => {
+    if (step === 1 && !validateStep1()) {
+      toast("Bitte kurz ausfüllen", "Name, Telefon und Ort sind Pflicht.");
+      return;
+    }
+    if (step < total) setStep(step + 1);
+    else submit();
+  });
+
+  // init
+  setStep(1);
+</script>
+</body>
+</html>
