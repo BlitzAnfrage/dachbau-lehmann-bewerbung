@@ -1,1417 +1,291 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1, viewport-fit=cover" />
-  <title>Bewerbung | Jörg Lehmann Dachdeckerei (Freisen)</title>
-  <meta name="description" content="Dachdecker gesucht (m/w/d) – Bewerbung ohne Lebenslauf & ohne Anschreiben. Regional, top Ausstattung, bezahlte Pausen." />
-  <meta name="theme-color" content="#ffffff" />
-  <meta name="color-scheme" content="light" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dachdecker Geselle (m/w/d) – Jetzt bewerben</title>
+<meta name="description" content="Bewirb dich ohne Lebenslauf in 60 Sekunden. Regional. Top Ausstattung. Bezahlte Pausen.">
 
-  <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<!-- ======= FARBEN HIER ANPASSEN ======= -->
+<style>
+:root{
+  --primary:#d62f2f;      /* Hauptfarbe */
+  --dark:#0f172a;         /* Dunkle Akzentfarbe */
+  --bg:#f5f7fb;           /* Hintergrund */
+  --radius:20px;
+}
 
-  <style>
-    :root{
-      --bg:#f6f7fb;
-      --surface:#ffffff;
-      --text:#0b1220;
-      --muted:rgba(11,18,32,.66);
-      --muted2:rgba(11,18,32,.50);
-      --line:rgba(11,18,32,.10);
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--bg);
+  color:#111;
+  line-height:1.5;
+}
 
-      --brand:#d62f2f;
-      --brandDark:#0b1220;
-      --danger:#e11d48;
-      --ok:#16a34a;
+.container{max-width:1100px;margin:auto;padding:20px}
 
-      --r-xl:24px;
-      --r-lg:18px;
-      --r-md:14px;
+/* ===== HEADER ===== */
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 0;
+}
+.logo{
+  font-weight:700;
+  font-size:18px;
+}
+.cta-top{
+  background:var(--primary);
+  color:#fff;
+  padding:10px 18px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:600;
+}
 
-      --shadow-lg:0 22px 70px rgba(11,18,32,.10);
-      --shadow-md:0 14px 34px rgba(11,18,32,.10);
-      --shadow-sm:0 10px 22px rgba(11,18,32,.06);
+/* ===== HERO ===== */
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+  margin-top:40px;
+}
+.hero img{
+  width:100%;
+  border-radius:var(--radius);
+}
+.hero h1{
+  font-size:42px;
+  line-height:1.1;
+}
+.hero p{
+  margin-top:15px;
+  font-size:18px;
+  color:#555;
+}
+.hero .cta{
+  margin-top:25px;
+  display:inline-block;
+  background:var(--dark);
+  color:#fff;
+  padding:14px 28px;
+  border-radius:50px;
+  font-weight:600;
+  text-decoration:none;
+}
 
-      --focus:0 0 0 4px rgba(214,47,47,.18);
-      --container:1120px;
-    }
+/* ===== BENEFITS ===== */
+.benefits{
+  margin-top:80px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+.card{
+  background:#fff;
+  padding:25px;
+  border-radius:var(--radius);
+  box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
+.card h3{
+  margin-bottom:10px;
+  color:var(--primary);
+}
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--text);
-      background:
-        radial-gradient(900px 550px at 12% -5%, rgba(214,47,47,.10), transparent 56%),
-        radial-gradient(900px 650px at 92% 10%, rgba(14,165,233,.08), transparent 55%),
-        var(--bg);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      overflow-x:hidden;
-    }
-    a{color:inherit}
-    img{max-width:100%; display:block}
-    .container{max-width:var(--container); margin:0 auto; padding:16px}
-    .safe{padding-bottom: env(safe-area-inset-bottom);}
+/* ===== FUNNEL ===== */
+.funnel{
+  margin-top:80px;
+  background:#fff;
+  padding:40px;
+  border-radius:var(--radius);
+  box-shadow:0 20px 60px rgba(0,0,0,.07);
+}
+.progress{
+  height:8px;
+  background:#eee;
+  border-radius:10px;
+  overflow:hidden;
+  margin-bottom:30px;
+}
+.progress-bar{
+  height:100%;
+  width:33%;
+  background:var(--primary);
+  transition:.3s;
+}
 
-    /* ===== Icons (brand colored) ===== */
-    .icon{
-      width:38px; height:38px;
-      border-radius: 14px;
-      border:1px solid rgba(214,47,47,.14);
-      background: rgba(214,47,47,.06);
-      display:grid; place-items:center;
-      flex: 0 0 auto;
-    }
-    .icon svg{
-      width:18px; height:18px;
-      stroke: var(--brand);
-      fill:none;
-      stroke-width:2;
-      stroke-linecap:round;
-      stroke-linejoin:round;
-    }
+.step{display:none}
+.step.active{display:block}
 
-    /* ===== Buttons (one style) ===== */
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding: 11px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(11,18,32,.12);
-      background: rgba(255,255,255,.92);
-      box-shadow: var(--shadow-sm);
-      text-decoration:none;
-      font-weight: 900;
-      font-size: 14px;
-      cursor:pointer;
-      transition: transform .12s ease, filter .12s ease, opacity .12s ease;
-      user-select:none;
-      -webkit-tap-highlight-color: transparent;
-      white-space: nowrap;
-    }
-    .btn:active{transform: translateY(1px)}
-    .btn.primary{
-      background: linear-gradient(180deg, var(--brandDark), #070d18);
-      color:#fff;
-      border-color: rgba(11,18,32,.22);
-      box-shadow: 0 18px 44px rgba(11,18,32,.16);
-    }
-    .btn.brand{
-      background: linear-gradient(180deg, var(--brand), #b61f1f);
-      color:#fff;
-      border-color: rgba(214,47,47,.26);
-      box-shadow: 0 18px 44px rgba(214,47,47,.22);
-    }
-    .btn.soft{
-      background: rgba(214,47,47,.07);
-      border-color: rgba(214,47,47,.16);
-      color: var(--brand);
-      box-shadow: 0 12px 26px rgba(11,18,32,.05);
-    }
-    .btn[disabled]{opacity:.55; cursor:not-allowed; transform:none}
-    .btn:hover{filter:brightness(1.02)}
+input,select,textarea{
+  width:100%;
+  padding:14px;
+  margin-top:10px;
+  margin-bottom:20px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  font-size:15px;
+}
 
-    /* ===== Topbar ===== */
-    .topbar{
-      position: sticky;
-      top: 0;
-      z-index: 60;
-      background: rgba(246,247,251,.90);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line);
-    }
-    .topbar-inner{
-      max-width:var(--container);
-      margin:0 auto;
-      padding: 10px 14px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-    }
-    .brandLine{
-      display:flex; align-items:center; gap:10px;
-      min-width:0;
-      flex: 1 1 auto;
-      text-decoration:none;
-    }
-    .logoBox{
-      width:52px; height:52px;
-      border-radius: 16px;
-      border:1px solid rgba(11,18,32,.10);
-      background:#fff;
-      box-shadow: var(--shadow-sm);
-      overflow:hidden;
-      display:grid; place-items:center;
-      flex: 0 0 auto;
-    }
-    .logoBox img{width:100%; height:100%; object-fit:contain; padding:7px}
-    .brandText{min-width:0}
-    .brandText .name{
-      font-weight: 900;
-      font-size: 14px;
-      line-height:1.05;
-      letter-spacing:-.2px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      max-width: 62vw;
-    }
-    .brandText .sub{
-      margin-top:2px;
-      font-size: 12px;
-      color: var(--muted);
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      max-width: 62vw;
-    }
-    .topActions{display:flex; justify-content:center; flex: 0 0 auto;}
-    @media (max-width:820px){
-      .btn{padding: 11px 14px; font-size: 13px;}
-      .brandText .name, .brandText .sub{max-width: 64vw;}
-    }
+button{
+  background:var(--primary);
+  color:#fff;
+  padding:14px 28px;
+  border:none;
+  border-radius:50px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+}
 
-    /* ===== Hero ===== */
-    .hero{padding: 8px 0 8px}
-    .shell{
-      border-radius: var(--r-xl);
-      border:1px solid rgba(11,18,32,.08);
-      background: rgba(255,255,255,.92);
-      box-shadow: var(--shadow-lg);
-      overflow:hidden;
-    }
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap:0;
-      min-height: 420px;
-    }
-    @media (max-width:980px){
-      .heroGrid{grid-template-columns:1fr;}
-    }
-    .heroLeft{
-      padding: 18px 18px;
-      background:
-        radial-gradient(800px 500px at 10% 0%, rgba(214,47,47,.08), transparent 55%),
-        #fff;
-    }
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:8px 12px;
-      border-radius: 999px;
-      background: rgba(11,18,32,.035);
-      border:1px solid rgba(11,18,32,.08);
-      color: var(--muted);
-      font-size:12px;
-      font-weight: 750;
-    }
-    .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: var(--brand);
-      box-shadow: 0 0 0 4px rgba(214,47,47,.12);
-    }
-    h1{
-      margin: 14px 0 10px;
-      font-size: clamp(28px, 4.6vw, 50px);
-      line-height:1.04;
-      letter-spacing:-1.1px;
-    }
-    .accent{color: var(--brand)}
-    .lead{
-      margin:0;
-      font-size: 15px;
-      line-height: 1.55;
-      color: rgba(11,18,32,.78);
-      max-width: 62ch;
-    }
-
-    .kpis{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap:10px;
-      margin-top: 14px;
-    }
-    @media (max-width:980px){ .kpis{grid-template-columns:1fr;} }
-    .kpi{
-      border-radius: 16px;
-      border:1px solid rgba(11,18,32,.08);
-      background: rgba(255,255,255,.95);
-      padding: 12px;
-      box-shadow: 0 10px 22px rgba(11,18,32,.05);
-    }
-    .kpi .k{font-size:12px; font-weight: 900; color: rgba(11,18,32,.70)}
-    .kpi .v{margin-top:6px; font-size:14px; color: rgba(11,18,32,.70); line-height:1.35}
-    .kpi .v b{color: var(--text)}
-    .ctas{
-      display:flex;
-      justify-content:flex-start;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top: 14px;
-      align-items:center;
-    }
-    @media (max-width:520px){ .ctas .btn{flex:1 1 auto; min-width:0;} }
-
-    /* Hero image (better for aerial building) */
-    .heroRight{
-      padding: 8px 18px 18px; /* höher */
-      background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.92));
-      display:flex; align-items:stretch;
-    }
-    .heroMedia{
-      position:relative;
-      width:100%;
-      border-radius: 22px;
-      overflow:hidden;
-      border:1px solid rgba(11,18,32,.10);
-      box-shadow: 0 14px 34px rgba(11,18,32,.10);
-      background: #0b1220;
-      transform: translateY(-6px); /* Bild optisch höher */
-    }
-    .heroMedia img{
-      width:100%; height:100%;
-      object-fit:cover;
-      opacity:.98;
-      filter: contrast(1.02) saturate(1.06);
-      object-position: center 35%;
-    }
-    .heroVignette{
-      position:absolute; inset:0;
-      background:
-        radial-gradient(700px 420px at 25% 20%, rgba(255,255,255,.08), transparent 55%),
-        linear-gradient(180deg, rgba(11,18,32,.10), rgba(11,18,32,.38));
-      pointer-events:none;
-    }
-    .heroBadge{
-      position:absolute; left:14px; top:14px;
-      padding: 9px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 950;
-      color: rgba(255,255,255,.94);
-      background: rgba(214,47,47,.95);
-      border: 1px solid rgba(255,255,255,.18);
-      box-shadow: 0 14px 30px rgba(214,47,47,.25);
-    }
-    .heroCard{
-      position:absolute; left:14px; right:14px; bottom:14px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.12);
-      backdrop-filter: blur(10px);
-      padding: 12px;
-      color: rgba(255,255,255,.94);
-    }
-    .heroCard .t{font-weight: 950; letter-spacing:-.2px; font-size: 14px;}
-    .heroCard .s{margin-top:6px; font-size: 13px; color: rgba(255,255,255,.82); line-height:1.35;}
-    @media (max-width:980px){
-      .heroRight{padding: 8px 14px 14px;}
-      .heroMedia{transform: translateY(-4px);}
-      .heroMedia img{object-position:center 32%;}
-    }
-
-    /* ===== Sections ===== */
-    .section{padding: 14px 0 6px}
-    .section h2{
-      margin: 10px 0 10px;
-      font-size: 18px;
-      letter-spacing: -.3px;
-    }
-    .cards{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap:12px;
-    }
-    @media (max-width:980px){ .cards{grid-template-columns:1fr} }
-    .card{
-      background: rgba(255,255,255,.94);
-      border: 1px solid rgba(11,18,32,.08);
-      border-radius: var(--r-lg);
-      padding: 14px;
-      box-shadow: 0 12px 28px rgba(11,18,32,.06);
-    }
-    .cardTop{display:flex; align-items:center; gap:10px;}
-    .cardTop .title{
-      font-weight: 950;
-      letter-spacing:-.2px;
-      font-size: 15px;
-    }
-    .card p{
-      margin: 8px 0 0;
-      color: rgba(11,18,32,.70);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    /* ===== Gallery ===== */
-    .gallery{
-      margin-top: 12px;
-      border-radius: var(--r-xl);
-      border: 1px solid rgba(11,18,32,.08);
-      background: rgba(255,255,255,.92);
-      box-shadow: var(--shadow-md);
-      overflow:hidden;
-    }
-    .galleryHead{
-      padding: 14px;
-      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
-      border-bottom: 1px solid rgba(11,18,32,.08);
-    }
-    .galleryHead .t{font-weight: 950; letter-spacing:-.2px}
-    .galleryHead .s{color: var(--muted); font-size: 13px; line-height:1.35}
-    .rail{
-      display:flex;
-      gap:10px;
-      padding: 14px;
-      overflow-x:auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width:none;
-    }
-    .rail::-webkit-scrollbar{display:none}
-    .shot{
-      flex: 0 0 auto;
-      width: 280px;
-      aspect-ratio: 16/10;
-      border-radius: 18px;
-      overflow:hidden;
-      border: 1px solid rgba(11,18,32,.10);
-      box-shadow: 0 12px 26px rgba(11,18,32,.08);
-      background: #eef2f6;
-      position:relative;
-      cursor:pointer;
-    }
-    .shot img{width:100%; height:100%; object-fit:cover}
-    @media (max-width:520px){
-      .shot{width: 240px;}
-    }
-
-    /* Lightbox */
-    .lightbox{
-      position:fixed; inset:0;
-      background: rgba(11,18,32,.72);
-      display:none;
-      z-index: 90;
-      padding: 14px;
-      padding-bottom: calc(14px + env(safe-area-inset-bottom));
-    }
-    .lightbox.on{display:flex; align-items:center; justify-content:center;}
-    .lbCard{
-      max-width: 980px; width:100%;
-      border-radius: 22px;
-      overflow:hidden;
-      background:#0b1220;
-      border: 1px solid rgba(255,255,255,.16);
-      box-shadow: 0 30px 90px rgba(0,0,0,.35);
-      position:relative;
-    }
-    .lbCard img{width:100%; height:auto; display:block}
-    .lbClose{
-      position:absolute; top:12px; right:12px;
-      border:1px solid rgba(255,255,255,.20);
-      background: rgba(255,255,255,.12);
-      color:#fff;
-      border-radius: 999px;
-      padding: 10px 12px;
-      font-weight: 950;
-      cursor:pointer;
-      backdrop-filter: blur(10px);
-    }
-
-    /* ===== Apply ===== */
-    .apply{padding: 14px 0 24px;}
-    .applyGrid{
-      display:grid;
-      grid-template-columns: 1.02fr .98fr;
-      gap: 14px;
-      align-items:start;
-    }
-    @media (max-width:980px){
-      .applyGrid{grid-template-columns:1fr;}
-      .funnelPanel{order:0}
-      .infoPanel{order:1}
-    }
-    .panel{
-      background: rgba(255,255,255,.94);
-      border: 1px solid rgba(11,18,32,.08);
-      border-radius: var(--r-xl);
-      box-shadow: var(--shadow-md);
-      overflow:hidden;
-    }
-
-    /* Info panel (better image integration for your chef photo) */
-    .infoMedia{
-      position:relative;
-      height: 250px;
-      background: #0b1220;
-      overflow:hidden;
-    }
-    .infoMedia img{
-      width:100%; height:100%;
-      object-fit:cover;
-      object-position: center 30%;
-      filter: contrast(1.02) saturate(1.04);
-      opacity:.98;
-    }
-    .infoMedia:after{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        radial-gradient(700px 380px at 18% 18%, rgba(255,255,255,.10), transparent 60%),
-        linear-gradient(180deg, rgba(11,18,32,.06), rgba(11,18,32,.34));
-      pointer-events:none;
-    }
-    .infoBadge{
-      position:absolute; left:12px; top:12px;
-      border-radius: 999px;
-      padding: 9px 10px;
-      font-size: 12px;
-      font-weight: 950;
-      color: rgba(255,255,255,.94);
-      background: rgba(255,255,255,.16);
-      border: 1px solid rgba(255,255,255,.22);
-      backdrop-filter: blur(10px);
-      z-index:2;
-    }
-    .infoBody{padding: 14px 14px 16px}
-    .steps{
-      margin: 10px 0 0;
-      padding:0;
-      list-style:none;
-      display:grid;
-      gap:10px;
-    }
-    .stepRow{
-      display:flex; gap:10px; align-items:flex-start;
-      padding: 12px;
-      border-radius: 18px;
-      border: 1px solid rgba(11,18,32,.08);
-      background: rgba(255,255,255,.96);
-      box-shadow: 0 10px 22px rgba(11,18,32,.05);
-    }
-    .n{
-      width:30px; height:30px; border-radius: 12px;
-      border: 1px solid rgba(214,47,47,.22);
-      color: var(--brand);
-      background: rgba(214,47,47,.06);
-      display:grid; place-items:center;
-      font-weight: 950;
-      flex: 0 0 auto;
-    }
-    .stepRow .t{font-weight: 950; font-size:14px; letter-spacing:-.1px}
-    .stepRow .s{margin-top:4px; color: rgba(11,18,32,.66); font-size:13px; line-height:1.35}
-
-    .company{
-      margin-top: 12px;
-      padding: 14px;
-      border-radius: 18px;
-      border: 1px solid rgba(11,18,32,.08);
-      background: rgba(255,255,255,.96);
-      box-shadow: 0 12px 28px rgba(11,18,32,.06);
-      font-size: 13px;
-      color: rgba(11,18,32,.74);
-    }
-    .company b{color: var(--text)}
-    .company a{color:inherit; text-decoration:none; border-bottom:1px dashed rgba(11,18,32,.35)}
-    .companyBtns{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;}
-    @media (max-width:520px){ .companyBtns .btn{flex:1 1 auto; min-width:0;} }
-
-    /* Funnel */
-    .funnel{padding: 14px}
-    .funnelTop{
-      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid rgba(11,18,32,.08);
-    }
-    .funnelTop .h{font-size: 16px; font-weight: 950; letter-spacing:-.2px;}
-    .funnelTop .p{margin-top:6px; color: rgba(11,18,32,.64); font-size: 13px; line-height: 1.35;}
-
-    .progress{margin-top: 12px; display:grid; gap: 8px;}
-    .progRow{display:flex; justify-content:space-between; font-size:12px; color: rgba(11,18,32,.58); font-weight: 900}
-    .bar{height:10px; border-radius:999px; background: rgba(11,18,32,.06); overflow:hidden;}
-    .bar > div{
-      height:100%;
-      width:0%;
-      border-radius:999px;
-      background: linear-gradient(90deg, var(--brand), #ff6b6b);
-      transition: width .18s ease;
-    }
-
-    /* Step chips */
-    .chips{
-      display:flex; gap:8px;
-      margin-top: 10px;
-      overflow-x:auto;
-      padding-bottom: 2px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width:none;
-    }
-    .chips::-webkit-scrollbar{display:none}
-    .chip{
-      flex:0 0 auto;
-      padding: 8px 10px;
-      border-radius:999px;
-      border:1px solid rgba(11,18,32,.10);
-      background: rgba(255,255,255,.96);
-      font-size: 12px;
-      font-weight: 950;
-      color: rgba(11,18,32,.62);
-      user-select:none;
-      cursor:pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .chip.on{
-      border-color: rgba(214,47,47,.25);
-      background: rgba(214,47,47,.08);
-      color: var(--brand);
-    }
-
-    /* Form */
-    .step{display:none; margin-top: 14px;}
-    .step.active{display:block; animation: pop .15s ease;}
-    @keyframes pop{from{opacity:0; transform: translateY(6px)} to{opacity:1; transform: translateY(0)}}
-    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
-    @media (max-width:520px){ .grid2{grid-template-columns:1fr} }
-    label{
-      display:block;
-      font-size: 12px;
-      color: rgba(11,18,32,.64);
-      font-weight: 950;
-      letter-spacing: .2px;
-    }
-    input, select, textarea{
-      width:100%;
-      margin-top:8px;
-      padding: 13px 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(11,18,32,.12);
-      background: rgba(255,255,255,.98);
-      color: var(--text);
-      outline:none;
-      font-size: 15px;
-      box-shadow: 0 12px 26px rgba(11,18,32,.05);
-    }
-    input::placeholder, textarea::placeholder{color: rgba(11,18,32,.36)}
-    input:focus, select:focus, textarea:focus{border-color: rgba(214,47,47,.36); box-shadow: var(--focus);}
-    textarea{min-height: 110px; resize: vertical;}
-
-    /* Toggles */
-    .toggleGrid{
-      display:grid; grid-template-columns:1fr 1fr;
-      gap:10px; margin-top:10px;
-    }
-    @media (max-width:520px){ .toggleGrid{grid-template-columns:1fr} }
-    .toggle{
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      padding: 12px;
-      border-radius: 18px;
-      border: 1px solid rgba(11,18,32,.10);
-      background: rgba(255,255,255,.96);
-      cursor:pointer;
-      user-select:none;
-      box-shadow: 0 12px 26px rgba(11,18,32,.05);
-      -webkit-tap-highlight-color: transparent;
-    }
-    .toggle .t{font-weight: 950; font-size: 13px; letter-spacing:-.1px}
-    .toggle .s{margin-top:4px; font-size: 12px; color: rgba(11,18,32,.58); line-height:1.25}
-    .check{
-      width: 28px; height: 28px;
-      border-radius: 11px;
-      border: 1px solid rgba(11,18,32,.16);
-      display:grid; place-items:center;
-      font-weight: 950;
-      color: transparent;
-      background: transparent;
-      flex:0 0 auto;
-    }
-    .toggle.on .check{
-      background: linear-gradient(180deg, var(--brand), #b61f1f);
-      border-color: rgba(214,47,47,.30);
-      color:#fff;
-    }
-
-    .note{
-      margin-top: 12px;
-      padding: 12px;
-      border-radius: 18px;
-      border: 1px solid rgba(11,18,32,.08);
-      background: rgba(11,18,32,.03);
-      color: rgba(11,18,32,.72);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-    .note.ok{
-      border-color: rgba(22,163,74,.22);
-      background: rgba(22,163,74,.06);
-      color: rgba(11,18,32,.78);
-    }
-    .error{
-      margin-top: 8px;
-      display:none;
-      color: var(--danger);
-      font-size: 13px;
-      font-weight: 900;
-    }
-
-    .nav{
-      margin-top: 14px;
-      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
-      align-items:center;
-    }
-    .nav .btn{min-width: 140px}
-    @media (max-width:520px){ .nav .btn{flex:1 1 auto; min-width:0;} }
-
-    /* Footer */
-    .footer{
-      margin-top: 16px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(11,18,32,.08);
-      color: rgba(11,18,32,.56);
-      font-size: 13px;
-    }
-    .footerRow{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center;}
-    .footer a{text-decoration:none; border-bottom:1px dashed rgba(11,18,32,.35)}
-
-    /* Toast */
-    .toast{
-      position: fixed;
-      left: 14px; right: 14px;
-      bottom: calc(14px + env(safe-area-inset-bottom));
-      max-width: 560px;
-      margin: 0 auto;
-      display:none;
-      padding: 12px 14px;
-      border-radius: 18px;
-      border: 1px solid rgba(11,18,32,.10);
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(12px);
-      box-shadow: var(--shadow-lg);
-      z-index: 80;
-    }
-    .toast strong{display:block; font-weight: 950}
-    .toast span{display:block; margin-top:4px; font-size:13px; color: rgba(11,18,32,.70); line-height:1.35}
-
-    /* Mobile sticky CTA bar (only apply) */
-    .stickyCta{
-      position: fixed;
-      left: 12px; right: 12px;
-      bottom: calc(12px + env(safe-area-inset-bottom));
-      z-index: 70;
-      display:none;
-    }
-    .stickyCta .btn{width:100%;}
-    @media (max-width:820px){
-      .stickyCta{display:flex;}
-      .container{padding-bottom: 86px;}
-    }
-  </style>
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .hero h1{font-size:32px}
+}
+</style>
 </head>
 
-<body class="safe">
+<body>
 
-  <!-- TOPBAR -->
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a class="brandLine" href="#top" aria-label="Start">
-        <div class="logoBox" aria-hidden="true">
-          <img src="logo.webp" alt="" onerror="this.style.display='none'">
-        </div>
-        <div class="brandText">
-          <div class="name">Jörg Lehmann Dachdeckerei</div>
-          <div class="sub">Meisterbetrieb • Freisen (Saarland)</div>
-        </div>
-      </a>
+<div class="container">
 
-      <div class="topActions">
-        <a class="btn brand" href="#bewerben">Jetzt bewerben</a>
-      </div>
-    </div>
-  </header>
+<!-- HEADER -->
+<div class="header">
+  <div class="logo">
+    <!-- FIRMENNAME HIER ÄNDERN -->
+    Jörg Lehmann Dachdeckerei
+  </div>
+  <a href="#bewerben" class="cta-top">Jetzt bewerben</a>
+</div>
 
-  <main id="top" class="container">
-
-    <!-- HERO -->
-    <section class="hero">
-      <div class="shell">
-        <div class="heroGrid">
-
-          <div class="heroLeft">
-            <div class="pill"><span class="dot"></span> Regional • Dachdeckerei • 66629 Freisen</div>
-
-            <h1>Dachdecker gesucht: <span class="accent">Geselle</span> (m/w/d)</h1>
-
-            <p class="lead">
-              Bewirb dich <b>ohne Lebenslauf</b> und <b>ohne Anschreiben</b>.
-              Online in 3 kurzen Schritten – wir melden uns schnell.
-            </p>
-
-            <div class="kpis" role="list">
-              <div class="kpi" role="listitem">
-                <div class="k">Stundenlohn</div>
-                <div class="v">bis zu <b>21 €</b></div>
-              </div>
-              <div class="kpi" role="listitem">
-                <div class="k">Pausen</div>
-                <div class="v"><b>bezahlt</b> (Frühstück & Mittag)</div>
-              </div>
-              <div class="kpi" role="listitem">
-                <div class="k">Baustellen</div>
-                <div class="v"><b>regional</b> • planbar</div>
-              </div>
-            </div>
-
-            <div class="ctas">
-              <a class="btn primary" href="#bewerben">In 1 Minute bewerben</a>
-            </div>
-          </div>
-
-          <div class="heroRight">
-            <div class="heroMedia" aria-label="Hero Bild">
-              <!-- hero.jpg = Vogelperspektive Gebäude -->
-              <img src="hero.jpg" alt="Betrieb / Standort (Vogelperspektive)" onerror="this.remove()">
-              <div class="heroVignette" aria-hidden="true"></div>
-
-              <div class="heroBadge">Top Team • top Ausstattung</div>
-
-              <div class="heroCard">
-                <div class="t">Saubere Abläufe & Sicherheit</div>
-                <div class="s">Moderne Maschinen/Fahrzeuge + Weiterbildung (z. B. Kranschein).</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- BENEFITS -->
-    <section class="section" aria-label="Benefits">
-      <h2>Warum du hier gut aufgehoben bist</h2>
-      <div class="cards">
-
-        <div class="card">
-          <div class="cardTop">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-            </span>
-            <div class="title">Bezahlte Pausen</div>
-          </div>
-          <p>Frühstück & Mittagspause sind bezahlt. Fair und entspannt.</p>
-        </div>
-
-        <div class="card">
-          <div class="cardTop">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M21 16V8"/><path d="M3 16V8"/><path d="M7 8h10"/><path d="M7 16h10"/><path d="M12 8v8"/></svg>
-            </span>
-            <div class="title">Top Ausstattung</div>
-          </div>
-          <p>Sehr gute Maschinen, Fahrzeuge und moderne Büroausstattung.</p>
-        </div>
-
-        <div class="card">
-          <div class="cardTop">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M8 7V3"/><path d="M16 7V3"/><path d="M4 11h16"/><path d="M5 21h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2"/></svg>
-            </span>
-            <div class="title">Urlaub nach Tarif</div>
-          </div>
-          <p>Sauber geregelt – planbar.</p>
-        </div>
-
-        <div class="card">
-          <div class="cardTop">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 3l8 6-8 6-8-6z"/><path d="M4 9v8l8 4 8-4V9"/></svg>
-            </span>
-            <div class="title">Weiterbildung</div>
-          </div>
-          <p>z. B. Kranschein, neue Techniken, Spezialisierungen.</p>
-        </div>
-
-        <div class="card">
-          <div class="cardTop">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 21s7-4.5 7-11a7 7 0 0 0-14 0c0 6.5 7 11 7 11z"/><path d="M12 10.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg>
-            </span>
-            <div class="title">Regional</div>
-          </div>
-          <p>Saarland/Umgebung – weniger Fahrerei, mehr Planbarkeit.</p>
-        </div>
-
-        <div class="card">
-          <div class="cardTop">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-            </span>
-            <div class="title">Sicherheit</div>
-          </div>
-          <p>Arbeitssicherheit & klare Abläufe – professionell organisiert.</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- WHAT WE LOOK FOR -->
-    <section class="section" aria-label="Was wir suchen">
-      <h2>Was wir suchen</h2>
-      <div class="cards">
-
-        <div class="card">
-          <div class="cardTop">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 .8-4.5 4 1 6.2L12 16l-5.5 3 1-6.2L3 8.8 9 8z"/></svg>
-            </span>
-            <div class="title">Dachdecker Geselle</div>
-          </div>
-          <p>Erfahrung & saubere Arbeit. Wenn du’s kannst – passt du rein.</p>
-        </div>
-
-        <div class="card">
-          <div class="cardTop">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M5 9l7-7 7 7"/></svg>
-            </span>
-            <div class="title">Quereinsteiger / Hilfskraft</div>
-          </div>
-          <p>Motiviert & qualifiziert – dann schauen wir uns das gemeinsam an.</p>
-        </div>
-
-        <div class="card">
-          <div class="cardTop">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-            </span>
-            <div class="title">Pluspunkte</div>
-          </div>
-          <p>Abdichtung, Klempner/Blech, Ziegel, Zimmerei.</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section class="section" aria-label="Einblicke">
-      <div class="gallery">
-        <div class="galleryHead">
-          <div>
-            <div class="t">Einblicke in Betrieb & Baustellen</div>
-            <div class="s">Swipe durch die Bilder – zeigt direkt, wie’s bei euch aussieht.</div>
-          </div>
-          <a class="btn soft" href="#bewerben">Jetzt bewerben</a>
-        </div>
-
-        <div class="rail" id="galleryRail" aria-label="Galerie">
-          <div class="shot" data-src="gal-1.jpg"><img src="gal-1.jpg" alt="Einblick 1" onerror="this.closest('.shot').remove()"></div>
-          <div class="shot" data-src="gal-2.jpg"><img src="gal-2.jpg" alt="Einblick 2" onerror="this.closest('.shot').remove()"></div>
-          <div class="shot" data-src="gal-3.jpg"><img src="gal-3.jpg" alt="Einblick 3" onerror="this.closest('.shot').remove()"></div>
-          <div class="shot" data-src="gal-4.jpg"><img src="gal-4.jpg" alt="Einblick 4" onerror="this.closest('.shot').remove()"></div>
-          <div class="shot" data-src="gal-5.jpg"><img src="gal-5.jpg" alt="Einblick 5" onerror="this.closest('.shot').remove()"></div>
-          <div class="shot" data-src="gal-6.jpg"><img src="gal-6.jpg" alt="Einblick 6" onerror="this.closest('.shot').remove()"></div>
-          <div class="shot" data-src="gal-7.jpg"><img src="gal-7.jpg" alt="Einblick 7" onerror="this.closest('.shot').remove()"></div>
-          <div class="shot" data-src="gal-8.jpg"><img src="gal-8.jpg" alt="Einblick 8" onerror="this.closest('.shot').remove()"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- APPLY -->
-    <section class="apply" id="bewerben" aria-label="Bewerbung">
-      <div class="applyGrid">
-
-        <!-- Funnel -->
-        <section class="panel funnel funnelPanel" aria-label="Schnellbewerbung Funnel">
-          <div class="funnelTop">
-            <div>
-              <div class="h">Schnellbewerbung</div>
-              <div class="p">3 kurze Schritte – am Ende wird deine Bewerbung <b>online</b> gesendet. <b>Ohne Lebenslauf.</b></div>
-            </div>
-          </div>
-
-          <div class="progress">
-            <div class="progRow">
-              <span id="stepLabel">Schritt 1 von 3</span>
-              <span id="pctLabel">33%</span>
-            </div>
-            <div class="bar"><div id="barFill"></div></div>
-
-            <div class="chips" aria-label="Schritte">
-              <span class="chip on" id="chip1" data-jump="1">1 • Kontakt</span>
-              <span class="chip" id="chip2" data-jump="2">2 • Profil</span>
-              <span class="chip" id="chip3" data-jump="3">3 • Absenden</span>
-            </div>
-          </div>
-
-          <!-- STEP 1 -->
-          <div class="step active" data-step="1">
-            <div class="grid2">
-              <div>
-                <label>Vor- & Nachname
-                  <input id="fullName" placeholder="z. B. Max Mustermann" autocomplete="name" inputmode="text">
-                </label>
-                <div class="error" id="errFullName">Bitte deinen Namen eintragen.</div>
-              </div>
-
-              <div>
-                <label>Telefon
-                  <input id="phone" placeholder="z. B. 0176 123456" autocomplete="tel" inputmode="tel">
-                </label>
-                <div class="error" id="errPhone">Bitte eine Telefonnummer eintragen.</div>
-              </div>
-
-              <div>
-                <label>E-Mail (optional)
-                  <input id="email" placeholder="z. B. max@mail.de" autocomplete="email" inputmode="email">
-                </label>
-              </div>
-
-              <div>
-                <label>Wohnort
-                  <input id="city" placeholder="z. B. Freisen" autocomplete="address-level2" inputmode="text">
-                </label>
-                <div class="error" id="errCity">Bitte deinen Wohnort eintragen.</div>
-              </div>
-            </div>
-
-            <div class="note">
-              <b>Keine Unterlagen nötig:</b> Wir brauchen erstmal nur Kontakt + ein paar Infos. Den Rest klären wir im Gespräch.
-            </div>
-          </div>
-
-          <!-- STEP 2 -->
-          <div class="step" data-step="2">
-            <div class="grid2">
-              <div>
-                <label>Du bist…
-                  <select id="role">
-                    <option value="Dachdecker Geselle">Dachdecker Geselle</option>
-                    <option value="Quereinsteiger (qualifiziert)">Quereinsteiger (qualifiziert)</option>
-                    <option value="Hilfskraft (motiviert)">Hilfskraft (motiviert)</option>
-                  </select>
-                </label>
-              </div>
-
-              <div>
-                <label>Berufserfahrung
-                  <select id="exp">
-                    <option>0–1 Jahre</option>
-                    <option selected>2–4 Jahre</option>
-                    <option>5–9 Jahre</option>
-                    <option>10+ Jahre</option>
-                  </select>
-                </label>
-              </div>
-
-              <div>
-                <label>Start möglich
-                  <select id="start">
-                    <option selected>Sofort</option>
-                    <option>In 2 Wochen</option>
-                    <option>In 1 Monat</option>
-                    <option>Später</option>
-                  </select>
-                </label>
-              </div>
-
-              <div>
-                <label>Führerschein
-                  <select id="license">
-                    <option selected>Klasse B vorhanden</option>
-                    <option>LKW vorhanden</option>
-                    <option>LKW erwünscht (kann gestellt werden)</option>
-                    <option>Kein Führerschein</option>
-                  </select>
-                </label>
-              </div>
-            </div>
-
-            <label style="margin-top:12px;">Pluspunkte (anklicken – optional)</label>
-            <div class="toggleGrid">
-              <div class="toggle" data-toggle="abdichtung">
-                <div>
-                  <div class="t">Abdichtung</div>
-                  <div class="s">Schweißbahn, Anschlüsse</div>
-                </div>
-                <div class="check">✓</div>
-              </div>
-
-              <div class="toggle" data-toggle="klempner">
-                <div>
-                  <div class="t">Klempner / Blech</div>
-                  <div class="s">Rinnen, Kantungen</div>
-                </div>
-                <div class="check">✓</div>
-              </div>
-
-              <div class="toggle on" data-toggle="ziegel">
-                <div>
-                  <div class="t">Ziegel / Steildach</div>
-                  <div class="s">Eindeckung, Reparaturen</div>
-                </div>
-                <div class="check">✓</div>
-              </div>
-
-              <div class="toggle" data-toggle="zimmerei">
-                <div>
-                  <div class="t">Zimmerei</div>
-                  <div class="s">nice to have</div>
-                </div>
-                <div class="check">✓</div>
-              </div>
-            </div>
-
-            <label style="margin-top:12px;">Kurze Nachricht (optional)
-              <textarea id="message" placeholder="z. B. Steildach, Abdichtung oder Blech – was machst du am liebsten?"></textarea>
-            </label>
-          </div>
-
-          <!-- STEP 3 -->
-          <div class="step" data-step="3">
-            <div class="note">
-              <b>Fast fertig ✅</b><br>
-              Mit „Bewerbung senden“ werden deine Angaben online übertragen.<br>
-              Das dauert nur einen Moment.
-              <div style="margin-top:10px; display:flex; gap:10px; align-items:flex-start;">
-                <input id="consent" type="checkbox" checked style="width:auto; margin-top:3px;">
-                <div style="font-size:13px; color: rgba(11,18,32,.70); font-weight:900;">
-                  Ich bin einverstanden, dass meine Angaben zur Kontaktaufnahme verarbeitet werden.
-                </div>
-              </div>
-              <div class="error" id="errConsent">Bitte Zustimmung aktivieren.</div>
-            </div>
-
-            <div class="note ok" style="margin-top:10px; display:none;" id="successNote">
-              <b>Gesendet ✅</b><br>
-              Danke! Wir melden uns zeitnah bei dir.
-            </div>
-
-            <div class="note" style="margin-top:10px;">
-              <b>Was passiert danach?</b><br>
-              Wir melden uns bei dir und klären kurz die wichtigsten Punkte. Kein Papierkram.
-            </div>
-          </div>
-
-          <div class="nav">
-            <button class="btn soft" id="backBtn" type="button">Zurück</button>
-            <button class="btn primary" id="nextBtn" type="button">Weiter</button>
-          </div>
-
-          <div class="footer">
-            <div class="footerRow">
-              <div><b style="color:rgba(11,18,32,.90)">Jörg Lehmann Dachdeckerei</b> • 66629 Freisen</div>
-              <div style="display:flex; gap:14px;">
-                <a href="#top">Nach oben</a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Info Panel -->
-        <aside class="panel infoPanel">
-          <div class="infoMedia">
-            <span class="infoBadge">So läuft’s ab</span>
-            <!-- team.jpg = Chef zeigt auf Monitor -->
-            <img src="team.jpg" alt="Einblick: Besprechung & Planung" onerror="this.remove()">
-          </div>
-
-          <div class="infoBody">
-            <h2 style="margin:0 0 10px; font-size:18px; letter-spacing:-.3px;">In 3 einfachen Schritten</h2>
-
-            <ul class="steps">
-              <li class="stepRow">
-                <div class="n">1</div>
-                <div>
-                  <div class="t">Kontakt</div>
-                  <div class="s">Name, Telefon, Wohnort – das reicht.</div>
-                </div>
-              </li>
-              <li class="stepRow">
-                <div class="n">2</div>
-                <div>
-                  <div class="t">Profil auswählen</div>
-                  <div class="s">Geselle / Quereinsteiger + Pluspunkte anklicken.</div>
-                </div>
-              </li>
-              <li class="stepRow">
-                <div class="n">3</div>
-                <div>
-                  <div class="t">Absenden</div>
-                  <div class="s">Online senden – fertig.</div>
-                </div>
-              </li>
-            </ul>
-
-            <div class="company">
-              <b>Unternehmensinfo</b><br>
-              Jörg Lehmann Dachdeckerei<br>
-              In der Zennwies 4 • 66629 Freisen<br>
-              Telefon: 06855 7466<br>
-              Website: <a href="https://www.dachbau-lehmann.de" target="_blank" rel="noreferrer">dachbau-lehmann.de</a>
-
-              <div class="companyBtns">
-                <a class="btn brand" href="#bewerben">Jetzt bewerben</a>
-              </div>
-            </div>
-          </div>
-        </aside>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Sticky CTA (mobile): only apply -->
-  <div class="stickyCta" aria-label="Schnellaktionen">
-    <a class="btn brand" href="#bewerben">Jetzt bewerben</a>
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>Dachdecker Geselle (m/w/d) gesucht</h1>
+    <p>Bewirb dich ohne Lebenslauf in unter 1 Minute. Regional • Bis 21€ Stundenlohn • Bezahlte Pausen</p>
+    <a href="#bewerben" class="cta">In 60 Sekunden bewerben</a>
   </div>
 
-  <!-- Toast -->
-  <div class="toast" id="toast" role="status" aria-live="polite">
-    <strong id="toastTitle">Hinweis</strong>
-    <span id="toastDesc"></span>
-  </div>
+  <!-- HERO BILD ERSETZEN -->
+  <img src="hero.jpg" alt="Dachdecker Team">
+</section>
 
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" aria-label="Bildanzeige">
-    <div class="lbCard">
-      <button class="lbClose" id="lbClose" type="button">Schließen</button>
-      <img id="lbImg" src="" alt="Bild">
-    </div>
+<!-- BENEFITS -->
+<section class="benefits">
+  <div class="card">
+    <h3>Bis zu 21€</h3>
+    <p>Attraktiver Stundenlohn mit fairen Konditionen.</p>
   </div>
+  <div class="card">
+    <h3>Bezahlte Pausen</h3>
+    <p>Frühstück & Mittag werden bezahlt.</p>
+  </div>
+  <div class="card">
+    <h3>Regionale Baustellen</h3>
+    <p>Wenig Fahrerei – mehr Planbarkeit.</p>
+  </div>
+  <div class="card">
+    <h3>Weiterbildung</h3>
+    <p>Kranschein & Spezialisierungen möglich.</p>
+  </div>
+</section>
+
+<!-- FUNNEL -->
+<section id="bewerben" class="funnel">
+
+<div class="progress">
+  <div class="progress-bar" id="progress"></div>
+</div>
+
+<form id="applyForm">
+
+<!-- STEP 1 -->
+<div class="step active">
+  <h2>Kontakt</h2>
+  <input type="text" id="name" placeholder="Vor- & Nachname" required>
+  <input type="tel" id="phone" placeholder="Telefonnummer" required>
+  <input type="text" id="city" placeholder="Wohnort" required>
+  <button type="button" onclick="nextStep()">Weiter</button>
+</div>
+
+<!-- STEP 2 -->
+<div class="step">
+  <h2>Profil</h2>
+  <select id="role">
+    <option>Dachdecker Geselle</option>
+    <option>Quereinsteiger</option>
+    <option>Hilfskraft</option>
+  </select>
+
+  <select id="experience">
+    <option>0–1 Jahre</option>
+    <option>2–4 Jahre</option>
+    <option>5–9 Jahre</option>
+    <option>10+ Jahre</option>
+  </select>
+
+  <button type="button" onclick="nextStep()">Weiter</button>
+</div>
+
+<!-- STEP 3 -->
+<div class="step">
+  <h2>Absenden</h2>
+  <textarea id="message" placeholder="Optional: Kurze Nachricht"></textarea>
+
+  <label>
+    <input type="checkbox" id="consent" required>
+    Ich stimme der Verarbeitung meiner Daten zu.
+  </label>
+
+  <br><br>
+  <button type="submit">Bewerbung senden</button>
+</div>
+
+</form>
+</section>
+
+</div>
 
 <script>
-  // ====== KONFIG: WEBHOOK (n8n) ======
-  const WEBHOOK_URL = "https://n8n.srv899952.hstgr.cloud/webhook-test/b16fd98d-e0c6-4c7c-b064-ae7dd7e50949";
+let currentStep = 0;
+const steps = document.querySelectorAll(".step");
+const progress = document.getElementById("progress");
 
-  // ====== Funnel State (3 steps) ======
-  let step = 1;
-  const total = 3;
-  let isSubmitting = false;
+function nextStep(){
+  if(currentStep < steps.length-1){
+    steps[currentStep].classList.remove("active");
+    currentStep++;
+    steps[currentStep].classList.add("active");
+    progress.style.width = ((currentStep+1)/steps.length*100)+"%";
+  }
+}
 
-  const state = {
-    skills: { abdichtung:false, klempner:false, ziegel:true, zimmerei:false }
+document.getElementById("applyForm").addEventListener("submit", async function(e){
+  e.preventDefault();
+
+  const data = {
+    name: document.getElementById("name").value,
+    phone: document.getElementById("phone").value,
+    city: document.getElementById("city").value,
+    role: document.getElementById("role").value,
+    experience: document.getElementById("experience").value,
+    message: document.getElementById("message").value
   };
 
-  // ====== Helpers ======
-  const $ = (id) => document.getElementById(id);
-  const show = (el, on) => el.style.display = on ? "block" : "none";
-
-  function toast(title, desc){
-    $("toastTitle").textContent = title;
-    $("toastDesc").textContent = desc || "";
-    $("toast").style.display = "block";
-    clearTimeout(window.__toastT);
-    window.__toastT = setTimeout(() => $("toast").style.display = "none", 3200);
-  }
-
-  function setChips(){
-    for(let i=1;i<=3;i++){
-      const c = $("chip"+i);
-      if(!c) continue;
-      c.classList.toggle("on", i <= step);
-    }
-  }
-
-  function setStep(n, opts = { scroll: true }){
-    step = Math.max(1, Math.min(total, n));
-
-    document.querySelectorAll(".step").forEach(s => {
-      s.classList.toggle("active", Number(s.dataset.step) === step);
-    });
-
-    const pct = Math.round((step/total)*100);
-    $("stepLabel").textContent = `Schritt ${step} von ${total}`;
-    $("pctLabel").textContent = `${pct}%`;
-    $("barFill").style.width = pct + "%";
-
-    $("backBtn").disabled = (step === 1 || isSubmitting);
-    $("nextBtn").textContent = (step === total) ? "Bewerbung senden" : "Weiter";
-    $("nextBtn").disabled = isSubmitting;
-
-    setChips();
-
-    if (opts.scroll){
-      const top = document.getElementById("bewerben").getBoundingClientRect().top + window.scrollY - 84;
-      window.scrollTo({top, behavior:"smooth"});
-    }
-  }
-
-  // Chips clickable
-  document.querySelectorAll(".chip[data-jump]").forEach(ch => {
-    ch.addEventListener("click", () => {
-      if (isSubmitting) return;
-      const target = Number(ch.dataset.jump);
-      if (target > step && step === 1 && !validateStep1()){
-        toast("Bitte kurz ausfüllen", "Name, Telefon und Wohnort sind Pflicht.");
-        return;
-      }
-      setStep(target);
-    });
+  // ===== WEBHOOK URL HIER EINTRAGEN =====
+  await fetch("DEIN_WEBHOOK_LINK_HIER",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify(data)
   });
 
-  // Toggles
-  document.querySelectorAll(".toggle[data-toggle]").forEach(t => {
-    t.addEventListener("click", () => {
-      if (isSubmitting) return;
-      const key = t.dataset.toggle;
-      if (["abdichtung","klempner","ziegel","zimmerei"].includes(key)){
-        state.skills[key] = !state.skills[key];
-        t.classList.toggle("on", state.skills[key]);
-      }
-    });
-  });
-
-  // Validation Step 1
-  function validateStep1(){
-    const name = $("fullName").value.trim();
-    const phone = $("phone").value.trim();
-    const city = $("city").value.trim();
-
-    show($("errFullName"), name.length < 2);
-    show($("errPhone"), phone.length < 6);
-    show($("errCity"), city.length < 2);
-
-    return !(name.length < 2 || phone.length < 6 || city.length < 2);
-  }
-
-  function validateStep3(){
-    const ok = $("consent").checked;
-    show($("errConsent"), !ok);
-    return ok;
-  }
-
-  function cleanPhone(p){ return (p || "").replace(/[^\d+ ]/g, "").trim(); }
-
-  function collectData(){
-    return {
-      fullName: $("fullName").value.trim(),
-      phone: cleanPhone($("phone").value),
-      email: $("email").value.trim(),
-      city: $("city").value.trim(),
-      role: $("role").value,
-      exp: $("exp").value,
-      start: $("start").value,
-      license: $("license").value,
-      message: $("message").value.trim(),
-      skills: { ...state.skills },
-      meta: {
-        page: location.href,
-        ts: new Date().toISOString(),
-        userAgent: navigator.userAgent
-      }
-    };
-  }
-
-  // Send to webhook (no email)
-  async function submit(){
-    if (isSubmitting) return;
-    if (!validateStep3()) return;
-
-    if (!validateStep1()){
-      toast("Bitte kurz ausfüllen", "Name, Telefon und Wohnort sind Pflicht.");
-      setStep(1);
-      return;
-    }
-
-    const payload = collectData();
-
-    isSubmitting = true;
-    $("nextBtn").disabled = true;
-    $("backBtn").disabled = true;
-    $("nextBtn").textContent = "Sende…";
-
-    toast("Sende Bewerbung…", "Einen Moment bitte.");
-
-    try{
-      // 1) Prefer sendBeacon (robust for static sites; no response handling)
-      let beaconOk = false;
-      try{
-        const blob = new Blob([JSON.stringify(payload)], { type: "application/json" });
-        beaconOk = navigator.sendBeacon && navigator.sendBeacon(WEBHOOK_URL, blob);
-      }catch(e){ beaconOk = false; }
-
-      // 2) Fallback fetch (no-cors)
-      if (!beaconOk){
-        await fetch(WEBHOOK_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-      }
-
-      // UI success
-      show($("successNote"), true);
-      toast("Gesendet ✅", "Danke! Wir melden uns zeitnah bei dir.");
-
-      // Lock inputs after success
-      document.querySelectorAll("input, select, textarea, button").forEach(el => {
-        if (el.id === "lbClose") return;
-        if (el.classList.contains("lbClose")) return;
-        // allow navigation links
-        if (el.tagName === "BUTTON" || el.tagName === "INPUT" || el.tagName === "SELECT" || el.tagName === "TEXTAREA"){
-          el.disabled = true;
-        }
-      });
-
-      $("nextBtn").textContent = "Gesendet ✅";
-    }catch(err){
-      console.error(err);
-      toast("Senden fehlgeschlagen", "Bitte kurz später nochmal versuchen.");
-      isSubmitting = false;
-      $("nextBtn").disabled = false;
-      $("backBtn").disabled = (step === 1);
-      $("nextBtn").textContent = "Bewerbung senden";
-    }
-  }
-
-  // Nav
-  $("backBtn").addEventListener("click", () => {
-    if (isSubmitting) return;
-    setStep(step - 1);
-  });
-  $("nextBtn").addEventListener("click", () => {
-    if (isSubmitting) return;
-
-    if (step === 1 && !validateStep1()) {
-      toast("Bitte kurz ausfüllen", "Name, Telefon und Wohnort sind Pflicht.");
-      return;
-    }
-    if (step < total) setStep(step + 1);
-    else submit();
-  });
-
-  // Init
-  setStep(1, { scroll: false });
-
-  // ===== Gallery Lightbox =====
-  const lb = $("lightbox");
-  const lbImg = $("lbImg");
-  const lbClose = $("lbClose");
-
-  document.querySelectorAll(".shot").forEach(s => {
-    s.addEventListener("click", () => {
-      const src = s.getAttribute("data-src");
-      if (!src) return;
-      lbImg.src = src;
-      lb.classList.add("on");
-    });
-  });
-
-  function closeLb(){
-    lb.classList.remove("on");
-    lbImg.src = "";
-  }
-  lbClose.addEventListener("click", closeLb);
-  lb.addEventListener("click", (e) => {
-    if (e.target === lb) closeLb();
-  });
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeLb();
-  });
+  alert("Danke! Wir melden uns schnell bei dir.");
+  location.reload();
+});
 </script>
+
 </body>
 </html>
