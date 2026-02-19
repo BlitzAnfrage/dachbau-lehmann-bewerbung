@@ -12,7 +12,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
 
-  <!-- (Optional) preload hero for faster first paint -->
   <link rel="preload" as="image" href="hero.jpg" />
 
   <style>
@@ -71,7 +70,7 @@
       white-space:nowrap;border:0;
     }
 
-    /* ===== Subtle “ReactBits-ish” reveal ===== */
+    /* subtle reveal */
     .reveal{opacity:0; transform: translateY(10px); filter: blur(2px); transition: opacity .38s ease, transform .38s ease, filter .38s ease;}
     .reveal.in{opacity:1; transform:none; filter:none;}
 
@@ -110,6 +109,7 @@
       user-select:none;
       -webkit-tap-highlight-color: transparent;
       white-space: nowrap;
+      touch-action: manipulation;
     }
     .btn:active{transform: translateY(1px)}
     .btn:hover{filter:brightness(1.02)}
@@ -157,7 +157,7 @@
       flex: 1 1 auto;
       text-decoration:none;
     }
-    /* (1) LOGO BIGGER */
+    /* Logo bigger */
     .logoBox{
       width:62px; height:62px;
       border-radius: 18px;
@@ -229,11 +229,18 @@
       color: var(--muted);
       font-size:12px;
       font-weight: 800;
+
+      /* keep one line */
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width:100%;
     }
     .dot{
       width:8px; height:8px; border-radius:999px;
       background: var(--brand);
       box-shadow: 0 0 0 4px rgba(214,47,47,.12);
+      flex:0 0 auto;
     }
     h1{
       margin: 14px 0 10px;
@@ -282,6 +289,12 @@
       color: rgba(11,18,32,.62);
       font-size: 13px;
       line-height: 1.35;
+
+      /* keep one line */
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width:100%;
     }
 
     /* Desktop hero image */
@@ -338,7 +351,7 @@
     .heroCard .t{font-weight: 950; letter-spacing:-.2px; font-size: 14px;}
     .heroCard .s{margin-top:6px; font-size: 13px; color: rgba(255,255,255,.82); line-height:1.35;}
 
-    /* (4) Mobile: hero image higher (inside left) + less overlay text */
+    /* Mobile hero image higher */
     .heroMediaMobile{display:none;}
     @media (max-width:980px){
       .heroRight{display:none;}
@@ -387,6 +400,11 @@
         font-size: 13px;
         font-weight: 900;
         line-height:1.25;
+
+        /* keep short */
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
       }
     }
 
@@ -406,14 +424,14 @@
       letter-spacing: -.3px;
     }
     .sectionSub{
-      margin:0;
+      margin:6px 0 0;
       color: rgba(11,18,32,.62);
       font-size: 13px;
       line-height: 1.35;
       max-width: 64ch;
     }
 
-    /* (5) Benefits + “Was wir suchen” as modern tabs (less scroll) */
+    /* Tabs wrap */
     .tabsWrap{
       border-radius: var(--r-xl);
       border: 1px solid rgba(11,18,32,.08);
@@ -448,11 +466,13 @@
       font-size: 13px;
       color: rgba(11,18,32,.62);
       transition: background .12s ease, color .12s ease;
+      white-space:nowrap;
     }
     .tabBtn.on{
       background: rgba(214,47,47,.10);
       color: var(--brand);
     }
+
     .cards{
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
@@ -503,6 +523,7 @@
       padding: 14px;
       display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
       border-bottom: 1px solid rgba(11,18,32,.08);
+      align-items:center;
     }
     .galleryHead .t{font-weight: 950; letter-spacing:-.2px}
     .galleryHead .s{color: var(--muted); font-size: 13px; line-height:1.35}
@@ -584,7 +605,7 @@
       overflow:hidden;
     }
 
-    /* (6) Info panel image upgraded */
+    /* Info panel image upgraded + head visible */
     .infoMedia{
       position:relative;
       height: clamp(240px, 34vw, 360px);
@@ -603,7 +624,8 @@
     .infoMedia img{
       width:100%; height:100%;
       object-fit:cover;
-      object-position: 50% 22%;
+      /* show less ceiling / more person */
+      object-position: 50% 45%;
       filter: contrast(1.03) saturate(1.05);
       opacity:.98;
       transform: scale(1.03);
@@ -613,8 +635,7 @@
     .infoMedia:after{
       content:"";
       position:absolute; inset:0;
-      background:
-        linear-gradient(180deg, rgba(11,18,32,.06), rgba(11,18,32,.36));
+      background: linear-gradient(180deg, rgba(11,18,32,.05), rgba(11,18,32,.32));
       pointer-events:none;
       z-index:2;
     }
@@ -629,19 +650,20 @@
       border: 1px solid rgba(255,255,255,.22);
       backdrop-filter: blur(10px);
       z-index:3;
+      white-space:nowrap;
     }
     .infoTitleOverlay{
       position:absolute; left:12px; right:12px; bottom:12px;
       z-index:3;
-      border-radius: 18px;
-      padding: 12px;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.12);
+      border-radius: 16px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.10);
       backdrop-filter: blur(10px);
       color: rgba(255,255,255,.94);
     }
-    .infoTitleOverlay .t{font-weight: 950; letter-spacing:-.2px; font-size: 14px;}
-    .infoTitleOverlay .s{margin-top:4px; color: rgba(255,255,255,.82); font-size: 13px; line-height:1.35;}
+    .infoTitleOverlay .t{font-weight: 950; letter-spacing:-.2px; font-size: 14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+    .infoTitleOverlay .s{margin-top:4px; color: rgba(255,255,255,.82); font-size: 13px; line-height:1.3; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 
     .infoBody{padding: 14px 14px 16px}
     .steps{
@@ -732,6 +754,7 @@
       min-height: 36px;
       display:inline-flex; align-items:center;
       gap:8px;
+      white-space:nowrap;
     }
     .chip .miniDot{
       width:8px;height:8px;border-radius:999px;background: rgba(11,18,32,.22);
@@ -850,7 +873,6 @@
       font-size: 13px;
     }
     .footerRow{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center;}
-    .footer a{text-decoration:none; border-bottom:1px dashed rgba(11,18,32,.35)}
 
     /* Toast */
     .toast{
@@ -871,14 +893,23 @@
     .toast strong{display:block; font-weight: 950}
     .toast span{display:block; margin-top:4px; font-size:13px; color: rgba(11,18,32,.70); line-height:1.35}
 
-    /* Sticky CTA (smart show/hide via JS) */
+    /* Sticky CTA (smart + not annoying) */
     .stickyCta{
       position: fixed;
       left: 12px; right: 12px;
       bottom: calc(10px + env(safe-area-inset-bottom));
       z-index: 70;
+
       display:none;
       pointer-events:none;
+
+      opacity:0;
+      transform: translateY(10px);
+      transition: opacity .16s ease, transform .16s ease;
+    }
+    .stickyCta.on{
+      opacity:1;
+      transform:none;
     }
     .stickyCta .btn{width:100%; pointer-events:auto;}
     @media (max-width:820px){
@@ -954,8 +985,8 @@
       <div class="shell">
         <div class="heroGrid">
           <div class="heroLeft">
-            <!-- (2) Saarland eingebaut -->
-            <div class="pill"><span class="dot"></span> Regional • Dachdeckerei • Saarland • Freisen</div>
+            <!-- short + one line -->
+            <div class="pill"><span class="dot"></span> Regional • Saarland • Freisen</div>
 
             <h1>Dachdecker gesucht: <span class="accent">Geselle</span> (m/w/d)</h1>
 
@@ -964,7 +995,7 @@
               Online in 3 kurzen Schritten – wir melden uns schnell.
             </p>
 
-            <!-- (4) Mobile hero image higher -->
+            <!-- Mobile hero image higher -->
             <div class="heroMediaMobile reveal" aria-label="Betrieb / Standort">
               <img src="hero.jpg" alt="Betrieb / Standort (Vogelperspektive)" onerror="this.remove()">
               <div class="heroBadgeMobile">Top Team & Top Ausstattung</div>
@@ -987,12 +1018,11 @@
             </div>
 
             <div class="ctas reveal">
-              <a class="btn primary" href="#bewerben" id="heroCta">In 1 Minute bewerben</a>
-              <!-- (3) Bilder ansehen Button entfernt -->
+              <a class="btn primary" href="#bewerben" id="heroCta">In 1 Min bewerben</a>
             </div>
 
             <div class="helpLine reveal" aria-label="Hinweis">
-              ⏱️ in ca. 1 Min bewerben • keine Unterlagen nötig
+              ⏱️ ca. 60 Sek. • keine Unterlagen nötig
             </div>
           </div>
 
@@ -1012,20 +1042,21 @@
       </div>
     </section>
 
-    <!-- (5) Benefits + Suche as Tabs -->
+    <!-- Tabs (Kurz & klar) -->
     <section class="section reveal" aria-label="Infos">
       <div class="sectionHead">
         <div>
           <h2 class="sectionTitle">Kurz & klar</h2>
-          <p class="sectionSub">Alles Wichtige – ohne endlos zu scrollen. Wechsel einfach zwischen Vorteilen und „Was wir suchen“.</p>
+          <p class="sectionSub">Alles Wichtige auf einen Blick.</p>
         </div>
       </div>
 
       <div class="tabsWrap">
         <div class="tabsTop" role="tablist" aria-label="Infos Tabs">
           <div class="tabPills">
-            <button class="tabBtn on" type="button" role="tab" aria-selected="true" data-tab="benefits">Deine Vorteile</button>
-            <button class="tabBtn" type="button" role="tab" aria-selected="false" data-tab="search">Was wir suchen</button>
+            <button class="tabBtn on" type="button" role="tab" aria-selected="true" data-tab="benefits">Vorteile</button>
+            <button class="tabBtn" type="button" role="tab" aria-selected="false" data-tab="search">Gesucht</button>
+          </div>
         </div>
 
         <div data-panel="benefits" role="tabpanel">
@@ -1107,6 +1138,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -1116,7 +1148,7 @@
         <div class="galleryHead">
           <div>
             <div class="t">Einblicke in Betrieb & Baustellen</div>
-            <div class="s">Swipe durch die Bilder – zeigt direkt, wie’s bei euch aussieht.</div>
+            <div class="s">Tippe ein Bild zum Vergrößern.</div>
           </div>
           <a class="btn soft" href="#bewerben">Jetzt bewerben</a>
         </div>
@@ -1161,7 +1193,7 @@
             </div>
           </div>
 
-          <!-- Hidden honeypot (spam) -->
+          <!-- Hidden honeypot -->
           <div class="sr-only" aria-hidden="true">
             <label>Bitte leer lassen <input id="hpField" autocomplete="off" /></label>
           </div>
@@ -1312,9 +1344,6 @@
           <div class="footer">
             <div class="footerRow">
               <div><b style="color:rgba(11,18,32,.90)">Jörg Lehmann Dachdeckerei</b> • 66629 Freisen</div>
-              <div style="display:flex; gap:14px;">
-                <a href="#top">Nach oben</a>
-              </div>
             </div>
           </div>
         </section>
@@ -1325,8 +1354,8 @@
             <span class="infoBadge">So läuft’s ab</span>
             <img src="team.jpg" alt="Einblick: Besprechung & Planung" loading="lazy" onerror="this.remove()">
             <div class="infoTitleOverlay">
-              <div class="t">In 3 einfachen Schritten</div>
-              <div class="s">Kontaktdaten eingeben → Absenden. Fertig in ~60 Sekunden.</div>
+              <div class="t">In 3 Schritten bewerben</div>
+              <div class="s">Fertig in ~60 Sekunden</div>
             </div>
           </div>
 
@@ -1360,7 +1389,7 @@
     </section>
   </main>
 
-  <!-- Sticky CTA (mobile, smart show/hide) -->
+  <!-- Sticky CTA (mobile, smart + debounce) -->
   <div class="stickyCta" aria-label="Schnellaktionen" id="stickyCta">
     <a class="btn brand" href="#bewerben" id="stickyCtaBtn">Jetzt bewerben</a>
   </div>
@@ -1421,7 +1450,7 @@
     window.__toastT = setTimeout(() => $("toast").style.display = "none", 3200);
   }
 
-  // Tabs (Benefits / Search)
+  // Tabs
   function setTab(name){
     document.querySelectorAll(".tabBtn[data-tab]").forEach(b => {
       const on = b.dataset.tab === name;
@@ -1431,7 +1460,6 @@
     document.querySelectorAll("[data-panel]").forEach(p => {
       p.style.display = (p.dataset.panel === name) ? "block" : "none";
     });
-    // trigger reveal recalculation a bit later
     setTimeout(() => revealNow(), 60);
   }
   document.querySelectorAll(".tabBtn[data-tab]").forEach(b => {
@@ -1626,7 +1654,7 @@
     });
   });
 
-  // Toggles (click + keyboard)
+  // Toggles
   function toggleSkill(el){
     if (isSubmitting) return;
     const key = el.dataset.toggle;
@@ -1727,6 +1755,8 @@
       $("nextBtn").disabled = true;
       $("backBtn").disabled = true;
 
+      updateStickyCta();
+
     }catch(err){
       console.error(err);
       toast("Senden fehlgeschlagen", "Bitte kurz später nochmal versuchen.");
@@ -1734,6 +1764,7 @@
       $("nextBtn").disabled = false;
       $("backBtn").disabled = (step === 1);
       $("nextBtn").textContent = "Bewerbung senden";
+      updateStickyCta();
     }
   }
 
@@ -1798,28 +1829,57 @@
   lb.addEventListener("click", (e) => { if (e.target === lb) closeLb(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLb(); });
 
-  // Smart Sticky CTA (avoid covering content like in your screenshots)
+  // Sticky CTA (less annoying): show only after some scroll + not while scrolling + not in hero/apply
+  let __stickyScrollT = null;
+
+  function computeShouldShowSticky(){
+    const isMobile = window.matchMedia("(max-width: 820px)").matches;
+    if(!isMobile) return false;
+    if(isSubmitting) return false;
+
+    // require some scroll depth
+    if(window.scrollY < 260) return false;
+
+    const heroCta = $("heroCta");
+    const apply = $("bewerben");
+
+    const heroVisible = heroCta
+      ? (heroCta.getBoundingClientRect().top < window.innerHeight && heroCta.getBoundingClientRect().bottom > 0)
+      : false;
+
+    const applyRect = apply.getBoundingClientRect();
+    const inApply = (applyRect.top < window.innerHeight * 0.8) && (applyRect.bottom > 180);
+
+    return (!heroVisible && !inApply);
+  }
+
   function updateStickyCta(){
     const sticky = $("stickyCta");
     if(!sticky) return;
 
     const isMobile = window.matchMedia("(max-width: 820px)").matches;
-    if(!isMobile){ sticky.style.display = "none"; return; }
+    if(!isMobile){
+      sticky.style.display = "none";
+      sticky.classList.remove("on");
+      return;
+    }
 
-    const heroCta = $("heroCta");
-    const apply = $("bewerben");
-
-    const heroVisible = heroCta ? (heroCta.getBoundingClientRect().top < window.innerHeight && heroCta.getBoundingClientRect().bottom > 0) : false;
-    const applyRect = apply.getBoundingClientRect();
-    const inApply = (applyRect.top < window.innerHeight * 0.75) && (applyRect.bottom > 140);
-
-    // show only if hero CTA is NOT visible and user is NOT currently in the form area
-    sticky.style.display = (!heroVisible && !inApply) ? "flex" : "none";
+    sticky.style.display = "flex";
+    const shouldShow = computeShouldShowSticky();
+    sticky.classList.toggle("on", shouldShow);
   }
-  window.addEventListener("scroll", updateStickyCta, {passive:true});
+
+  function onScrollSticky(){
+    const sticky = $("stickyCta");
+    if(sticky) sticky.classList.remove("on"); // hide while actively scrolling
+    clearTimeout(__stickyScrollT);
+    __stickyScrollT = setTimeout(updateStickyCta, 180);
+  }
+
+  window.addEventListener("scroll", onScrollSticky, {passive:true});
   window.addEventListener("resize", updateStickyCta);
 
-  // Reveal (IntersectionObserver)
+  // Reveal
   function revealNow(){
     document.querySelectorAll(".reveal").forEach(el => {
       const r = el.getBoundingClientRect();
