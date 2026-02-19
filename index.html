@@ -22,9 +22,10 @@
       --muted2:rgba(11,18,32,.50);
       --line:rgba(11,18,32,.10);
 
-      --brand:#d62f2f;      /* Logo Rot */
+      --brand:#d62f2f;
       --brandDark:#0b1220;
       --danger:#e11d48;
+      --ok:#16a34a;
 
       --r-xl:24px;
       --r-lg:18px;
@@ -87,7 +88,7 @@
       font-weight: 900;
       font-size: 14px;
       cursor:pointer;
-      transition: transform .12s ease, filter .12s ease;
+      transition: transform .12s ease, filter .12s ease, opacity .12s ease;
       user-select:none;
       -webkit-tap-highlight-color: transparent;
       white-space: nowrap;
@@ -111,6 +112,7 @@
       color: var(--brand);
       box-shadow: 0 12px 26px rgba(11,18,32,.05);
     }
+    .btn[disabled]{opacity:.55; cursor:not-allowed; transform:none}
     .btn:hover{filter:brightness(1.02)}
 
     /* ===== Topbar ===== */
@@ -168,18 +170,14 @@
       text-overflow:ellipsis;
       max-width: 62vw;
     }
-    .topActions{
-      display:flex;
-      justify-content:center;
-      flex: 0 0 auto;
-    }
+    .topActions{display:flex; justify-content:center; flex: 0 0 auto;}
     @media (max-width:820px){
       .btn{padding: 11px 14px; font-size: 13px;}
       .brandText .name, .brandText .sub{max-width: 64vw;}
     }
 
     /* ===== Hero ===== */
-    .hero{padding: 10px 0 8px} /* weniger Abstand oben */
+    .hero{padding: 8px 0 8px}
     .shell{
       border-radius: var(--r-xl);
       border:1px solid rgba(11,18,32,.08);
@@ -197,7 +195,7 @@
       .heroGrid{grid-template-columns:1fr;}
     }
     .heroLeft{
-      padding: 20px 18px; /* etwas kompakter */
+      padding: 18px 18px;
       background:
         radial-gradient(800px 500px at 10% 0%, rgba(214,47,47,.08), transparent 55%),
         #fff;
@@ -231,17 +229,7 @@
       color: rgba(11,18,32,.78);
       max-width: 62ch;
     }
-    .warmBox{
-      margin-top: 12px;
-      padding: 12px;
-      border-radius: 18px;
-      border: 1px solid rgba(214,47,47,.16);
-      background: rgba(214,47,47,.06);
-      color: rgba(11,18,32,.76);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-    .warmBox b{color: var(--text)}
+
     .kpis{
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
@@ -269,9 +257,9 @@
     }
     @media (max-width:520px){ .ctas .btn{flex:1 1 auto; min-width:0;} }
 
-    /* Hero image card */
+    /* Hero image (better for aerial building) */
     .heroRight{
-      padding: 12px 18px 18px; /* oben weniger padding => Bild höher */
+      padding: 8px 18px 18px; /* höher */
       background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.92));
       display:flex; align-items:stretch;
     }
@@ -281,47 +269,51 @@
       border-radius: 22px;
       overflow:hidden;
       border:1px solid rgba(11,18,32,.10);
-      box-shadow: 0 12px 28px rgba(11,18,32,.08);
+      box-shadow: 0 14px 34px rgba(11,18,32,.10);
       background: #0b1220;
+      transform: translateY(-6px); /* Bild optisch höher */
     }
     .heroMedia img{
       width:100%; height:100%;
       object-fit:cover;
-      opacity:.94;
-      filter: contrast(1.03) saturate(1.03);
-      object-position: center 20%; /* Bildausschnitt etwas höher */
+      opacity:.98;
+      filter: contrast(1.02) saturate(1.06);
+      object-position: center 35%;
     }
-    .heroGradient{
+    .heroVignette{
       position:absolute; inset:0;
-      background: linear-gradient(90deg, rgba(11,18,32,.72), rgba(11,18,32,.16));
-    }
-    @media (max-width:980px){
-      .heroGradient{background: linear-gradient(180deg, rgba(11,18,32,.62), rgba(11,18,32,.18));}
-      .heroRight{padding: 10px 14px 14px;}
-      .heroMedia img{object-position:center 18%;}
+      background:
+        radial-gradient(700px 420px at 25% 20%, rgba(255,255,255,.08), transparent 55%),
+        linear-gradient(180deg, rgba(11,18,32,.10), rgba(11,18,32,.38));
+      pointer-events:none;
     }
     .heroBadge{
       position:absolute; left:14px; top:14px;
-      padding: 9px 10px;
+      padding: 9px 12px;
       border-radius: 999px;
       font-size: 12px;
       font-weight: 950;
-      color: rgba(255,255,255,.92);
+      color: rgba(255,255,255,.94);
       background: rgba(214,47,47,.95);
-      border: 1px solid rgba(255,255,255,.20);
+      border: 1px solid rgba(255,255,255,.18);
       box-shadow: 0 14px 30px rgba(214,47,47,.25);
     }
     .heroCard{
       position:absolute; left:14px; right:14px; bottom:14px;
       border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.20);
+      border: 1px solid rgba(255,255,255,.18);
       background: rgba(255,255,255,.12);
       backdrop-filter: blur(10px);
       padding: 12px;
-      color: rgba(255,255,255,.92);
+      color: rgba(255,255,255,.94);
     }
     .heroCard .t{font-weight: 950; letter-spacing:-.2px; font-size: 14px;}
     .heroCard .s{margin-top:6px; font-size: 13px; color: rgba(255,255,255,.82); line-height:1.35;}
+    @media (max-width:980px){
+      .heroRight{padding: 8px 14px 14px;}
+      .heroMedia{transform: translateY(-4px);}
+      .heroMedia img{object-position:center 32%;}
+    }
 
     /* ===== Sections ===== */
     .section{padding: 14px 0 6px}
@@ -451,23 +443,39 @@
       overflow:hidden;
     }
 
-    /* Info panel */
+    /* Info panel (better image integration for your chef photo) */
     .infoMedia{
       position:relative;
-      height: 230px;
-      background: linear-gradient(135deg, #ffffff, #f3f5fb);
+      height: 250px;
+      background: #0b1220;
+      overflow:hidden;
     }
-    .infoMedia img{width:100%; height:100%; object-fit:cover}
+    .infoMedia img{
+      width:100%; height:100%;
+      object-fit:cover;
+      object-position: center 30%;
+      filter: contrast(1.02) saturate(1.04);
+      opacity:.98;
+    }
+    .infoMedia:after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(700px 380px at 18% 18%, rgba(255,255,255,.10), transparent 60%),
+        linear-gradient(180deg, rgba(11,18,32,.06), rgba(11,18,32,.34));
+      pointer-events:none;
+    }
     .infoBadge{
       position:absolute; left:12px; top:12px;
       border-radius: 999px;
       padding: 9px 10px;
       font-size: 12px;
       font-weight: 950;
-      color: rgba(11,18,32,.86);
-      background: rgba(255,255,255,.92);
-      border: 1px solid rgba(11,18,32,.10);
+      color: rgba(255,255,255,.94);
+      background: rgba(255,255,255,.16);
+      border: 1px solid rgba(255,255,255,.22);
       backdrop-filter: blur(10px);
+      z-index:2;
     }
     .infoBody{padding: 14px 14px 16px}
     .steps{
@@ -636,6 +644,11 @@
       font-size: 13px;
       line-height: 1.45;
     }
+    .note.ok{
+      border-color: rgba(22,163,74,.22);
+      background: rgba(22,163,74,.06);
+      color: rgba(11,18,32,.78);
+    }
     .error{
       margin-top: 8px;
       display:none;
@@ -682,16 +695,15 @@
     .toast strong{display:block; font-weight: 950}
     .toast span{display:block; margin-top:4px; font-size:13px; color: rgba(11,18,32,.70); line-height:1.35}
 
-    /* Mobile sticky CTA bar */
+    /* Mobile sticky CTA bar (only apply) */
     .stickyCta{
       position: fixed;
       left: 12px; right: 12px;
       bottom: calc(12px + env(safe-area-inset-bottom));
       z-index: 70;
       display:none;
-      gap:10px;
     }
-    .stickyCta .btn{flex:1 1 auto; min-width:0;}
+    .stickyCta .btn{width:100%;}
     @media (max-width:820px){
       .stickyCta{display:flex;}
       .container{padding-bottom: 86px;}
@@ -714,7 +726,6 @@
         </div>
       </a>
 
-      <!-- NUR Online CTA -->
       <div class="topActions">
         <a class="btn brand" href="#bewerben">Jetzt bewerben</a>
       </div>
@@ -729,18 +740,14 @@
         <div class="heroGrid">
 
           <div class="heroLeft">
-            <div class="pill"><span class="dot"></span> Regional • Dachdeckerei & Bauspenglerei • 66629 Freisen</div>
+            <div class="pill"><span class="dot"></span> Regional • Dachdeckerei • 66629 Freisen</div>
 
             <h1>Dachdecker gesucht: <span class="accent">Geselle</span> (m/w/d)</h1>
 
             <p class="lead">
               Bewirb dich <b>ohne Lebenslauf</b> und <b>ohne Anschreiben</b>.
-              Wir melden uns schnell – kennenlernen, fertig.
+              Online in 3 kurzen Schritten – wir melden uns schnell.
             </p>
-
-            <div class="warmBox">
-              <b>Wichtig:</b> Es geht nicht um perfekte Unterlagen – sondern um <b>Zuverlässigkeit</b>, <b>saubere Arbeit</b> und dass es menschlich passt.
-            </div>
 
             <div class="kpis" role="list">
               <div class="kpi" role="listitem">
@@ -764,9 +771,12 @@
 
           <div class="heroRight">
             <div class="heroMedia" aria-label="Hero Bild">
-              <img src="hero.jpg" alt="Dachdecker bei der Arbeit" onerror="this.remove()">
-              <div class="heroGradient" aria-hidden="true"></div>
+              <!-- hero.jpg = Vogelperspektive Gebäude -->
+              <img src="hero.jpg" alt="Betrieb / Standort (Vogelperspektive)" onerror="this.remove()">
+              <div class="heroVignette" aria-hidden="true"></div>
+
               <div class="heroBadge">Top Team • top Ausstattung</div>
+
               <div class="heroCard">
                 <div class="t">Saubere Abläufe & Sicherheit</div>
                 <div class="s">Moderne Maschinen/Fahrzeuge + Weiterbildung (z. B. Kranschein).</div>
@@ -878,7 +888,7 @@
             </span>
             <div class="title">Pluspunkte</div>
           </div>
-          <p>Abdichtung, Klempner/Bauspenglerei, Ziegel, Zimmerei.</p>
+          <p>Abdichtung, Klempner/Blech, Ziegel, Zimmerei.</p>
         </div>
 
       </div>
@@ -917,7 +927,7 @@
           <div class="funnelTop">
             <div>
               <div class="h">Schnellbewerbung</div>
-              <div class="p">3 kurze Schritte – am Ende öffnet sich deine Mail-App. <b>Ohne Lebenslauf.</b></div>
+              <div class="p">3 kurze Schritte – am Ende wird deine Bewerbung <b>online</b> gesendet. <b>Ohne Lebenslauf.</b></div>
             </div>
           </div>
 
@@ -1062,8 +1072,8 @@
           <div class="step" data-step="3">
             <div class="note">
               <b>Fast fertig ✅</b><br>
-              Mit „Bewerbung senden“ öffnet sich dein Mailprogramm mit fertigem Text.<br>
-              Dann nur noch auf <b>Senden</b> klicken.
+              Mit „Bewerbung senden“ werden deine Angaben online übertragen.<br>
+              Das dauert nur einen Moment.
               <div style="margin-top:10px; display:flex; gap:10px; align-items:flex-start;">
                 <input id="consent" type="checkbox" checked style="width:auto; margin-top:3px;">
                 <div style="font-size:13px; color: rgba(11,18,32,.70); font-weight:900;">
@@ -1071,6 +1081,11 @@
                 </div>
               </div>
               <div class="error" id="errConsent">Bitte Zustimmung aktivieren.</div>
+            </div>
+
+            <div class="note ok" style="margin-top:10px; display:none;" id="successNote">
+              <b>Gesendet ✅</b><br>
+              Danke! Wir melden uns zeitnah bei dir.
             </div>
 
             <div class="note" style="margin-top:10px;">
@@ -1098,7 +1113,8 @@
         <aside class="panel infoPanel">
           <div class="infoMedia">
             <span class="infoBadge">So läuft’s ab</span>
-            <img src="team.jpg" alt="Teamfoto" onerror="this.remove()">
+            <!-- team.jpg = Chef zeigt auf Monitor -->
+            <img src="team.jpg" alt="Einblick: Besprechung & Planung" onerror="this.remove()">
           </div>
 
           <div class="infoBody">
@@ -1123,15 +1139,16 @@
                 <div class="n">3</div>
                 <div>
                   <div class="t">Absenden</div>
-                  <div class="s">Mail öffnet sich – du klickst nur noch „Senden“.</div>
+                  <div class="s">Online senden – fertig.</div>
                 </div>
               </li>
             </ul>
 
             <div class="company">
-              <b>Jörg Lehmann Dachdeckerei</b><br>
+              <b>Unternehmensinfo</b><br>
+              Jörg Lehmann Dachdeckerei<br>
               In der Zennwies 4 • 66629 Freisen<br>
-              Tel.: <a href="tel:+4968557466">06855 7466</a><br>
+              Telefon: 06855 7466<br>
               Website: <a href="https://www.dachbau-lehmann.de" target="_blank" rel="noreferrer">dachbau-lehmann.de</a>
 
               <div class="companyBtns">
@@ -1146,7 +1163,7 @@
 
   </main>
 
-  <!-- Sticky CTA (mobile): NUR bewerben -->
+  <!-- Sticky CTA (mobile): only apply -->
   <div class="stickyCta" aria-label="Schnellaktionen">
     <a class="btn brand" href="#bewerben">Jetzt bewerben</a>
   </div>
@@ -1166,12 +1183,13 @@
   </div>
 
 <script>
-  // ====== KONFIG: ZIEL-E-MAIL ======
-  const TO_EMAIL = "bewerbung@dachbau-lehmann.de"; // <- HIER ändern, falls nötig
+  // ====== KONFIG: WEBHOOK (n8n) ======
+  const WEBHOOK_URL = "https://n8n.srv899952.hstgr.cloud/webhook-test/b16fd98d-e0c6-4c7c-b064-ae7dd7e50949";
 
   // ====== Funnel State (3 steps) ======
   let step = 1;
   const total = 3;
+  let isSubmitting = false;
 
   const state = {
     skills: { abdichtung:false, klempner:false, ziegel:true, zimmerei:false }
@@ -1209,8 +1227,9 @@
     $("pctLabel").textContent = `${pct}%`;
     $("barFill").style.width = pct + "%";
 
-    $("backBtn").disabled = (step === 1);
+    $("backBtn").disabled = (step === 1 || isSubmitting);
     $("nextBtn").textContent = (step === total) ? "Bewerbung senden" : "Weiter";
+    $("nextBtn").disabled = isSubmitting;
 
     setChips();
 
@@ -1223,6 +1242,7 @@
   // Chips clickable
   document.querySelectorAll(".chip[data-jump]").forEach(ch => {
     ch.addEventListener("click", () => {
+      if (isSubmitting) return;
       const target = Number(ch.dataset.jump);
       if (target > step && step === 1 && !validateStep1()){
         toast("Bitte kurz ausfüllen", "Name, Telefon und Wohnort sind Pflicht.");
@@ -1235,6 +1255,7 @@
   // Toggles
   document.querySelectorAll(".toggle[data-toggle]").forEach(t => {
     t.addEventListener("click", () => {
+      if (isSubmitting) return;
       const key = t.dataset.toggle;
       if (["abdichtung","klempner","ziegel","zimmerei"].includes(key)){
         state.skills[key] = !state.skills[key];
@@ -1264,11 +1285,8 @@
 
   function cleanPhone(p){ return (p || "").replace(/[^\d+ ]/g, "").trim(); }
 
-  // Submit mailto
-  function submit(){
-    if (!validateStep3()) return;
-
-    const data = {
+  function collectData(){
+    return {
       fullName: $("fullName").value.trim(),
       phone: cleanPhone($("phone").value),
       email: $("email").value.trim(),
@@ -1278,45 +1296,86 @@
       start: $("start").value,
       license: $("license").value,
       message: $("message").value.trim(),
-      skills: state.skills
+      skills: { ...state.skills },
+      meta: {
+        page: location.href,
+        ts: new Date().toISOString(),
+        userAgent: navigator.userAgent
+      }
     };
+  }
 
-    const subject = encodeURIComponent(`Bewerbung: ${data.fullName} (${data.role})`);
+  // Send to webhook (no email)
+  async function submit(){
+    if (isSubmitting) return;
+    if (!validateStep3()) return;
 
-    const bodyText =
-`Hallo Jörg Lehmann Dachdeckerei,
+    if (!validateStep1()){
+      toast("Bitte kurz ausfüllen", "Name, Telefon und Wohnort sind Pflicht.");
+      setStep(1);
+      return;
+    }
 
-ich möchte mich bewerben (ohne Lebenslauf / ohne Anschreiben).
+    const payload = collectData();
 
-Name: ${data.fullName}
-Telefon: ${data.phone}
-E-Mail: ${data.email || "-"}
-Ort: ${data.city}
+    isSubmitting = true;
+    $("nextBtn").disabled = true;
+    $("backBtn").disabled = true;
+    $("nextBtn").textContent = "Sende…";
 
-Profil: ${data.role}
-Berufserfahrung: ${data.exp}
-Start: ${data.start}
-Führerschein: ${data.license}
+    toast("Sende Bewerbung…", "Einen Moment bitte.");
 
-Pluspunkte:
-- Abdichtung: ${data.skills.abdichtung ? "Ja" : "Nein"}
-- Klempner/Blech: ${data.skills.klempner ? "Ja" : "Nein"}
-- Ziegel/Steildach: ${data.skills.ziegel ? "Ja" : "Nein"}
-- Zimmerei: ${data.skills.zimmerei ? "Ja" : "Nein"}
+    try{
+      // 1) Prefer sendBeacon (robust for static sites; no response handling)
+      let beaconOk = false;
+      try{
+        const blob = new Blob([JSON.stringify(payload)], { type: "application/json" });
+        beaconOk = navigator.sendBeacon && navigator.sendBeacon(WEBHOOK_URL, blob);
+      }catch(e){ beaconOk = false; }
 
-Nachricht:
-${data.message || "-"}
+      // 2) Fallback fetch (no-cors)
+      if (!beaconOk){
+        await fetch(WEBHOOK_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+      }
 
-Viele Grüße
-${data.fullName}`;
+      // UI success
+      show($("successNote"), true);
+      toast("Gesendet ✅", "Danke! Wir melden uns zeitnah bei dir.");
 
-    toast("Fast fertig ✅", "Dein Mailprogramm öffnet sich – bitte nur noch auf „Senden“ klicken.");
-    window.location.href = `mailto:${TO_EMAIL}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+      // Lock inputs after success
+      document.querySelectorAll("input, select, textarea, button").forEach(el => {
+        if (el.id === "lbClose") return;
+        if (el.classList.contains("lbClose")) return;
+        // allow navigation links
+        if (el.tagName === "BUTTON" || el.tagName === "INPUT" || el.tagName === "SELECT" || el.tagName === "TEXTAREA"){
+          el.disabled = true;
+        }
+      });
+
+      $("nextBtn").textContent = "Gesendet ✅";
+    }catch(err){
+      console.error(err);
+      toast("Senden fehlgeschlagen", "Bitte kurz später nochmal versuchen.");
+      isSubmitting = false;
+      $("nextBtn").disabled = false;
+      $("backBtn").disabled = (step === 1);
+      $("nextBtn").textContent = "Bewerbung senden";
+    }
   }
 
   // Nav
-  $("backBtn").addEventListener("click", () => setStep(step - 1));
+  $("backBtn").addEventListener("click", () => {
+    if (isSubmitting) return;
+    setStep(step - 1);
+  });
   $("nextBtn").addEventListener("click", () => {
+    if (isSubmitting) return;
+
     if (step === 1 && !validateStep1()) {
       toast("Bitte kurz ausfüllen", "Name, Telefon und Wohnort sind Pflicht.");
       return;
