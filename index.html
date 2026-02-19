@@ -2,27 +2,39 @@
 <html lang="de">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Bewerbung | Jörg Lehmann Dachdeckerei (Freisen)</title>
   <meta name="description" content="Dachdecker gesucht (m/w/d) – Bewerbung ohne Lebenslauf & ohne Anschreiben. Regional, top Ausstattung, bezahlte Pausen." />
   <meta name="theme-color" content="#ffffff" />
   <meta name="color-scheme" content="light" />
 
-  <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- ===== OPTIONAL: META PIXEL / TRACKING (PLACEHOLDER) =====
+    1) Wenn du Meta Pixel nutzt: Code hier einfügen.
+    2) DSGVO: Pixel nur nach Marketing-Einwilligung aktivieren.
+    3) Beispiel: Pixel erst nach Klick auf "Marketing erlauben" initialisieren.
+  -->
+
+  <!-- Font (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
 
   <style>
+    /* =========================================================
+      CUSTOMIZE (1): BRAND / DESIGN TOKENS
+    ========================================================= */
     :root{
       --bg:#f6f7fb;
       --surface:#ffffff;
       --text:#0b1220;
       --muted:rgba(11,18,32,.66);
-      --muted2:rgba(11,18,32,.50);
+      --muted2:rgba(11,18,32,.52);
       --line:rgba(11,18,32,.10);
 
+      /* === CHANGE BRAND COLOR HERE === */
       --brand:#d62f2f;
+      --brand2:#b61f1f;
+
       --brandDark:#0b1220;
       --danger:#e11d48;
       --ok:#16a34a;
@@ -37,6 +49,8 @@
 
       --focus:0 0 0 4px rgba(214,47,47,.18);
       --container:1120px;
+
+      --tap:44px;
     }
 
     *{box-sizing:border-box}
@@ -57,15 +71,22 @@
     img{max-width:100%; display:block}
     .container{max-width:var(--container); margin:0 auto; padding:16px}
     .safe{padding-bottom: env(safe-area-inset-bottom);}
+    .sr-only{
+      position:absolute !important;
+      width:1px;height:1px;
+      padding:0;margin:-1px;
+      overflow:hidden;clip:rect(0,0,0,0);
+      white-space:nowrap;border:0;
+    }
 
-    /* ===== Icons (brand colored) ===== */
+    /* ===== Icons ===== */
     .icon{
       width:38px; height:38px;
-      border-radius: 14px;
+      border-radius:14px;
       border:1px solid rgba(214,47,47,.14);
       background: rgba(214,47,47,.06);
       display:grid; place-items:center;
-      flex: 0 0 auto;
+      flex:0 0 auto;
     }
     .icon svg{
       width:18px; height:18px;
@@ -76,8 +97,9 @@
       stroke-linejoin:round;
     }
 
-    /* ===== Buttons (one style) ===== */
+    /* ===== Buttons ===== */
     .btn{
+      min-height: var(--tap);
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
       padding: 11px 16px;
       border-radius: 999px;
@@ -94,6 +116,8 @@
       white-space: nowrap;
     }
     .btn:active{transform: translateY(1px)}
+    .btn:hover{filter:brightness(1.02)}
+    .btn[disabled]{opacity:.55; cursor:not-allowed; transform:none}
     .btn.primary{
       background: linear-gradient(180deg, var(--brandDark), #070d18);
       color:#fff;
@@ -101,7 +125,7 @@
       box-shadow: 0 18px 44px rgba(11,18,32,.16);
     }
     .btn.brand{
-      background: linear-gradient(180deg, var(--brand), #b61f1f);
+      background: linear-gradient(180deg, var(--brand), var(--brand2));
       color:#fff;
       border-color: rgba(214,47,47,.26);
       box-shadow: 0 18px 44px rgba(214,47,47,.22);
@@ -112,8 +136,6 @@
       color: var(--brand);
       box-shadow: 0 12px 26px rgba(11,18,32,.05);
     }
-    .btn[disabled]{opacity:.55; cursor:not-allowed; transform:none}
-    .btn:hover{filter:brightness(1.02)}
 
     /* ===== Topbar ===== */
     .topbar{
@@ -208,7 +230,7 @@
       border:1px solid rgba(11,18,32,.08);
       color: var(--muted);
       font-size:12px;
-      font-weight: 750;
+      font-weight: 800;
     }
     .dot{
       width:8px; height:8px; border-radius:999px;
@@ -257,9 +279,8 @@
     }
     @media (max-width:520px){ .ctas .btn{flex:1 1 auto; min-width:0;} }
 
-    /* Hero image (better for aerial building) */
     .heroRight{
-      padding: 8px 18px 18px; /* höher */
+      padding: 8px 18px 18px;
       background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.92));
       display:flex; align-items:stretch;
     }
@@ -271,7 +292,7 @@
       border:1px solid rgba(11,18,32,.10);
       box-shadow: 0 14px 34px rgba(11,18,32,.10);
       background: #0b1220;
-      transform: translateY(-6px); /* Bild optisch höher */
+      transform: translateY(-6px);
     }
     .heroMedia img{
       width:100%; height:100%;
@@ -420,6 +441,7 @@
       font-weight: 950;
       cursor:pointer;
       backdrop-filter: blur(10px);
+      min-height: var(--tap);
     }
 
     /* ===== Apply ===== */
@@ -443,7 +465,7 @@
       overflow:hidden;
     }
 
-    /* Info panel (better image integration for your chef photo) */
+    /* Info panel */
     .infoMedia{
       position:relative;
       height: 250px;
@@ -541,7 +563,7 @@
       transition: width .18s ease;
     }
 
-    /* Step chips */
+    /* Step chips (better logic: active + completed) */
     .chips{
       display:flex; gap:8px;
       margin-top: 10px;
@@ -563,12 +585,20 @@
       user-select:none;
       cursor:pointer;
       -webkit-tap-highlight-color: transparent;
+      min-height: 36px;
+      display:inline-flex; align-items:center;
+      gap:8px;
     }
-    .chip.on{
+    .chip .miniDot{
+      width:8px;height:8px;border-radius:999px;background: rgba(11,18,32,.22);
+    }
+    .chip.done .miniDot{ background: rgba(22,163,74,.85); }
+    .chip.active{
       border-color: rgba(214,47,47,.25);
       background: rgba(214,47,47,.08);
       color: var(--brand);
     }
+    .chip.active .miniDot{ background: rgba(214,47,47,.95); }
 
     /* Form */
     .step{display:none; margin-top: 14px;}
@@ -576,6 +606,7 @@
     @keyframes pop{from{opacity:0; transform: translateY(6px)} to{opacity:1; transform: translateY(0)}}
     .grid2{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
     @media (max-width:520px){ .grid2{grid-template-columns:1fr} }
+
     label{
       display:block;
       font-size: 12px;
@@ -599,6 +630,13 @@
     input:focus, select:focus, textarea:focus{border-color: rgba(214,47,47,.36); box-shadow: var(--focus);}
     textarea{min-height: 110px; resize: vertical;}
 
+    .helpLine{
+      margin-top:8px;
+      color: rgba(11,18,32,.62);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
     /* Toggles */
     .toggleGrid{
       display:grid; grid-template-columns:1fr 1fr;
@@ -615,6 +653,7 @@
       user-select:none;
       box-shadow: 0 12px 26px rgba(11,18,32,.05);
       -webkit-tap-highlight-color: transparent;
+      min-height: var(--tap);
     }
     .toggle .t{font-weight: 950; font-size: 13px; letter-spacing:-.1px}
     .toggle .s{margin-top:4px; font-size: 12px; color: rgba(11,18,32,.58); line-height:1.25}
@@ -629,7 +668,7 @@
       flex:0 0 auto;
     }
     .toggle.on .check{
-      background: linear-gradient(180deg, var(--brand), #b61f1f);
+      background: linear-gradient(180deg, var(--brand), var(--brand2));
       border-color: rgba(214,47,47,.30);
       color:#fff;
     }
@@ -695,7 +734,7 @@
     .toast strong{display:block; font-weight: 950}
     .toast span{display:block; margin-top:4px; font-size:13px; color: rgba(11,18,32,.70); line-height:1.35}
 
-    /* Mobile sticky CTA bar (only apply) */
+    /* Mobile sticky CTA */
     .stickyCta{
       position: fixed;
       left: 12px; right: 12px;
@@ -708,37 +747,77 @@
       .stickyCta{display:flex;}
       .container{padding-bottom: 86px;}
     }
+
+    /* Success overlay */
+    .successOverlay{
+      position: fixed;
+      inset: 0;
+      background: rgba(11,18,32,.55);
+      display:none;
+      z-index: 95;
+      padding: 14px;
+      padding-bottom: calc(14px + env(safe-area-inset-bottom));
+      align-items:center;
+      justify-content:center;
+    }
+    .successOverlay.on{display:flex;}
+    .successCard{
+      width:100%;
+      max-width: 560px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.96);
+      border: 1px solid rgba(11,18,32,.10);
+      box-shadow: 0 30px 90px rgba(0,0,0,.28);
+      padding: 16px;
+    }
+    .successCard h3{
+      margin:0;
+      font-size: 18px;
+      letter-spacing: -.3px;
+    }
+    .successCard p{
+      margin: 8px 0 0;
+      color: rgba(11,18,32,.70);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .successCard .row{
+      display:flex;
+      gap:10px;
+      margin-top: 14px;
+      flex-wrap:wrap;
+    }
+    .successCard .row .btn{flex:1 1 auto; min-width:0;}
   </style>
 </head>
 
 <body class="safe">
-
   <!-- TOPBAR -->
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brandLine" href="#top" aria-label="Start">
         <div class="logoBox" aria-hidden="true">
+          <!-- CUSTOMIZE (2): LOGO FILE -->
           <img src="logo.webp" alt="" onerror="this.style.display='none'">
         </div>
         <div class="brandText">
+          <!-- CUSTOMIZE (3): COMPANY NAME / SUBLINE -->
           <div class="name">Jörg Lehmann Dachdeckerei</div>
           <div class="sub">Meisterbetrieb • Freisen (Saarland)</div>
         </div>
       </a>
 
       <div class="topActions">
-        <a class="btn brand" href="#bewerben">Jetzt bewerben</a>
+        <a class="btn brand" href="#bewerben" id="topCta">Jetzt bewerben</a>
       </div>
     </div>
   </header>
 
   <main id="top" class="container">
-
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" aria-label="Jobanzeige">
       <div class="shell">
         <div class="heroGrid">
-
           <div class="heroLeft">
             <div class="pill"><span class="dot"></span> Regional • Dachdeckerei • 66629 Freisen</div>
 
@@ -765,18 +844,22 @@
             </div>
 
             <div class="ctas">
-              <a class="btn primary" href="#bewerben">In 1 Minute bewerben</a>
+              <a class="btn primary" href="#bewerben" id="heroCta">In 1 Minute bewerben</a>
+              <a class="btn soft" href="#einblicke">Bilder ansehen</a>
+            </div>
+
+            <div class="helpLine" aria-label="Hinweis">
+              ⏱️ Dauert ca. 60 Sekunden • Keine Unterlagen nötig
             </div>
           </div>
 
           <div class="heroRight">
             <div class="heroMedia" aria-label="Hero Bild">
-              <!-- hero.jpg = Vogelperspektive Gebäude -->
+              <!-- CUSTOMIZE (4): HERO IMAGE -->
               <img src="hero.jpg" alt="Betrieb / Standort (Vogelperspektive)" onerror="this.remove()">
               <div class="heroVignette" aria-hidden="true"></div>
 
               <div class="heroBadge">Top Team • top Ausstattung</div>
-
               <div class="heroCard">
                 <div class="t">Saubere Abläufe & Sicherheit</div>
                 <div class="s">Moderne Maschinen/Fahrzeuge + Weiterbildung (z. B. Kranschein).</div>
@@ -792,12 +875,9 @@
     <section class="section" aria-label="Benefits">
       <h2>Warum du hier gut aufgehoben bist</h2>
       <div class="cards">
-
         <div class="card">
           <div class="cardTop">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-            </span>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
             <div class="title">Bezahlte Pausen</div>
           </div>
           <p>Frühstück & Mittagspause sind bezahlt. Fair und entspannt.</p>
@@ -805,19 +885,15 @@
 
         <div class="card">
           <div class="cardTop">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M21 16V8"/><path d="M3 16V8"/><path d="M7 8h10"/><path d="M7 16h10"/><path d="M12 8v8"/></svg>
-            </span>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 16V8"/><path d="M3 16V8"/><path d="M7 8h10"/><path d="M7 16h10"/><path d="M12 8v8"/></svg></span>
             <div class="title">Top Ausstattung</div>
           </div>
-          <p>Sehr gute Maschinen, Fahrzeuge und moderne Büroausstattung.</p>
+          <p>Sehr gute Maschinen, Fahrzeuge und moderne Arbeitsabläufe.</p>
         </div>
 
         <div class="card">
           <div class="cardTop">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M8 7V3"/><path d="M16 7V3"/><path d="M4 11h16"/><path d="M5 21h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2"/></svg>
-            </span>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 7V3"/><path d="M16 7V3"/><path d="M4 11h16"/><path d="M5 21h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2"/></svg></span>
             <div class="title">Urlaub nach Tarif</div>
           </div>
           <p>Sauber geregelt – planbar.</p>
@@ -825,9 +901,7 @@
 
         <div class="card">
           <div class="cardTop">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 3l8 6-8 6-8-6z"/><path d="M4 9v8l8 4 8-4V9"/></svg>
-            </span>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 6-8 6-8-6z"/><path d="M4 9v8l8 4 8-4V9"/></svg></span>
             <div class="title">Weiterbildung</div>
           </div>
           <p>z. B. Kranschein, neue Techniken, Spezialisierungen.</p>
@@ -835,9 +909,7 @@
 
         <div class="card">
           <div class="cardTop">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 21s7-4.5 7-11a7 7 0 0 0-14 0c0 6.5 7 11 7 11z"/><path d="M12 10.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg>
-            </span>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s7-4.5 7-11a7 7 0 0 0-14 0c0 6.5 7 11 7 11z"/><path d="M12 10.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg></span>
             <div class="title">Regional</div>
           </div>
           <p>Saarland/Umgebung – weniger Fahrerei, mehr Planbarkeit.</p>
@@ -845,14 +917,11 @@
 
         <div class="card">
           <div class="cardTop">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-            </span>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
             <div class="title">Sicherheit</div>
           </div>
           <p>Arbeitssicherheit & klare Abläufe – professionell organisiert.</p>
         </div>
-
       </div>
     </section>
 
@@ -860,12 +929,9 @@
     <section class="section" aria-label="Was wir suchen">
       <h2>Was wir suchen</h2>
       <div class="cards">
-
         <div class="card">
           <div class="cardTop">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 .8-4.5 4 1 6.2L12 16l-5.5 3 1-6.2L3 8.8 9 8z"/></svg>
-            </span>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 .8-4.5 4 1 6.2L12 16l-5.5 3 1-6.2L3 8.8 9 8z"/></svg></span>
             <div class="title">Dachdecker Geselle</div>
           </div>
           <p>Erfahrung & saubere Arbeit. Wenn du’s kannst – passt du rein.</p>
@@ -873,9 +939,7 @@
 
         <div class="card">
           <div class="cardTop">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M5 9l7-7 7 7"/></svg>
-            </span>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M5 9l7-7 7 7"/></svg></span>
             <div class="title">Quereinsteiger / Hilfskraft</div>
           </div>
           <p>Motiviert & qualifiziert – dann schauen wir uns das gemeinsam an.</p>
@@ -883,19 +947,16 @@
 
         <div class="card">
           <div class="cardTop">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-            </span>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span>
             <div class="title">Pluspunkte</div>
           </div>
           <p>Abdichtung, Klempner/Blech, Ziegel, Zimmerei.</p>
         </div>
-
       </div>
     </section>
 
     <!-- GALLERY -->
-    <section class="section" aria-label="Einblicke">
+    <section class="section" id="einblicke" aria-label="Einblicke">
       <div class="gallery">
         <div class="galleryHead">
           <div>
@@ -906,14 +967,15 @@
         </div>
 
         <div class="rail" id="galleryRail" aria-label="Galerie">
-          <div class="shot" data-src="gal-1.jpg"><img src="gal-1.jpg" alt="Einblick 1" onerror="this.closest('.shot').remove()"></div>
-          <div class="shot" data-src="gal-2.jpg"><img src="gal-2.jpg" alt="Einblick 2" onerror="this.closest('.shot').remove()"></div>
-          <div class="shot" data-src="gal-3.jpg"><img src="gal-3.jpg" alt="Einblick 3" onerror="this.closest('.shot').remove()"></div>
-          <div class="shot" data-src="gal-4.jpg"><img src="gal-4.jpg" alt="Einblick 4" onerror="this.closest('.shot').remove()"></div>
-          <div class="shot" data-src="gal-5.jpg"><img src="gal-5.jpg" alt="Einblick 5" onerror="this.closest('.shot').remove()"></div>
-          <div class="shot" data-src="gal-6.jpg"><img src="gal-6.jpg" alt="Einblick 6" onerror="this.closest('.shot').remove()"></div>
-          <div class="shot" data-src="gal-7.jpg"><img src="gal-7.jpg" alt="Einblick 7" onerror="this.closest('.shot').remove()"></div>
-          <div class="shot" data-src="gal-8.jpg"><img src="gal-8.jpg" alt="Einblick 8" onerror="this.closest('.shot').remove()"></div>
+          <!-- CUSTOMIZE (5): GALLERY FILES (optional) -->
+          <div class="shot" data-src="gal-1.jpg"><img src="gal-1.jpg" alt="Einblick 1" loading="lazy" onerror="this.closest('.shot').remove()"></div>
+          <div class="shot" data-src="gal-2.jpg"><img src="gal-2.jpg" alt="Einblick 2" loading="lazy" onerror="this.closest('.shot').remove()"></div>
+          <div class="shot" data-src="gal-3.jpg"><img src="gal-3.jpg" alt="Einblick 3" loading="lazy" onerror="this.closest('.shot').remove()"></div>
+          <div class="shot" data-src="gal-4.jpg"><img src="gal-4.jpg" alt="Einblick 4" loading="lazy" onerror="this.closest('.shot').remove()"></div>
+          <div class="shot" data-src="gal-5.jpg"><img src="gal-5.jpg" alt="Einblick 5" loading="lazy" onerror="this.closest('.shot').remove()"></div>
+          <div class="shot" data-src="gal-6.jpg"><img src="gal-6.jpg" alt="Einblick 6" loading="lazy" onerror="this.closest('.shot').remove()"></div>
+          <div class="shot" data-src="gal-7.jpg"><img src="gal-7.jpg" alt="Einblick 7" loading="lazy" onerror="this.closest('.shot').remove()"></div>
+          <div class="shot" data-src="gal-8.jpg"><img src="gal-8.jpg" alt="Einblick 8" loading="lazy" onerror="this.closest('.shot').remove()"></div>
         </div>
       </div>
     </section>
@@ -931,7 +993,7 @@
             </div>
           </div>
 
-          <div class="progress">
+          <div class="progress" aria-label="Fortschritt">
             <div class="progRow">
               <span id="stepLabel">Schritt 1 von 3</span>
               <span id="pctLabel">33%</span>
@@ -939,39 +1001,40 @@
             <div class="bar"><div id="barFill"></div></div>
 
             <div class="chips" aria-label="Schritte">
-              <span class="chip on" id="chip1" data-jump="1">1 • Kontakt</span>
-              <span class="chip" id="chip2" data-jump="2">2 • Profil</span>
-              <span class="chip" id="chip3" data-jump="3">3 • Absenden</span>
+              <button class="chip active" id="chip1" data-jump="1" type="button"><span class="miniDot"></span>1 • Kontakt</button>
+              <button class="chip" id="chip2" data-jump="2" type="button"><span class="miniDot"></span>2 • Profil</button>
+              <button class="chip" id="chip3" data-jump="3" type="button"><span class="miniDot"></span>3 • Absenden</button>
             </div>
           </div>
 
+          <!-- Hidden honeypot (spam) -->
+          <div class="sr-only" aria-hidden="true">
+            <label>Bitte leer lassen <input id="hpField" autocomplete="off" /></label>
+          </div>
+
           <!-- STEP 1 -->
-          <div class="step active" data-step="1">
+          <div class="step active" data-step="1" aria-label="Kontakt">
             <div class="grid2">
               <div>
-                <label>Vor- & Nachname
-                  <input id="fullName" placeholder="z. B. Max Mustermann" autocomplete="name" inputmode="text">
-                </label>
+                <label for="fullName">Vor- & Nachname *</label>
+                <input id="fullName" placeholder="z. B. Max Mustermann" autocomplete="name" inputmode="text" />
                 <div class="error" id="errFullName">Bitte deinen Namen eintragen.</div>
               </div>
 
               <div>
-                <label>Telefon
-                  <input id="phone" placeholder="z. B. 0176 123456" autocomplete="tel" inputmode="tel">
-                </label>
+                <label for="phone">Telefon *</label>
+                <input id="phone" placeholder="z. B. 0176 123456" autocomplete="tel" inputmode="tel" />
                 <div class="error" id="errPhone">Bitte eine Telefonnummer eintragen.</div>
               </div>
 
               <div>
-                <label>E-Mail (optional)
-                  <input id="email" placeholder="z. B. max@mail.de" autocomplete="email" inputmode="email">
-                </label>
+                <label for="email">E-Mail (optional)</label>
+                <input id="email" placeholder="z. B. max@mail.de" autocomplete="email" inputmode="email" />
               </div>
 
               <div>
-                <label>Wohnort
-                  <input id="city" placeholder="z. B. Freisen" autocomplete="address-level2" inputmode="text">
-                </label>
+                <label for="city">Wohnort *</label>
+                <input id="city" placeholder="z. B. Freisen" autocomplete="address-level2" inputmode="text" />
                 <div class="error" id="errCity">Bitte deinen Wohnort eintragen.</div>
               </div>
             </div>
@@ -982,102 +1045,95 @@
           </div>
 
           <!-- STEP 2 -->
-          <div class="step" data-step="2">
+          <div class="step" data-step="2" aria-label="Profil">
             <div class="grid2">
               <div>
-                <label>Du bist…
-                  <select id="role">
-                    <option value="Dachdecker Geselle">Dachdecker Geselle</option>
-                    <option value="Quereinsteiger (qualifiziert)">Quereinsteiger (qualifiziert)</option>
-                    <option value="Hilfskraft (motiviert)">Hilfskraft (motiviert)</option>
-                  </select>
-                </label>
+                <label for="role">Du bist…</label>
+                <select id="role">
+                  <option value="Dachdecker Geselle">Dachdecker Geselle</option>
+                  <option value="Quereinsteiger (qualifiziert)">Quereinsteiger (qualifiziert)</option>
+                  <option value="Hilfskraft (motiviert)">Hilfskraft (motiviert)</option>
+                </select>
               </div>
 
               <div>
-                <label>Berufserfahrung
-                  <select id="exp">
-                    <option>0–1 Jahre</option>
-                    <option selected>2–4 Jahre</option>
-                    <option>5–9 Jahre</option>
-                    <option>10+ Jahre</option>
-                  </select>
-                </label>
+                <label for="exp">Berufserfahrung</label>
+                <select id="exp">
+                  <option>0–1 Jahre</option>
+                  <option selected>2–4 Jahre</option>
+                  <option>5–9 Jahre</option>
+                  <option>10+ Jahre</option>
+                </select>
               </div>
 
               <div>
-                <label>Start möglich
-                  <select id="start">
-                    <option selected>Sofort</option>
-                    <option>In 2 Wochen</option>
-                    <option>In 1 Monat</option>
-                    <option>Später</option>
-                  </select>
-                </label>
+                <label for="start">Start möglich</label>
+                <select id="start">
+                  <option selected>Sofort</option>
+                  <option>In 2 Wochen</option>
+                  <option>In 1 Monat</option>
+                  <option>Später</option>
+                </select>
               </div>
 
               <div>
-                <label>Führerschein
-                  <select id="license">
-                    <option selected>Klasse B vorhanden</option>
-                    <option>LKW vorhanden</option>
-                    <option>LKW erwünscht (kann gestellt werden)</option>
-                    <option>Kein Führerschein</option>
-                  </select>
-                </label>
+                <label for="license">Führerschein</label>
+                <select id="license">
+                  <option selected>Klasse B vorhanden</option>
+                  <option>LKW vorhanden</option>
+                  <option>LKW erwünscht (kann gestellt werden)</option>
+                  <option>Kein Führerschein</option>
+                </select>
               </div>
             </div>
 
             <label style="margin-top:12px;">Pluspunkte (anklicken – optional)</label>
-            <div class="toggleGrid">
-              <div class="toggle" data-toggle="abdichtung">
-                <div>
-                  <div class="t">Abdichtung</div>
-                  <div class="s">Schweißbahn, Anschlüsse</div>
-                </div>
+            <div class="toggleGrid" role="group" aria-label="Pluspunkte">
+              <div class="toggle" data-toggle="abdichtung" role="button" tabindex="0" aria-pressed="false">
+                <div><div class="t">Abdichtung</div><div class="s">Schweißbahn, Anschlüsse</div></div>
                 <div class="check">✓</div>
               </div>
 
-              <div class="toggle" data-toggle="klempner">
-                <div>
-                  <div class="t">Klempner / Blech</div>
-                  <div class="s">Rinnen, Kantungen</div>
-                </div>
+              <div class="toggle" data-toggle="klempner" role="button" tabindex="0" aria-pressed="false">
+                <div><div class="t">Klempner / Blech</div><div class="s">Rinnen, Kantungen</div></div>
                 <div class="check">✓</div>
               </div>
 
-              <div class="toggle on" data-toggle="ziegel">
-                <div>
-                  <div class="t">Ziegel / Steildach</div>
-                  <div class="s">Eindeckung, Reparaturen</div>
-                </div>
+              <div class="toggle on" data-toggle="ziegel" role="button" tabindex="0" aria-pressed="true">
+                <div><div class="t">Ziegel / Steildach</div><div class="s">Eindeckung, Reparaturen</div></div>
                 <div class="check">✓</div>
               </div>
 
-              <div class="toggle" data-toggle="zimmerei">
-                <div>
-                  <div class="t">Zimmerei</div>
-                  <div class="s">nice to have</div>
-                </div>
+              <div class="toggle" data-toggle="zimmerei" role="button" tabindex="0" aria-pressed="false">
+                <div><div class="t">Zimmerei</div><div class="s">nice to have</div></div>
                 <div class="check">✓</div>
               </div>
             </div>
 
-            <label style="margin-top:12px;">Kurze Nachricht (optional)
-              <textarea id="message" placeholder="z. B. Steildach, Abdichtung oder Blech – was machst du am liebsten?"></textarea>
-            </label>
+            <label for="message" style="margin-top:12px;">Kurze Nachricht (optional)</label>
+            <textarea id="message" placeholder="z. B. Steildach, Abdichtung oder Blech – was machst du am liebsten?"></textarea>
+
+            <div class="note">
+              Tipp: Wenn du nur <b>Telefon</b> + <b>Wohnort</b> angibst, reicht das. Wir rufen dich an.
+            </div>
           </div>
 
           <!-- STEP 3 -->
-          <div class="step" data-step="3">
+          <div class="step" data-step="3" aria-label="Absenden">
             <div class="note">
               <b>Fast fertig ✅</b><br>
               Mit „Bewerbung senden“ werden deine Angaben online übertragen.<br>
               Das dauert nur einen Moment.
-              <div style="margin-top:10px; display:flex; gap:10px; align-items:flex-start;">
+            </div>
+
+            <div class="note" style="margin-top:10px;">
+              <div style="display:flex; gap:10px; align-items:flex-start;">
                 <input id="consent" type="checkbox" checked style="width:auto; margin-top:3px;">
-                <div style="font-size:13px; color: rgba(11,18,32,.70); font-weight:900;">
-                  Ich bin einverstanden, dass meine Angaben zur Kontaktaufnahme verarbeitet werden.
+                <div style="font-size:13px; color: rgba(11,18,32,.70); font-weight:900; line-height:1.35;">
+                  Ich bin einverstanden, dass meine Angaben zur <b>Kontaktaufnahme</b> verarbeitet werden.
+                  <div style="margin-top:6px; font-weight:800; color: rgba(11,18,32,.62);">
+                    Hinweise: <a href="#" id="privacyLink">Datenschutz</a> • <a href="#" id="imprintLink">Impressum</a>
+                  </div>
                 </div>
               </div>
               <div class="error" id="errConsent">Bitte Zustimmung aktivieren.</div>
@@ -1113,39 +1169,22 @@
         <aside class="panel infoPanel">
           <div class="infoMedia">
             <span class="infoBadge">So läuft’s ab</span>
-            <!-- team.jpg = Chef zeigt auf Monitor -->
-            <img src="team.jpg" alt="Einblick: Besprechung & Planung" onerror="this.remove()">
+            <!-- CUSTOMIZE (6): TEAM IMAGE -->
+            <img src="team.jpg" alt="Einblick: Besprechung & Planung" loading="lazy" onerror="this.remove()">
           </div>
 
           <div class="infoBody">
             <h2 style="margin:0 0 10px; font-size:18px; letter-spacing:-.3px;">In 3 einfachen Schritten</h2>
 
             <ul class="steps">
-              <li class="stepRow">
-                <div class="n">1</div>
-                <div>
-                  <div class="t">Kontakt</div>
-                  <div class="s">Name, Telefon, Wohnort – das reicht.</div>
-                </div>
-              </li>
-              <li class="stepRow">
-                <div class="n">2</div>
-                <div>
-                  <div class="t">Profil auswählen</div>
-                  <div class="s">Geselle / Quereinsteiger + Pluspunkte anklicken.</div>
-                </div>
-              </li>
-              <li class="stepRow">
-                <div class="n">3</div>
-                <div>
-                  <div class="t">Absenden</div>
-                  <div class="s">Online senden – fertig.</div>
-                </div>
-              </li>
+              <li class="stepRow"><div class="n">1</div><div><div class="t">Kontakt</div><div class="s">Name, Telefon, Wohnort – das reicht.</div></div></li>
+              <li class="stepRow"><div class="n">2</div><div><div class="t">Profil auswählen</div><div class="s">Geselle / Quereinsteiger + Pluspunkte anklicken.</div></div></li>
+              <li class="stepRow"><div class="n">3</div><div><div class="t">Absenden</div><div class="s">Online senden – fertig.</div></div></li>
             </ul>
 
             <div class="company">
               <b>Unternehmensinfo</b><br>
+              <!-- CUSTOMIZE (7): COMPANY INFO -->
               Jörg Lehmann Dachdeckerei<br>
               In der Zennwies 4 • 66629 Freisen<br>
               Telefon: 06855 7466<br>
@@ -1153,19 +1192,23 @@
 
               <div class="companyBtns">
                 <a class="btn brand" href="#bewerben">Jetzt bewerben</a>
+                <a class="btn soft" href="tel:068557466">Anrufen</a>
               </div>
+            </div>
+
+            <div class="note" style="margin-top:12px;">
+              <b>Datenschutz (kurz):</b> Deine Angaben nutzen wir ausschließlich zur Kontaktaufnahme zur Bewerbung. Keine Weitergabe an Dritte.
             </div>
           </div>
         </aside>
 
       </div>
     </section>
-
   </main>
 
-  <!-- Sticky CTA (mobile): only apply -->
+  <!-- Sticky CTA (mobile) -->
   <div class="stickyCta" aria-label="Schnellaktionen">
-    <a class="btn brand" href="#bewerben">Jetzt bewerben</a>
+    <a class="btn brand" href="#bewerben" id="stickyCtaBtn">Jetzt bewerben</a>
   </div>
 
   <!-- Toast -->
@@ -1175,27 +1218,62 @@
   </div>
 
   <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" aria-label="Bildanzeige">
+  <div class="lightbox" id="lightbox" aria-label="Bildanzeige" role="dialog" aria-modal="true">
     <div class="lbCard">
       <button class="lbClose" id="lbClose" type="button">Schließen</button>
       <img id="lbImg" src="" alt="Bild">
     </div>
   </div>
 
-<script>
-  // ====== KONFIG: WEBHOOK (n8n) ======
-  const WEBHOOK_URL = "https://n8n.srv899952.hstgr.cloud/webhook-test/b16fd98d-e0c6-4c7c-b064-ae7dd7e50949";
+  <!-- Success Overlay -->
+  <div class="successOverlay" id="successOverlay" aria-label="Bewerbung gesendet">
+    <div class="successCard">
+      <h3>Danke! Bewerbung ist raus ✅</h3>
+      <p>Wir melden uns zeitnah bei dir. Wenn du willst, kannst du auch direkt anrufen.</p>
+      <div class="row">
+        <!-- CUSTOMIZE (8): PHONE -->
+        <a class="btn brand" href="tel:068557466">Jetzt anrufen</a>
+        <button class="btn soft" type="button" id="closeSuccess">Schließen</button>
+      </div>
+    </div>
+  </div>
 
-  // ====== Funnel State (3 steps) ======
+<script>
+  /* =========================================================
+    CUSTOMIZE (9): WEBHOOK + LINKS + OPTIONALS
+  ========================================================= */
+  const CONFIG = {
+    WEBHOOK_URL: "https://n8n.srv899952.hstgr.cloud/webhook-test/b16fd98d-e0c6-4c7c-b064-ae7dd7e50949",
+
+    // DSGVO-Links (set to your real pages)
+    PRIVACY_URL: "datenschutz.html",     // <-- anpassen
+    IMPRINT_URL: "impressum.html",       // <-- anpassen
+
+    // Optional: after submit redirect (leave empty to stay)
+    SUCCESS_REDIRECT_URL: "",            // z.B. "danke.html"
+
+    // Minimal anti-spam: if user submits too fast, block (seconds)
+    MIN_SECONDS_ON_PAGE_BEFORE_SUBMIT: 6,
+
+    // LocalStorage key for draft
+    DRAFT_KEY: "apply_funnel_draft_v1"
+  };
+
+  /* =========================================================
+    State
+  ========================================================= */
   let step = 1;
   const total = 3;
   let isSubmitting = false;
+  const pageOpenAt = Date.now();
 
   const state = {
     skills: { abdichtung:false, klempner:false, ziegel:true, zimmerei:false }
   };
 
-  // ====== Helpers ======
+  /* =========================================================
+    Helpers
+  ========================================================= */
   const $ = (id) => document.getElementById(id);
   const show = (el, on) => el.style.display = on ? "block" : "none";
 
@@ -1211,11 +1289,12 @@
     for(let i=1;i<=3;i++){
       const c = $("chip"+i);
       if(!c) continue;
-      c.classList.toggle("on", i <= step);
+      c.classList.toggle("active", i === step);
+      c.classList.toggle("done", i < step);
     }
   }
 
-  function setStep(n, opts = { scroll: true }){
+  function setStep(n, opts = { scroll: true, focus: true }){
     step = Math.max(1, Math.min(total, n));
 
     document.querySelectorAll(".step").forEach(s => {
@@ -1234,56 +1313,71 @@
     setChips();
 
     if (opts.scroll){
-      const top = document.getElementById("bewerben").getBoundingClientRect().top + window.scrollY - 84;
+      const top = $("bewerben").getBoundingClientRect().top + window.scrollY - 84;
       window.scrollTo({top, behavior:"smooth"});
     }
+
+    if (opts.focus){
+      // UX: focus first field of step
+      const focusMap = {1:"fullName",2:"role",3:"consent"};
+      const id = focusMap[step];
+      if (id && $(id) && typeof $(id).focus === "function"){
+        setTimeout(() => $(id).focus({preventScroll:true}), 80);
+      }
+    }
+
+    // Save draft every step change
+    saveDraft();
   }
 
-  // Chips clickable
-  document.querySelectorAll(".chip[data-jump]").forEach(ch => {
-    ch.addEventListener("click", () => {
-      if (isSubmitting) return;
-      const target = Number(ch.dataset.jump);
-      if (target > step && step === 1 && !validateStep1()){
-        toast("Bitte kurz ausfüllen", "Name, Telefon und Wohnort sind Pflicht.");
-        return;
-      }
-      setStep(target);
-    });
-  });
+  function cleanPhone(p){
+    return (p || "").replace(/[^\d+ ]/g, "").trim();
+  }
 
-  // Toggles
-  document.querySelectorAll(".toggle[data-toggle]").forEach(t => {
-    t.addEventListener("click", () => {
-      if (isSubmitting) return;
-      const key = t.dataset.toggle;
-      if (["abdichtung","klempner","ziegel","zimmerei"].includes(key)){
-        state.skills[key] = !state.skills[key];
-        t.classList.toggle("on", state.skills[key]);
-      }
-    });
-  });
+  function isEmailValid(email){
+    if(!email) return true;
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+  }
 
-  // Validation Step 1
   function validateStep1(){
     const name = $("fullName").value.trim();
     const phone = $("phone").value.trim();
     const city = $("city").value.trim();
+    const email = $("email").value.trim();
 
-    show($("errFullName"), name.length < 2);
-    show($("errPhone"), phone.length < 6);
-    show($("errCity"), city.length < 2);
+    const badName = name.length < 2;
+    const badPhone = cleanPhone(phone).length < 6;
+    const badCity = city.length < 2;
+    const badEmail = !isEmailValid(email);
 
-    return !(name.length < 2 || phone.length < 6 || city.length < 2);
+    show($("errFullName"), badName);
+    show($("errPhone"), badPhone);
+    show($("errCity"), badCity);
+
+    // inline email warning via toast (optional)
+    if (badEmail) toast("E-Mail prüfen", "Sieht nicht nach einer gültigen E-Mail aus. (Optional)");
+
+    if (badName) $("fullName").focus();
+    else if (badPhone) $("phone").focus();
+    else if (badCity) $("city").focus();
+
+    return !(badName || badPhone || badCity);
   }
 
   function validateStep3(){
     const ok = $("consent").checked;
     show($("errConsent"), !ok);
+    if(!ok) $("consent").focus();
     return ok;
   }
 
-  function cleanPhone(p){ return (p || "").replace(/[^\d+ ]/g, "").trim(); }
+  function getUTM(){
+    const p = new URLSearchParams(location.search);
+    const keys = ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","fbclid"];
+    const obj = {};
+    keys.forEach(k => { const v = p.get(k); if(v) obj[k]=v; });
+    return obj;
+  }
 
   function collectData(){
     return {
@@ -1297,19 +1391,160 @@
       license: $("license").value,
       message: $("message").value.trim(),
       skills: { ...state.skills },
+      marketing: getUTM(),
       meta: {
         page: location.href,
+        path: location.pathname,
+        referrer: document.referrer || "",
         ts: new Date().toISOString(),
+        tz: Intl.DateTimeFormat().resolvedOptions().timeZone || "",
         userAgent: navigator.userAgent
       }
     };
   }
 
-  // Send to webhook (no email)
+  /* =========================================================
+    Draft persistence (improves conversion on reload/back)
+  ========================================================= */
+  function saveDraft(){
+    try{
+      const draft = {
+        fullName: $("fullName").value,
+        phone: $("phone").value,
+        email: $("email").value,
+        city: $("city").value,
+        role: $("role").value,
+        exp: $("exp").value,
+        start: $("start").value,
+        license: $("license").value,
+        message: $("message").value,
+        skills: {...state.skills},
+        step
+      };
+      localStorage.setItem(CONFIG.DRAFT_KEY, JSON.stringify(draft));
+    }catch(e){}
+  }
+
+  function loadDraft(){
+    try{
+      const raw = localStorage.getItem(CONFIG.DRAFT_KEY);
+      if(!raw) return;
+      const d = JSON.parse(raw);
+
+      if(d.fullName) $("fullName").value = d.fullName;
+      if(d.phone) $("phone").value = d.phone;
+      if(d.email) $("email").value = d.email;
+      if(d.city) $("city").value = d.city;
+
+      if(d.role) $("role").value = d.role;
+      if(d.exp) $("exp").value = d.exp;
+      if(d.start) $("start").value = d.start;
+      if(d.license) $("license").value = d.license;
+      if(d.message) $("message").value = d.message;
+
+      if(d.skills){
+        state.skills = {...state.skills, ...d.skills};
+        document.querySelectorAll(".toggle[data-toggle]").forEach(t => {
+          const key = t.dataset.toggle;
+          if(key in state.skills){
+            t.classList.toggle("on", !!state.skills[key]);
+            t.setAttribute("aria-pressed", !!state.skills[key]);
+          }
+        });
+      }
+      if(d.step && Number.isFinite(+d.step)){
+        step = Math.max(1, Math.min(total, +d.step));
+      }
+    }catch(e){}
+  }
+
+  function clearDraft(){
+    try{ localStorage.removeItem(CONFIG.DRAFT_KEY); }catch(e){}
+  }
+
+  /* =========================================================
+    Navigation / UX handlers
+  ========================================================= */
+  function smoothToApply(){
+    const top = $("bewerben").getBoundingClientRect().top + window.scrollY - 84;
+    window.scrollTo({top, behavior:"smooth"});
+  }
+
+  // Chips clickable (with guard)
+  document.querySelectorAll(".chip[data-jump]").forEach(ch => {
+    ch.addEventListener("click", () => {
+      if (isSubmitting) return;
+      const target = Number(ch.dataset.jump);
+
+      // Only allow forward if step1 valid (big conversion killer otherwise)
+      if (target > 1 && !validateStep1()){
+        toast("Bitte kurz ausfüllen", "Name, Telefon und Wohnort sind Pflicht.");
+        smoothToApply();
+        return;
+      }
+      setStep(target);
+    });
+  });
+
+  // Toggles (click + keyboard)
+  function toggleSkill(el){
+    if (isSubmitting) return;
+    const key = el.dataset.toggle;
+    if (!["abdichtung","klempner","ziegel","zimmerei"].includes(key)) return;
+    state.skills[key] = !state.skills[key];
+    el.classList.toggle("on", state.skills[key]);
+    el.setAttribute("aria-pressed", state.skills[key]);
+    saveDraft();
+  }
+  document.querySelectorAll(".toggle[data-toggle]").forEach(t => {
+    t.addEventListener("click", () => toggleSkill(t));
+    t.addEventListener("keydown", (e) => {
+      if(e.key === "Enter" || e.key === " "){
+        e.preventDefault();
+        toggleSkill(t);
+      }
+    });
+  });
+
+  // Enter-to-next (only for step 1 fields)
+  ["fullName","phone","email","city"].forEach(id => {
+    $(id).addEventListener("keydown", (e) => {
+      if(e.key === "Enter"){
+        e.preventDefault();
+        $("nextBtn").click();
+      }
+    });
+  });
+
+  // Live save
+  ["fullName","phone","email","city","role","exp","start","license","message"].forEach(id => {
+    $(id).addEventListener("input", saveDraft);
+    $(id).addEventListener("change", saveDraft);
+  });
+
+  // Consent links
+  $("privacyLink").setAttribute("href", CONFIG.PRIVACY_URL);
+  $("imprintLink").setAttribute("href", CONFIG.IMPRINT_URL);
+
+  /* =========================================================
+    Submit (robust for static hosting)
+  ========================================================= */
   async function submit(){
     if (isSubmitting) return;
-    if (!validateStep3()) return;
 
+    // Anti-spam: honeypot + time-on-page
+    const hp = ($("hpField").value || "").trim();
+    if(hp){
+      toast("Ups", "Bitte nochmal versuchen.");
+      return;
+    }
+    const seconds = (Date.now() - pageOpenAt) / 1000;
+    if(seconds < CONFIG.MIN_SECONDS_ON_PAGE_BEFORE_SUBMIT){
+      toast("Kurzer Moment", "Bitte 1–2 Sekunden warten und dann senden.");
+      return;
+    }
+
+    if (!validateStep3()) return;
     if (!validateStep1()){
       toast("Bitte kurz ausfüllen", "Name, Telefon und Wohnort sind Pflicht.");
       setStep(1);
@@ -1322,42 +1557,47 @@
     $("nextBtn").disabled = true;
     $("backBtn").disabled = true;
     $("nextBtn").textContent = "Sende…";
-
     toast("Sende Bewerbung…", "Einen Moment bitte.");
 
     try{
-      // 1) Prefer sendBeacon (robust for static sites; no response handling)
+      // 1) Prefer sendBeacon
       let beaconOk = false;
       try{
         const blob = new Blob([JSON.stringify(payload)], { type: "application/json" });
-        beaconOk = navigator.sendBeacon && navigator.sendBeacon(WEBHOOK_URL, blob);
+        beaconOk = navigator.sendBeacon && navigator.sendBeacon(CONFIG.WEBHOOK_URL, blob);
       }catch(e){ beaconOk = false; }
 
       // 2) Fallback fetch (no-cors)
       if (!beaconOk){
-        await fetch(WEBHOOK_URL, {
+        await fetch(CONFIG.WEBHOOK_URL, {
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
+          body: JSON.stringify(payload),
+          keepalive: true
         });
       }
 
-      // UI success
+      // Success UI
       show($("successNote"), true);
+      $("nextBtn").textContent = "Gesendet ✅";
       toast("Gesendet ✅", "Danke! Wir melden uns zeitnah bei dir.");
 
-      // Lock inputs after success
-      document.querySelectorAll("input, select, textarea, button").forEach(el => {
-        if (el.id === "lbClose") return;
-        if (el.classList.contains("lbClose")) return;
-        // allow navigation links
-        if (el.tagName === "BUTTON" || el.tagName === "INPUT" || el.tagName === "SELECT" || el.tagName === "TEXTAREA"){
-          el.disabled = true;
-        }
-      });
+      clearDraft();
 
-      $("nextBtn").textContent = "Gesendet ✅";
+      // Optional redirect
+      if (CONFIG.SUCCESS_REDIRECT_URL){
+        setTimeout(() => location.href = CONFIG.SUCCESS_REDIRECT_URL, 600);
+        return;
+      }
+
+      // Show overlay (better than disabling everything; user sees confirmation)
+      $("successOverlay").classList.add("on");
+
+      // lock buttons to prevent resubmit
+      $("nextBtn").disabled = true;
+      $("backBtn").disabled = true;
+
     }catch(err){
       console.error(err);
       toast("Senden fehlgeschlagen", "Bitte kurz später nochmal versuchen.");
@@ -1373,21 +1613,53 @@
     if (isSubmitting) return;
     setStep(step - 1);
   });
+
   $("nextBtn").addEventListener("click", () => {
     if (isSubmitting) return;
 
-    if (step === 1 && !validateStep1()) {
-      toast("Bitte kurz ausfüllen", "Name, Telefon und Wohnort sind Pflicht.");
+    if (step === 1){
+      if(!validateStep1()){
+        toast("Bitte kurz ausfüllen", "Name, Telefon und Wohnort sind Pflicht.");
+        return;
+      }
+      setStep(2);
       return;
     }
-    if (step < total) setStep(step + 1);
-    else submit();
+
+    if (step === 2){
+      setStep(3);
+      return;
+    }
+
+    // step 3
+    submit();
+  });
+
+  // CTA buttons: always jump to apply and focus
+  ["topCta","heroCta","stickyCtaBtn"].forEach(id => {
+    const el = $(id);
+    if(!el) return;
+    el.addEventListener("click", () => setTimeout(() => {
+      // focus first field if user hasn't started
+      if(!$("fullName").value.trim()) $("fullName").focus({preventScroll:true});
+    }, 150));
+  });
+
+  // Success overlay close
+  $("closeSuccess").addEventListener("click", () => {
+    $("successOverlay").classList.remove("on");
+  });
+  $("successOverlay").addEventListener("click", (e) => {
+    if(e.target === $("successOverlay")) $("successOverlay").classList.remove("on");
   });
 
   // Init
-  setStep(1, { scroll: false });
+  loadDraft();
+  setStep(step, { scroll: false, focus: false });
 
-  // ===== Gallery Lightbox =====
+  /* =========================================================
+    Gallery Lightbox
+  ========================================================= */
   const lb = $("lightbox");
   const lbImg = $("lbImg");
   const lbClose = $("lbClose");
@@ -1398,6 +1670,7 @@
       if (!src) return;
       lbImg.src = src;
       lb.classList.add("on");
+      lbClose.focus({preventScroll:true});
     });
   });
 
@@ -1406,12 +1679,8 @@
     lbImg.src = "";
   }
   lbClose.addEventListener("click", closeLb);
-  lb.addEventListener("click", (e) => {
-    if (e.target === lb) closeLb();
-  });
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeLb();
-  });
+  lb.addEventListener("click", (e) => { if (e.target === lb) closeLb(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLb(); });
 </script>
 </body>
 </html>
