@@ -624,7 +624,6 @@
     .infoMedia img{
       width:100%; height:100%;
       object-fit:cover;
-      /* show less ceiling / more person */
       object-position: 50% 45%;
       filter: contrast(1.03) saturate(1.05);
       opacity:.98;
@@ -985,7 +984,6 @@
       <div class="shell">
         <div class="heroGrid">
           <div class="heroLeft">
-            <!-- short + one line -->
             <div class="pill"><span class="dot"></span> Regional • Saarland • Freisen</div>
 
             <h1>Dachdecker gesucht: <span class="accent">Geselle</span> (m/w/d)</h1>
@@ -995,7 +993,6 @@
               Online in 3 kurzen Schritten – wir melden uns schnell.
             </p>
 
-            <!-- Mobile hero image higher -->
             <div class="heroMediaMobile reveal" aria-label="Betrieb / Standort">
               <img src="hero.jpg" alt="Betrieb / Standort (Vogelperspektive)" onerror="this.remove()">
               <div class="heroBadgeMobile">Top Team & Top Ausstattung</div>
@@ -1018,7 +1015,8 @@
             </div>
 
             <div class="ctas reveal">
-              <a class="btn primary" href="#bewerben" id="heroCta">In 1 Min bewerben</a>
+              <!-- CTA konsistent (brand) -->
+              <a class="btn brand" href="#bewerben" id="heroCta">In 1 Min bewerben</a>
             </div>
 
             <div class="helpLine reveal" aria-label="Hinweis">
@@ -1042,7 +1040,7 @@
       </div>
     </section>
 
-    <!-- Tabs (Kurz & klar) -->
+    <!-- Tabs -->
     <section class="section reveal" aria-label="Infos">
       <div class="sectionHead">
         <div>
@@ -1195,151 +1193,165 @@
 
           <!-- Hidden honeypot -->
           <div class="sr-only" aria-hidden="true">
-            <label>Bitte leer lassen <input id="hpField" autocomplete="off" /></label>
+            <label>Bitte leer lassen <input id="hpField" name="company" autocomplete="off" /></label>
           </div>
 
-          <!-- STEP 1 -->
-          <div class="step active" data-step="1" aria-label="Kontakt">
-            <div class="grid2">
-              <div>
-                <label for="fullName">Vor- & Nachname *</label>
-                <input id="fullName" placeholder="z. B. Max Mustermann" autocomplete="name" inputmode="text" />
-                <div class="error" id="errFullName">Bitte deinen Namen eintragen.</div>
-              </div>
+          <!-- ECHTES FORM (für Autofill, Next, Enter-Submit, Validation) -->
+          <form id="applyForm" novalidate>
 
-              <div>
-                <label for="phone">Telefon *</label>
-                <input id="phone" placeholder="z. B. 0176 123456" autocomplete="tel" inputmode="tel" />
-                <div class="error" id="errPhone">Bitte eine Telefonnummer eintragen.</div>
-              </div>
+            <!-- STEP 1 -->
+            <div class="step active" data-step="1" aria-label="Kontakt">
+              <div class="grid2">
+                <div>
+                  <label for="fullName">Vor- & Nachname *</label>
+                  <input id="fullName" name="fullName" type="text" required
+                         placeholder="z. B. Max Mustermann"
+                         autocomplete="name" />
+                  <div class="error" id="errFullName">Bitte deinen Namen eintragen.</div>
+                </div>
 
-              <div>
-                <label for="email">E-Mail (optional)</label>
-                <input id="email" placeholder="z. B. max@mail.de" autocomplete="email" inputmode="email" />
-              </div>
+                <div>
+                  <label for="phone">Telefon *</label>
+                  <input id="phone" name="phone" type="tel" required inputmode="tel"
+                         placeholder="z. B. 0176 123456"
+                         autocomplete="tel" />
+                  <div class="error" id="errPhone">Bitte eine Telefonnummer eintragen.</div>
+                </div>
 
-              <div>
-                <label for="city">Wohnort *</label>
-                <input id="city" placeholder="z. B. Freisen" autocomplete="address-level2" inputmode="text" />
-                <div class="error" id="errCity">Bitte deinen Wohnort eintragen.</div>
-              </div>
-            </div>
+                <div>
+                  <label for="email">E-Mail (optional)</label>
+                  <input id="email" name="email" type="email" inputmode="email"
+                         placeholder="z. B. max@mail.de"
+                         autocomplete="email" />
+                </div>
 
-            <div class="note">
-              <b>Keine Unterlagen nötig:</b> Wir brauchen erstmal nur Kontakt + ein paar Infos. Den Rest klären wir im Gespräch.
-            </div>
-          </div>
-
-          <!-- STEP 2 -->
-          <div class="step" data-step="2" aria-label="Profil">
-            <div class="grid2">
-              <div>
-                <label for="role">Du bist…</label>
-                <select id="role">
-                  <option value="Dachdecker Geselle">Dachdecker Geselle</option>
-                  <option value="Quereinsteiger (qualifiziert)">Quereinsteiger (qualifiziert)</option>
-                  <option value="Hilfskraft (motiviert)">Hilfskraft (motiviert)</option>
-                </select>
-              </div>
-
-              <div>
-                <label for="exp">Berufserfahrung</label>
-                <select id="exp">
-                  <option>0–1 Jahre</option>
-                  <option selected>2–4 Jahre</option>
-                  <option>5–9 Jahre</option>
-                  <option>10+ Jahre</option>
-                </select>
-              </div>
-
-              <div>
-                <label for="start">Start möglich</label>
-                <select id="start">
-                  <option selected>Sofort</option>
-                  <option>In 2 Wochen</option>
-                  <option>In 1 Monat</option>
-                  <option>Später</option>
-                </select>
-              </div>
-
-              <div>
-                <label for="license">Führerschein</label>
-                <select id="license">
-                  <option selected>Klasse B vorhanden</option>
-                  <option>LKW vorhanden</option>
-                  <option>LKW erwünscht (kann gestellt werden)</option>
-                  <option>Kein Führerschein</option>
-                </select>
-              </div>
-            </div>
-
-            <label style="margin-top:12px;">Pluspunkte (anklicken – optional)</label>
-            <div class="toggleGrid" role="group" aria-label="Pluspunkte">
-              <div class="toggle" data-toggle="abdichtung" role="button" tabindex="0" aria-pressed="false">
-                <div><div class="t">Abdichtung</div><div class="s">Schweißbahn, Anschlüsse</div></div>
-                <div class="check">✓</div>
-              </div>
-
-              <div class="toggle" data-toggle="klempner" role="button" tabindex="0" aria-pressed="false">
-                <div><div class="t">Klempner / Blech</div><div class="s">Rinnen, Kantungen</div></div>
-                <div class="check">✓</div>
-              </div>
-
-              <div class="toggle on" data-toggle="ziegel" role="button" tabindex="0" aria-pressed="true">
-                <div><div class="t">Ziegel / Steildach</div><div class="s">Eindeckung, Reparaturen</div></div>
-                <div class="check">✓</div>
-              </div>
-
-              <div class="toggle" data-toggle="zimmerei" role="button" tabindex="0" aria-pressed="false">
-                <div><div class="t">Zimmerei</div><div class="s">nice to have</div></div>
-                <div class="check">✓</div>
-              </div>
-            </div>
-
-            <label for="message" style="margin-top:12px;">Kurze Nachricht (optional)</label>
-            <textarea id="message" placeholder="z. B. Steildach, Abdichtung oder Blech – was machst du am liebsten?"></textarea>
-
-            <div class="note">
-              Tipp: Wenn du nur <b>Telefon</b> + <b>Wohnort</b> angibst, reicht das. Wir rufen dich an.
-            </div>
-          </div>
-
-          <!-- STEP 3 -->
-          <div class="step" data-step="3" aria-label="Absenden">
-            <div class="note">
-              <b>Fast fertig ✅</b><br>
-              Mit „Bewerbung senden“ werden deine Angaben online übertragen.<br>
-              Das dauert nur einen Moment.
-            </div>
-
-            <div class="note" style="margin-top:10px;">
-              <div style="display:flex; gap:10px; align-items:flex-start;">
-                <input id="consent" type="checkbox" checked style="width:auto; margin-top:3px;">
-                <div style="font-size:13px; color: rgba(11,18,32,.70); font-weight:900; line-height:1.35;">
-                  Ich bin einverstanden, dass meine Angaben zur <b>Kontaktaufnahme</b> verarbeitet werden.
-                  <div style="margin-top:6px; font-weight:800; color: rgba(11,18,32,.62);">
-                    Hinweise: <a href="#" id="privacyLink">Datenschutz</a> • <a href="#" id="imprintLink">Impressum</a>
-                  </div>
+                <div>
+                  <label for="city">Wohnort (optional)</label>
+                  <input id="city" name="city" type="text"
+                         placeholder="z. B. Freisen"
+                         autocomplete="address-level2" />
+                  <div class="error" id="errCity">Bitte deinen Wohnort eintragen.</div>
                 </div>
               </div>
-              <div class="error" id="errConsent">Bitte Zustimmung aktivieren.</div>
+
+              <div class="note">
+                <b>Keine Unterlagen nötig:</b> Wir brauchen erstmal nur Kontakt + ein paar Infos. Den Rest klären wir im Gespräch.
+              </div>
             </div>
 
-            <div class="note ok" style="margin-top:10px; display:none;" id="successNote">
-              <b>Gesendet ✅</b><br>
-              Danke! Wir melden uns zeitnah bei dir.
+            <!-- STEP 2 -->
+            <div class="step" data-step="2" aria-label="Profil">
+              <div class="grid2">
+                <div>
+                  <label for="role">Du bist…</label>
+                  <select id="role" name="role">
+                    <option value="Dachdecker Geselle">Dachdecker Geselle</option>
+                    <option value="Quereinsteiger (qualifiziert)">Quereinsteiger (qualifiziert)</option>
+                    <option value="Hilfskraft (motiviert)">Hilfskraft (motiviert)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="exp">Berufserfahrung</label>
+                  <select id="exp" name="exp">
+                    <option>0–1 Jahre</option>
+                    <option selected>2–4 Jahre</option>
+                    <option>5–9 Jahre</option>
+                    <option>10+ Jahre</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="start">Start möglich</label>
+                  <select id="start" name="start">
+                    <option selected>Sofort</option>
+                    <option>In 2 Wochen</option>
+                    <option>In 1 Monat</option>
+                    <option>Später</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="license">Führerschein</label>
+                  <select id="license" name="license">
+                    <option selected>Klasse B vorhanden</option>
+                    <option>LKW vorhanden</option>
+                    <option>LKW erwünscht (kann gestellt werden)</option>
+                    <option>Kein Führerschein</option>
+                  </select>
+                </div>
+              </div>
+
+              <label style="margin-top:12px;">Pluspunkte (anklicken – optional)</label>
+              <div class="toggleGrid" role="group" aria-label="Pluspunkte">
+                <div class="toggle" data-toggle="abdichtung" role="button" tabindex="0" aria-pressed="false">
+                  <div><div class="t">Abdichtung</div><div class="s">Schweißbahn, Anschlüsse</div></div>
+                  <div class="check">✓</div>
+                </div>
+
+                <div class="toggle" data-toggle="klempner" role="button" tabindex="0" aria-pressed="false">
+                  <div><div class="t">Klempner / Blech</div><div class="s">Rinnen, Kantungen</div></div>
+                  <div class="check">✓</div>
+                </div>
+
+                <div class="toggle on" data-toggle="ziegel" role="button" tabindex="0" aria-pressed="true">
+                  <div><div class="t">Ziegel / Steildach</div><div class="s">Eindeckung, Reparaturen</div></div>
+                  <div class="check">✓</div>
+                </div>
+
+                <div class="toggle" data-toggle="zimmerei" role="button" tabindex="0" aria-pressed="false">
+                  <div><div class="t">Zimmerei</div><div class="s">nice to have</div></div>
+                  <div class="check">✓</div>
+                </div>
+              </div>
+
+              <label for="message" style="margin-top:12px;">Kurze Nachricht (optional)</label>
+              <textarea id="message" name="message" placeholder="z. B. Steildach, Abdichtung oder Blech – was machst du am liebsten?"></textarea>
+
+              <div class="note">
+                Tipp: Wenn du nur <b>Name</b> + <b>Telefon</b> angibst, reicht das. Wir rufen dich an.
+              </div>
             </div>
 
-            <div class="note" style="margin-top:10px;">
-              <b>Was passiert danach?</b><br>
-              Wir melden uns bei dir und klären kurz die wichtigsten Punkte. Kein Papierkram.
-            </div>
-          </div>
+            <!-- STEP 3 -->
+            <div class="step" data-step="3" aria-label="Absenden">
+              <div class="note">
+                <b>Fast fertig ✅</b><br>
+                Mit „Bewerbung senden“ werden deine Angaben online übertragen.<br>
+                Das dauert nur einen Moment.
+              </div>
 
-          <div class="nav">
-            <button class="btn soft" id="backBtn" type="button">Zurück</button>
-            <button class="btn primary" id="nextBtn" type="button">Weiter</button>
-          </div>
+              <div class="note" style="margin-top:10px;">
+                <div style="display:flex; gap:10px; align-items:flex-start;">
+                  <input id="consent" name="consent" type="checkbox" required checked style="width:auto; margin-top:3px;">
+                  <div style="font-size:13px; color: rgba(11,18,32,.70); font-weight:900; line-height:1.35;">
+                    Ich bin einverstanden, dass meine Angaben zur <b>Kontaktaufnahme</b> verarbeitet werden.
+                    <div style="margin-top:6px; font-weight:800; color: rgba(11,18,32,.62);">
+                      Hinweise: <a href="#" id="privacyLink">Datenschutz</a> • <a href="#" id="imprintLink">Impressum</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="error" id="errConsent">Bitte Zustimmung aktivieren.</div>
+              </div>
+
+              <div class="note ok" style="margin-top:10px; display:none;" id="successNote">
+                <b>Gesendet ✅</b><br>
+                Danke! Wir melden uns zeitnah bei dir.
+              </div>
+
+              <div class="note" style="margin-top:10px;">
+                <b>Was passiert danach?</b><br>
+                Wir melden uns bei dir und klären kurz die wichtigsten Punkte. Kein Papierkram.
+              </div>
+            </div>
+
+            <div class="nav">
+              <button class="btn soft" id="backBtn" type="button">Zurück</button>
+              <!-- submit, damit Enter/Next sauber läuft -->
+              <button class="btn primary" id="nextBtn" type="submit">Weiter</button>
+            </div>
+
+          </form>
 
           <div class="footer">
             <div class="footerRow">
@@ -1361,7 +1373,7 @@
 
           <div class="infoBody">
             <ul class="steps">
-              <li class="stepRow"><div class="n">1</div><div><div class="t">Kontakt</div><div class="s">Name, Telefon, Wohnort – das reicht.</div></div></li>
+              <li class="stepRow"><div class="n">1</div><div><div class="t">Kontakt</div><div class="s">Name, Telefon – das reicht.</div></div></li>
               <li class="stepRow"><div class="n">2</div><div><div class="t">Profil auswählen</div><div class="s">Geselle / Quereinsteiger + Pluspunkte anklicken.</div></div></li>
               <li class="stepRow"><div class="n">3</div><div><div class="t">Absenden</div><div class="s">Online senden – fertig.</div></div></li>
             </ul>
@@ -1389,7 +1401,7 @@
     </section>
   </main>
 
-  <!-- Sticky CTA (mobile, smart + debounce) -->
+  <!-- Sticky CTA -->
   <div class="stickyCta" aria-label="Schnellaktionen" id="stickyCta">
     <a class="btn brand" href="#bewerben" id="stickyCtaBtn">Jetzt bewerben</a>
   </div>
@@ -1519,28 +1531,26 @@
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
   }
 
+  // Step 1: nur Name + Telefon Pflicht (Wohnort optional)
   function validateStep1(){
     const name = $("fullName").value.trim();
     const phone = $("phone").value.trim();
-    const city = $("city").value.trim();
     const email = $("email").value.trim();
 
     const badName = name.length < 2;
     const badPhone = cleanPhone(phone).length < 6;
-    const badCity = city.length < 2;
     const badEmail = !isEmailValid(email);
 
     show($("errFullName"), badName);
     show($("errPhone"), badPhone);
-    show($("errCity"), badCity);
+    show($("errCity"), false); // Wohnort optional
 
     if (badEmail) toast("E-Mail prüfen", "Sieht nicht nach einer gültigen E-Mail aus. (Optional)");
 
     if (badName) $("fullName").focus();
     else if (badPhone) $("phone").focus();
-    else if (badCity) $("city").focus();
 
-    return !(badName || badPhone || badCity);
+    return !(badName || badPhone);
   }
 
   function validateStep3(){
@@ -1563,7 +1573,7 @@
       fullName: $("fullName").value.trim(),
       phone: cleanPhone($("phone").value),
       email: $("email").value.trim(),
-      city: $("city").value.trim(),
+      city: $("city").value.trim(), // optional
       role: $("role").value,
       exp: $("exp").value,
       start: $("start").value,
@@ -1645,7 +1655,7 @@
       const target = Number(ch.dataset.jump);
 
       if (target > 1 && !validateStep1()){
-        toast("Bitte kurz ausfüllen", "Name, Telefon und Wohnort sind Pflicht.");
+        toast("Bitte kurz ausfüllen", "Name und Telefon sind Pflicht.");
         const top = $("bewerben").getBoundingClientRect().top + window.scrollY - 84;
         window.scrollTo({top, behavior:"smooth"});
         return;
@@ -1670,16 +1680,6 @@
       if(e.key === "Enter" || e.key === " "){
         e.preventDefault();
         toggleSkill(t);
-      }
-    });
-  });
-
-  // Enter-to-next (step 1)
-  ["fullName","phone","email","city"].forEach(id => {
-    $(id).addEventListener("keydown", (e) => {
-      if(e.key === "Enter"){
-        e.preventDefault();
-        $("nextBtn").click();
       }
     });
   });
@@ -1710,7 +1710,7 @@
 
     if (!validateStep3()) return;
     if (!validateStep1()){
-      toast("Bitte kurz ausfüllen", "Name, Telefon und Wohnort sind Pflicht.");
+      toast("Bitte kurz ausfüllen", "Name und Telefon sind Pflicht.");
       setStep(1);
       return;
     }
@@ -1773,12 +1773,15 @@
     setStep(step - 1);
   });
 
-  $("nextBtn").addEventListener("click", () => {
+  // Form-Submit steuert den gesamten Flow (Enter/Next iOS/Autofill)
+  const form = $("applyForm");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
     if (isSubmitting) return;
 
     if (step === 1){
       if(!validateStep1()){
-        toast("Bitte kurz ausfüllen", "Name, Telefon und Wohnort sind Pflicht.");
+        toast("Bitte kurz ausfüllen", "Name und Telefon sind Pflicht.");
         return;
       }
       setStep(2);
@@ -1829,15 +1832,13 @@
   lb.addEventListener("click", (e) => { if (e.target === lb) closeLb(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLb(); });
 
-  // Sticky CTA (less annoying): show only after some scroll + not while scrolling + not in hero/apply
+  // Sticky CTA
   let __stickyScrollT = null;
 
   function computeShouldShowSticky(){
     const isMobile = window.matchMedia("(max-width: 820px)").matches;
     if(!isMobile) return false;
     if(isSubmitting) return false;
-
-    // require some scroll depth
     if(window.scrollY < 260) return false;
 
     const heroCta = $("heroCta");
@@ -1871,7 +1872,7 @@
 
   function onScrollSticky(){
     const sticky = $("stickyCta");
-    if(sticky) sticky.classList.remove("on"); // hide while actively scrolling
+    if(sticky) sticky.classList.remove("on");
     clearTimeout(__stickyScrollT);
     __stickyScrollT = setTimeout(updateStickyCta, 180);
   }
