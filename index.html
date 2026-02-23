@@ -15,7 +15,6 @@
   <link rel="icon" type="image/png" href="favicon-32x32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-
   <link rel="preload" as="image" href="hero.jpg" />
 
   <style>
@@ -1019,7 +1018,6 @@
             </div>
 
             <div class="ctas reveal">
-              <!-- CTA konsistent (brand) -->
               <a class="btn brand" href="#bewerben" id="heroCta">In 1 Min bewerben</a>
             </div>
 
@@ -1200,7 +1198,7 @@
             <label>Bitte leer lassen <input id="hpField" name="company" autocomplete="off" /></label>
           </div>
 
-          <!-- ECHTES FORM (für Autofill, Next, Enter-Submit, Validation) -->
+          <!-- ECHTES FORM -->
           <form id="applyForm" novalidate>
 
             <!-- STEP 1 -->
@@ -1351,7 +1349,6 @@
 
             <div class="nav">
               <button class="btn soft" id="backBtn" type="button">Zurück</button>
-              <!-- submit, damit Enter/Next sauber läuft -->
               <button class="btn primary" id="nextBtn" type="submit">Weiter</button>
             </div>
 
@@ -1437,12 +1434,19 @@
 
 <script>
   const CONFIG = {
-    WEBHOOK_URL: "https://n8n.srv899952.hstgr.cloud/webhook-test/lehmann",
+    // ✅ Das ist DEIN n8n TEST-Webhook (funktioniert wie bei Rech)
+    WEBHOOK_URL: "https://n8n.srv899952.hstgr.cloud/webhook-test/ba39fbd7-d8a7-4c4d-b0d1-bed706ce5f84",
+
+    // Optional: wenn du später live gehst, stell das hier um (nur wenn du in n8n "Production URL" nutzt):
+    // WEBHOOK_URL: "https://n8n.srv899952.hstgr.cloud/webhook/ba39fbd7-d8a7-4c4d-b0d1-bed706ce5f84",
+
     PRIVACY_URL: "datenschutz.html",
     IMPRINT_URL: "impressum.html",
     SUCCESS_REDIRECT_URL: "",
     MIN_SECONDS_ON_PAGE_BEFORE_SUBMIT: 6,
-    DRAFT_KEY: "apply_funnel_draft_v1"
+
+    // ✅ Wichtig: eigener Key pro Kunde, damit nicht Formular-Drafts zwischen Kunden kollidieren
+    DRAFT_KEY: "apply_funnel_draft_lehmann_v1"
   };
 
   let step = 1;
@@ -1534,7 +1538,7 @@
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
   }
 
-  // Step 1: nur Name + Telefon Pflicht (Wohnort optional)
+  // Step 1: nur Name + Telefon Pflicht
   function validateStep1(){
     const name = $("fullName").value.trim();
     const phone = $("phone").value.trim();
@@ -1576,7 +1580,7 @@
       fullName: $("fullName").value.trim(),
       phone: cleanPhone($("phone").value),
       email: $("email").value.trim(),
-      city: $("city").value.trim(), // optional
+      city: $("city").value.trim(),
       role: $("role").value,
       exp: $("exp").value,
       start: $("start").value,
@@ -1590,7 +1594,8 @@
         referrer: document.referrer || "",
         ts: new Date().toISOString(),
         tz: Intl.DateTimeFormat().resolvedOptions().timeZone || "",
-        userAgent: navigator.userAgent
+        userAgent: navigator.userAgent,
+        origin: location.origin
       }
     };
   }
@@ -1697,6 +1702,29 @@
   $("privacyLink").setAttribute("href", CONFIG.PRIVACY_URL);
   $("imprintLink").setAttribute("href", CONFIG.IMPRINT_URL);
 
+  // ✅ Robust: sendBeacon (preferred) -> fallback fetch(no-cors)
+  async function postToWebhook(url, payload){
+    // 1) Beacon (super für iOS/Safari + keepalive)
+    try{
+      const blob = new Blob([JSON.stringify(payload)], { type: "application/json" });
+      if (navigator.sendBeacon && navigator.sendBeacon(url, blob)) return true;
+    }catch(e){}
+
+    // 2) fetch fallback (no-cors -> n8n bekommt body als string, das ist okay)
+    try{
+      await fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        keepalive: true
+      });
+      return true;
+    }catch(e){
+      return false;
+    }
+  }
+
   async function submit(){
     if (isSubmitting) return;
 
@@ -1705,6 +1733,7 @@
       toast("Ups", "Bitte nochmal versuchen.");
       return;
     }
+
     const seconds = (Date.now() - pageOpenAt) / 1000;
     if(seconds < CONFIG.MIN_SECONDS_ON_PAGE_BEFORE_SUBMIT){
       toast("Kurzer Moment", "Bitte 1–2 Sekunden warten und dann senden.");
@@ -1726,23 +1755,9 @@
     $("nextBtn").textContent = "Sende…";
     toast("Sende Bewerbung…", "Einen Moment bitte.");
 
-    try{
-      let beaconOk = false;
-      try{
-        const blob = new Blob([JSON.stringify(payload)], { type: "application/json" });
-        beaconOk = navigator.sendBeacon && navigator.sendBeacon(CONFIG.WEBHOOK_URL, blob);
-      }catch(e){ beaconOk = false; }
+    const ok = await postToWebhook(CONFIG.WEBHOOK_URL, payload);
 
-      if (!beaconOk){
-        await fetch(CONFIG.WEBHOOK_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-          keepalive: true
-        });
-      }
-
+    if(ok){
       show($("successNote"), true);
       $("nextBtn").textContent = "Gesendet ✅";
       toast("Gesendet ✅", "Danke! Wir melden uns zeitnah bei dir.");
@@ -1759,16 +1774,15 @@
       $("backBtn").disabled = true;
 
       updateStickyCta();
-
-    }catch(err){
-      console.error(err);
-      toast("Senden fehlgeschlagen", "Bitte kurz später nochmal versuchen.");
-      isSubmitting = false;
-      $("nextBtn").disabled = false;
-      $("backBtn").disabled = (step === 1);
-      $("nextBtn").textContent = "Bewerbung senden";
-      updateStickyCta();
+      return;
     }
+
+    toast("Senden fehlgeschlagen", "Bitte kurz später nochmal versuchen.");
+    isSubmitting = false;
+    $("nextBtn").disabled = false;
+    $("backBtn").disabled = (step === 1);
+    $("nextBtn").textContent = "Bewerbung senden";
+    updateStickyCta();
   }
 
   $("backBtn").addEventListener("click", () => {
@@ -1776,7 +1790,7 @@
     setStep(step - 1);
   });
 
-  // Form-Submit steuert den gesamten Flow (Enter/Next iOS/Autofill)
+  // Form-Submit steuert den gesamten Flow
   const form = $("applyForm");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
